@@ -1,0 +1,23 @@
+{
+    "name": "AspNet5Angular2Demo",
+    "description": "",
+    "main": "wwwroot/index.html",
+    "authors": [
+        "Fabian Gosebrink",
+        "DamienBod"
+    ],
+    "license": "ISC",
+    "moduleType": [ ],
+    "homepage": "",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "bootstrap": "~3.3.6"
+    }
+}

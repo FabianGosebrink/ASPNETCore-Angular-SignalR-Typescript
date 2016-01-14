@@ -1,25 +1,31 @@
-﻿<html>
+<html>
 
 <head>
     <base href="/"/>
     <title>Angular 2 QuickStart</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="build/bootstrap.css">
+    <!-- endinject -->
 </head>
 
 <!-- 3. Display the application -->
 
 <body>
     <my-app>Loading...</my-app>
-    
-    <!-- 1. Load libraries -->
-    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
-    <script src="node_modules/typescript/lib/typescript.js"></script>
-    <script src="node_modules/rxjs/bundles/Rx.js"></script>
-    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
-    <script src="node_modules/angular2/bundles/router.dev.js"></script>
-    <script src="node_modules/angular2/bundles/router.dev.js"></script>
-    <script src="node_modules/angular2/bundles/http.dev.js"></script>
+
+    <!-- inject:js -->
+    <script src="js/angular2-polyfills.js"></script>
+    <script src="js/angular2.dev.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/http.dev.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/router.dev.js"></script>
+    <script src="js/Rx.js"></script>
+    <script src="js/system.src.js"></script>
+    <script src="js/typescript.js"></script>
+    <!-- endinject -->
 
     <!-- 2. Configure SystemJS -->
     <script>
