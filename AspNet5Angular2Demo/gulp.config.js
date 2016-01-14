@@ -21,7 +21,7 @@ module.exports = {
                     'app/**/*.html'
                 ],
                 css: [
-                    'css/custom.css'
+                    'app/**/*.css'
                 ]
             },
             vendor: {
@@ -34,21 +34,19 @@ module.exports = {
                     'node_modules/rxjs/bundles/Rx.js',
                     'node_modules/angular2/bundles/angular2.dev.js',
                     'node_modules/angular2/bundles/router.dev.js',
-                    'node_modules/angular2/bundles/router.dev.js',
                     'node_modules/angular2/bundles/http.dev.js'
                 ],
                 css: [
                     'bower_components/bootstrap/dist/css/bootstrap.css'
-                ],
-                fonts: [
                 ]
             }
         }
     },
     targets: {
         wwwrootFolder: 'wwwroot/',
-        cssFolder: 'wwwroot/css/',
+        wwwrootCssFolder: 'wwwroot/css/',
         wwwrootJsFolder: 'wwwroot/js/',
+        wwwrootAppFolder: 'wwwroot/app/',
         tempFolder: '.temp/',
         devFolder: 'dev/',
         prodFolder: 'prod/',
