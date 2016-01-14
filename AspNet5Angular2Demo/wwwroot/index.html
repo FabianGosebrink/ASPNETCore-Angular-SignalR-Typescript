@@ -1,12 +1,12 @@
 <html>
 
 <head>
-    <base href="/"/>
+    <base href="/" />
     <title>Angular 2 QuickStart</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
     <!-- inject:css -->
-    <link rel="stylesheet" href="build/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <!-- endinject -->
 </head>
 
@@ -15,24 +15,25 @@
 <body>
     <my-app>Loading...</my-app>
 
-    <!-- inject:js -->
     <script src="js/angular2-polyfills.js"></script>
+    <script src="js/system.src.js"></script>
+    <script src="js/Rx.js"></script>
     <script src="js/angular2.dev.js"></script>
+    <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/http.dev.js"></script>
-    <script src="js/jquery.js"></script>
     <script src="js/router.dev.js"></script>
-    <script src="js/Rx.js"></script>
-    <script src="js/system.src.js"></script>
     <script src="js/typescript.js"></script>
-    <!-- endinject -->
-
     <!-- 2. Configure SystemJS -->
     <script>
         System.config({
-        packages: {'app': {defaultExtension: 'js'}} 
-      });
-      System.import('app/boot')
+            packages: {
+                app: {
+                    defaultExtension: 'js'
+                }
+            }
+        });
+        System.import('app/boot')
             .then(null, console.error.bind(console));
     </script>
 
