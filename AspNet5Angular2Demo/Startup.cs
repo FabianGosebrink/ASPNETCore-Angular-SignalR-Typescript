@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Builder;
+﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,7 +16,6 @@ namespace AspNet5Angular2Demo
     {
         public Startup(IHostingEnvironment env)
         {
-            // Set up configuration sources.
             var builder = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
                 .AddEnvironmentVariables();
@@ -28,14 +23,19 @@ namespace AspNet5Angular2Demo
         }
 
         public IConfigurationRoot Configuration { get; set; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
+        
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
+            // todo add cors
+
             services.AddMvc();
 
             services.AddSingleton<IFoodRepository, FoodRepository>();
+
+            services.AddSignalR(options =>
+            {
+                options.Hubs.EnableDetailedErrors = true;
+            });
 
             Mapper.Initialize(mapper =>
             {
@@ -55,10 +55,11 @@ namespace AspNet5Angular2Demo
 
             app.UseMvc();
 
+            app.UseSignalR();
+
 
         }
-
-        // Entry point for the application.
+        
         public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }
