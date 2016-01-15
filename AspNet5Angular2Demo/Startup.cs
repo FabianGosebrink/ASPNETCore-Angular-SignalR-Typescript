@@ -26,9 +26,19 @@ namespace AspNet5Angular2Demo
         
         public void ConfigureServices(IServiceCollection services)
         {
-            // todo add cors
-
             services.AddMvc();
+
+            //Add Cors support to the service
+            services.AddCors();
+
+            var policy = new Microsoft.AspNet.Cors.Infrastructure.CorsPolicy();
+
+            policy.Headers.Add("*");
+            policy.Methods.Add("*");
+            policy.Origins.Add("*");
+            policy.SupportsCredentials = true;
+
+            services.AddCors(x => x.AddPolicy("corsGlobalPolicy", policy));
 
             services.AddSingleton<IFoodRepository, FoodRepository>();
 
@@ -48,6 +58,8 @@ namespace AspNet5Angular2Demo
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            app.UseCors("corsGlobalPolicy");
 
             app.UseIISPlatformHandler();
 
