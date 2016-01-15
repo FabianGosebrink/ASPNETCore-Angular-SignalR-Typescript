@@ -1,0 +1,1 @@
+# Angular 2 with Typescript, SignalR and ASP.NET 5 MVC 6 server
