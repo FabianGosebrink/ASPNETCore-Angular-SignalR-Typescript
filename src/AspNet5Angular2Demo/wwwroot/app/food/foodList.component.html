@@ -1,5 +1,5 @@
 <ul>
     <li *ngFor="#foodItem of foodItems">
-        <span>{{foodItem.Id}} - {{foodItem.ItemName}}</span>
+        <span>{{foodItem.Id}} - {{foodItem.ItemName}} <button class="btn btn-link" (click)="deleteFoodItem(foodItem)">Delete</button></span>
     </li>
 </ul>

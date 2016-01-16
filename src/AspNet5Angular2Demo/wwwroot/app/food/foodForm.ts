@@ -22,6 +22,7 @@ export class FoodForm {
         .AddFood(this.foodName)
         .subscribe(data => {
                 this.newFoodItem.emit("event");
+                this.foodName = "";
             }, err => {
                 console.log(err)},
             () => console.log('Call Complete'));
