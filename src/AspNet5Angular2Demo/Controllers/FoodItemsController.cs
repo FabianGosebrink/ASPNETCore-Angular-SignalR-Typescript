@@ -1,25 +1,26 @@
-﻿using AutoMapper;
+﻿using System;
+using System.Linq;
+using AspNet5Angular2Demo.Hubs;
+using AspNet5Angular2Demo.Models;
+using AspNet5Angular2Demo.Repositories;
+using AspNet5Angular2Demo.ViewModels;
+using AutoMapper;
+using Microsoft.AspNet.Mvc;
+using Microsoft.AspNet.SignalR;
+using Microsoft.AspNet.SignalR.Infrastructure;
 
-namespace Angular2Demo.Controllers
+namespace AspNet5Angular2Demo.Controllers
 {
-    using System;
-    using System.Linq;
-    using System.Net;
-
-    using AspNet5Angular2Demo.Models;
-    using AspNet5Angular2Demo.Repositories;
-    using AspNet5Angular2Demo.ViewModels;
-
-    using Microsoft.AspNet.Mvc;
-
     [Route("api/[controller]")]
     public class FoodItemsController : Controller
     {
         private readonly IFoodRepository _foodRepository;
+        private readonly IHubContext _coolMessageHubContext;
 
-        public FoodItemsController(IFoodRepository foodRepository)
+        public FoodItemsController(IFoodRepository foodRepository, IConnectionManager connectionManager)
         {
             _foodRepository = foodRepository;
+            _coolMessageHubContext = connectionManager.GetHubContext<CoolMessagesHub>();
         }
 
         [HttpGet]
@@ -61,6 +62,8 @@ namespace Angular2Demo.Controllers
             FoodItem item = Mapper.Map<FoodItem>(viewModel);
             item.Created = DateTime.Now;
             FoodItem newFoodItem = _foodRepository.Add(item);
+
+            _coolMessageHubContext.Clients.All.AddMessage("asdasdasdasd");
 
             return CreatedAtRoute(
                 "GetSingleFood",

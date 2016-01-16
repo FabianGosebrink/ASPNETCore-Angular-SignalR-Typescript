@@ -6,6 +6,7 @@ import { DataService } from '../services/foodDataService';
     selector: 'food-list',
     templateUrl: 'app/food/foodList.component.html'
 })
+
 export class FoodList {
     @Input() foodItems: IFoodItem[];
     @Output() deletedFoodItem = new EventEmitter();
@@ -24,5 +25,4 @@ export class FoodList {
             console.log("Deleted");
         });
     }
-    
 }
