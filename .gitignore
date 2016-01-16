@@ -213,3 +213,5 @@ _Pvt_Extensions/
 ModelManifest.xml
 Angular2Demo/bower_components
 Angular2Demo/bower_components
+src/AspNet5Angular2Demo/wwwroot/app/**/*.js
+src/AspNet5Angular2Demo/wwwroot/app/**/*.js.map

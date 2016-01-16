@@ -31,8 +31,17 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], fun
                 DataService.prototype.GetSingleFood = function (id) {
                     return this._http.get(this.actionUrl + id).map(function (res) { return res.json(); });
                 };
-                DataService.prototype.AddFood = function (FoodToAdd) {
-                    return this._http.post(this.actionUrl, FoodToAdd).map(function (res) { return res.json(); });
+                DataService.prototype.AddFood = function (foodName) {
+                    var headers = new http_1.Headers();
+                    headers.append('Content-Type', 'application/json');
+                    var toAdd = JSON.stringify({ ItemName: foodName });
+                    return this._http.post(this.actionUrl, toAdd, {
+                        headers: headers
+                    }).map(function (res) { return res.json(); });
+                    //.subscribe(data => {
+                    //    console.log(data)
+                    //}, err => console.log(err.json().message),
+                    //() => console.log('Authentication Complete'));
                 };
                 DataService.prototype.Update = function (id, foodToUpdate) {
                     return this._http.post(this.actionUrl + id, foodToUpdate).map(function (res) { return res.json(); });
@@ -42,10 +51,9 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], fun
                 };
                 DataService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [(typeof (_a = typeof http_1.Http !== 'undefined' && http_1.Http) === 'function' && _a) || Object])
+                    __metadata('design:paramtypes', [http_1.Http])
                 ], DataService);
                 return DataService;
-                var _a;
             })();
             exports_1("DataService", DataService);
         }
