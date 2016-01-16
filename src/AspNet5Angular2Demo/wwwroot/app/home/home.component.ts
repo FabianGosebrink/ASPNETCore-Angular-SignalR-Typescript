@@ -4,12 +4,13 @@ import { CORE_DIRECTIVES } from 'angular2/common';
 import { DataService } from '../services/foodDataService';
 import { IFoodItem } from '../models/IFoodItem';
 import { Http, Response } from 'angular2/http';
+import {FoodList} from '../food/foodList';
 
 @Component({
     selector: 'home',
     providers: [DataService],
     templateUrl: 'app/home/home.component.html',
-    directives: [CORE_DIRECTIVES]
+    directives: [CORE_DIRECTIVES, FoodList]
 })
 
 export class HomeComponent implements OnInit {

@@ -6,6 +6,7 @@
 /// <reference path="app/about/about.component.js" />
 /// <reference path="app/app.component.js" />
 /// <reference path="app/boot.js" />
+/// <reference path="app/food/foodlist.js" />
 /// <reference path="app/home/home.component.js" />
 /// <reference path="app/models/ifooditem.js" />
 /// <reference path="app/services/fooddataservice.js" />

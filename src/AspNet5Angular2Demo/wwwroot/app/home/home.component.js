@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', 'angular2/common', '../services/foodDataService'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', 'angular2/common', '../services/foodDataService', '../food/foodList'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/common', '../serv
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, common_1, foodDataService_1;
+    var core_1, router_1, common_1, foodDataService_1, foodList_1;
     var HomeComponent;
     return {
         setters:[
@@ -23,6 +23,9 @@ System.register(['angular2/core', 'angular2/router', 'angular2/common', '../serv
             },
             function (foodDataService_1_1) {
                 foodDataService_1 = foodDataService_1_1;
+            },
+            function (foodList_1_1) {
+                foodList_1 = foodList_1_1;
             }],
         execute: function() {
             HomeComponent = (function () {
@@ -44,7 +47,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/common', '../serv
                         selector: 'home',
                         providers: [foodDataService_1.DataService],
                         templateUrl: 'app/home/home.component.html',
-                        directives: [common_1.CORE_DIRECTIVES]
+                        directives: [common_1.CORE_DIRECTIVES, foodList_1.FoodList]
                     }), 
                     __metadata('design:paramtypes', [(typeof (_a = typeof router_1.Router !== 'undefined' && router_1.Router) === 'function' && _a) || Object, foodDataService_1.DataService])
                 ], HomeComponent);
