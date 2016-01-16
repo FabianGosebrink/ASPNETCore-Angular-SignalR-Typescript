@@ -12,7 +12,7 @@ namespace AspNet5Angular2Demo.Repositories
 
         public FoodRepository()
         {
-            _foods.Add(1, new FoodItem() { ItemName = "Town1", Id = 1, Created = DateTime.Now});
+            _foods.Add(1, new FoodItem() { ItemName = "Spaghetti Bolognese", Id = 1, Created = DateTime.Now});
         }
 
         public List<FoodItem> GetAll()
