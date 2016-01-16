@@ -1,8 +1,9 @@
-import {Component, OnInit} from 'angular2/core';
-import {Router} from 'angular2/router';
+import { Component, OnInit } from 'angular2/core';
+import { Router} from 'angular2/router';
 import { CORE_DIRECTIVES } from 'angular2/common';
-import {DataService } from '../services/PersonDataService';
-import {Http, Response} from 'angular2/http';
+import { DataService } from '../services/PersonDataService';
+import { IFoodItem } from '../models/IFoodItem';
+import { Http, Response } from 'angular2/http';
 
 @Component({
     selector: 'home',
@@ -12,18 +13,20 @@ import {Http, Response} from 'angular2/http';
 })
 
 export class HomeComponent implements OnInit {
-    public foodItems: any;
+
+    public foodItems: app.models.IFoodItem[];
 
     constructor(private _router: Router, private _dataService: DataService) { }
 
     ngOnInit() {
-        this.getAllFood();
+        //...
     }
 
     private getAllFood(): void {
         this._dataService
             .GetAllFood()
             .subscribe((data) => {
+                console.log("data: " + data)
                 this.foodItems = data;
             },
             (response) => {

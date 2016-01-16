@@ -51,4 +51,4 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], fun
         }
     }
 });
-//# sourceMappingURL=PersonDataService.js.map
+//# sourceMappingURL=foodDataService.js.map

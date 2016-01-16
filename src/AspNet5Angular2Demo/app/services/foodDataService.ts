@@ -8,7 +8,7 @@ export class DataService {
     private actionUrl: string;
     
     constructor(private _http: Http) {
-        this.actionUrl = 'http://localhost:3848/api/foodItems/';
+        this.actionUrl = 'http://localhost:5000/api/foodItems/';
     }
 
     GetAllFood(): Observable<Response> {

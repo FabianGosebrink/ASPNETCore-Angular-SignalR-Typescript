@@ -31,13 +31,14 @@ System.register(['angular2/core', 'angular2/router', 'angular2/common', '../serv
                     this._dataService = _dataService;
                 }
                 HomeComponent.prototype.ngOnInit = function () {
-                    this.getAllFood();
+                    //...
                 };
                 HomeComponent.prototype.getAllFood = function () {
                     var _this = this;
                     this._dataService
                         .GetAllFood()
                         .subscribe(function (data) {
+                        console.log("data: " + data);
                         _this.foodItems = data;
                     }, function (response) {
                         console.log(response);
@@ -50,10 +51,10 @@ System.register(['angular2/core', 'angular2/router', 'angular2/common', '../serv
                         templateUrl: 'app/home/home.component.html',
                         directives: [common_1.CORE_DIRECTIVES]
                     }), 
-                    __metadata('design:paramtypes', [(typeof (_a = typeof router_1.Router !== 'undefined' && router_1.Router) === 'function' && _a) || Object, PersonDataService_1.DataService])
+                    __metadata('design:paramtypes', [(typeof (_a = typeof router_1.Router !== 'undefined' && router_1.Router) === 'function' && _a) || Object, (typeof (_b = typeof PersonDataService_1.DataService !== 'undefined' && PersonDataService_1.DataService) === 'function' && _b) || Object])
                 ], HomeComponent);
                 return HomeComponent;
-                var _a;
+                var _a, _b;
             })();
             exports_1("HomeComponent", HomeComponent);
         }
