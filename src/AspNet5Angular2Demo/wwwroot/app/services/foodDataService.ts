@@ -30,10 +30,6 @@ export class DataService {
         return this._http.post(this.actionUrl, toAdd, {
             headers: headers
         }).map(res => res.json());
-            //.subscribe(data => {
-            //    console.log(data)
-            //}, err => console.log(err.json().message),
-            //() => console.log('Authentication Complete'));
     }
 
     Update(id: number, foodToUpdate: any): Observable<Response> {

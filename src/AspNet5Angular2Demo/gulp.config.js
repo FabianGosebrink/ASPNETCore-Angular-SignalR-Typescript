@@ -28,6 +28,7 @@ module.exports = {
                 js: [
                     'bower_components/jquery/dist/jquery.js',
                     'bower_components/bootstrap/dist/js/bootstrap.js',
+                    'bower_components/signalr/jquery.signalR.js',
                     'node_modules/angular2/bundles/angular2-polyfills.js',
                     'node_modules/systemjs/dist/system.src.js',
                     'node_modules/typescript/lib/typescript.js',

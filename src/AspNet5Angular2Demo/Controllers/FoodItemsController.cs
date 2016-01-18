@@ -63,7 +63,7 @@ namespace AspNet5Angular2Demo.Controllers
             item.Created = DateTime.Now;
             FoodItem newFoodItem = _foodRepository.Add(item);
 
-            _coolMessageHubContext.Clients.All.AddMessage("asdasdasdasd");
+            _coolMessageHubContext.Clients.All.FoodAdded(newFoodItem);
 
             return CreatedAtRoute(
                 "GetSingleFood",

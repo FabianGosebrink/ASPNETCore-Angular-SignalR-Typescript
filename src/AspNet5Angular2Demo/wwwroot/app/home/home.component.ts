@@ -1,15 +1,14 @@
 import { Component, OnInit } from 'angular2/core';
-import { Router} from 'angular2/router';
 import { CORE_DIRECTIVES } from 'angular2/common';
 import { DataService } from '../services/foodDataService';
+import { SignalRService } from '../common/signalRService';
 import { IFoodItem } from '../models/IFoodItem';
-import { Http, Response } from 'angular2/http';
 import {FoodList} from '../food/foodList';
 import {FoodForm} from '../food/foodForm';
 
 @Component({
     selector: 'home',
-    providers: [DataService],
+    providers: [DataService, SignalRService],
     templateUrl: 'app/home/home.component.html',
     directives: [CORE_DIRECTIVES, FoodList, FoodForm]
 })
@@ -19,16 +18,21 @@ export class HomeComponent implements OnInit {
     public foodItems: IFoodItem[];
     public message: string;
 
-    constructor(private _router: Router, private _dataService: DataService) { 
+    constructor(private _dataService: DataService,
+        private _signalRService: SignalRService) {
         this.message = "Hello from HomeComponent constructor";
     }
 
     ngOnInit() {
         this.getAllFood();
+        
+        this._signalRService.foodchanged.subscribe(() => {
+            this.foodListModified();
+        });
     }
-    
-    public foodListModified(addedFood: IFoodItem) {
-         this.getAllFood();
+
+    public foodListModified() {
+        this.getAllFood();
     }
 
     private getAllFood(): void {
@@ -37,6 +41,6 @@ export class HomeComponent implements OnInit {
             .subscribe(
             data => this.foodItems = data,
             err => console.log(err),
-            () => console.log('Random Quote Complete'));
+            () => console.log('Get all Foods complete'));
     }
 }

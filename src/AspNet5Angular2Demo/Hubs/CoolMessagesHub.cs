@@ -5,32 +5,21 @@ namespace AspNet5Angular2Demo.Hubs
 {
 
     [HubName("coolmessages")]
-    public class CoolMessagesHub  : Hub
+    public class CoolMessagesHub : Hub
     {
-        public void Heartbeat()
+        public void FoodAdded()
         {
-            Clients.All.Heartbeat();
+            Clients.All.FoodAdded();
+        }
+
+        public void FoodDeleted()
+        {
+            Clients.All.FoodDeleted();
         }
 
         public void AddMessage(string message)
         {
             Clients.All.AddMessage(message);
         }
-
-        //public override Task OnConnected()
-        //{
-        //    return (base.OnConnected());
-        //}
-
-        //public override Task OnDisconnected(bool stopCalled)
-        //{
-        //    return (base.OnDisconnected(stopCalled));
-        //}
-
-        //public override Task OnReconnected()
-        //{
-        //    return (base.OnReconnected());
-        //}
     }
-
 }

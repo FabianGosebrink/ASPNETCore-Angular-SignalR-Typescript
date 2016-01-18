@@ -1,6 +1,7 @@
 import {Component, Output, EventEmitter} from 'angular2/core';
 import {IFoodItem} from '../models/IFoodItem';
 import { DataService } from '../services/foodDataService';
+import { SignalRService } from '../common/signalRService';
 
 @Component({
     selector: 'food-form',
@@ -8,8 +9,7 @@ import { DataService } from '../services/foodDataService';
 })
 export class FoodForm {
     
-    //@Output() newFoodItem = new EventEmitter<IFoodItem>();
-    @Output() newFoodItem = new EventEmitter();
+    //@Output() newFoodItem = new EventEmitter();
     
     public foodName: string;
 
@@ -18,10 +18,11 @@ export class FoodForm {
     }
 
     addFood() {
+     
         this._dataService
         .AddFood(this.foodName)
         .subscribe(data => {
-                this.newFoodItem.emit("event");
+                //this.newFoodItem.emit("event");
                 this.foodName = "";
             }, err => {
                 console.log(err)},

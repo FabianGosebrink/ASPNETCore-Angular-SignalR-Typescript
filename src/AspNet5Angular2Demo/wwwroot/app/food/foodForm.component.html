@@ -1,4 +1,6 @@
 <form (ngSubmit)="addFood()">
-    <input type="text" [(ngModel)]="foodName" size="30" placeholder="add new food here">
-    <input class="btn-primary" type="submit" value="add">
+    <div class="form-group">
+        <input type="text" [(ngModel)]="foodName" class="form-control" placeholder="add new food here">
+    </div>
+    <input class="btn btn-primary" type="submit" value="Add">
 </form>

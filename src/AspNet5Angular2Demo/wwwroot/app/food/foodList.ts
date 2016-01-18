@@ -1,6 +1,7 @@
 import {Component, Input, Output, EventEmitter} from 'angular2/core';
 import {IFoodItem} from '../models/IFoodItem';
 import { DataService } from '../services/foodDataService';
+import { SignalRService } from '../common/signalRService';
 
 @Component({
     selector: 'food-list',
@@ -9,20 +10,19 @@ import { DataService } from '../services/foodDataService';
 
 export class FoodList {
     @Input() foodItems: IFoodItem[];
-    @Output() deletedFoodItem = new EventEmitter();
-    
-    constructor(private _dataService: DataService) {
+    //@Output() deletedFoodItem = new EventEmitter();
+
+    constructor(private _dataService: DataService, private _signalRService: SignalRService) {
     }
 
-    public deleteFoodItem(foodItem) {
+    public deleteFoodItem(foodItem: IFoodItem) {
         this._dataService.DeleteFood(foodItem.Id).subscribe(response => {
-            console.log(response);
-            this.deletedFoodItem.emit("");
+            this._signalRService.FoodDeleted();
         }, error => {
             console.log(error);
         },
-        () => {
-            console.log("Deleted");
-        });
+            () => {
+                console.log("Deleted");
+            });
     }
 }

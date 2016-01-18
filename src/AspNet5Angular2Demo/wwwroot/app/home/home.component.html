@@ -1,4 +1,30 @@
-<h3>{{message}}</h3>
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Chat</h2>
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Your message</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Message">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h2>FoodList</h2>
 
-<food-form (newFoodItem)="foodListModified($event)"></food-form>
-<food-list [foodItems]="foodItems" (deletedFoodItem)="foodListModified($event)"></food-list>
+            <!--<food-form (newFoodItem)="foodListModified($event)"></food-form>-->
+            <food-form></food-form>
+            <!--<food-list [foodItems]="foodItems" (deletedFoodItem)="foodListModified($event)"></food-list>-->
+            <food-list [foodItems]="foodItems"></food-list>
+        </div>
+    </div>
+
+    <hr>
+
+    <footer>
+        <p>&copy; 2016 Offering.Solutions</p>
+    </footer>
+</div>
+<!-- /container -->
