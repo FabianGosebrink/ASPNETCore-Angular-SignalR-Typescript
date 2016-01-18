@@ -10,7 +10,7 @@ import {AboutComponent} from './about/about.component';
     styleUrls: ['app/app.component.css']
 })
 @RouteConfig([
-    { path: '/home', name: 'Home', component: HomeComponent, useAsDefault: true },
+    { path: '/', name: 'Home', component: HomeComponent, useAsDefault: true },
     { path: '/about', name: 'About', component: AboutComponent },
 ])
 export class AppComponent { }
