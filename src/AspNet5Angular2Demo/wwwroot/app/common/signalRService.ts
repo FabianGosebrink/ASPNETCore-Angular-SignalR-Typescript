@@ -9,9 +9,11 @@ export class SignalRService {
     private connection: HubConnection;
 
     public foodchanged: EventEmitter<any>;
+    public connectionEstablished: EventEmitter<Boolean>;
 
     constructor() {
         this.foodchanged = new EventEmitter();
+        this.connectionEstablished = new EventEmitter<Boolean>();
         this.connection = jQuery.hubConnection("http://localhost:5000/signalr/");
         this.proxy = this.connection.createHubProxy("coolmessages");
 
@@ -21,10 +23,12 @@ export class SignalRService {
     }
 
     startConnection(): void {
-        this.connection.start().done(function(data) {
+        this.connection.start().done((data) => {
             console.log("Now connected " + data.transport.name + ", connection ID= " + data.id);
-        }).fail(function(error) {
+            this.connectionEstablished.emit(true);
+        }).fail((error) => {
             console.log("Could not connect " + error);
+            this.connectionEstablished.emit(false);
         });
     }
 

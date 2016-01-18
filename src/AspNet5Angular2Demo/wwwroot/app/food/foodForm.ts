@@ -12,9 +12,14 @@ export class FoodForm {
     //@Output() newFoodItem = new EventEmitter();
     
     public foodName: string;
+    public canAddFood: boolean;
 
-    constructor(private _dataService: DataService) {
+    constructor(private _dataService: DataService, private _signalRService: SignalRService) {
+        this.canAddFood=false;
         this.foodName = "";
+        _signalRService.connectionEstablished.subscribe(()=>{
+          this.canAddFood=!this.canAddFood;
+        });
     }
 
     addFood() {

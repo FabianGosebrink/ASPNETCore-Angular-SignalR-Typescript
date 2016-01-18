@@ -17,10 +17,12 @@
       }
     },
     "web": {
-      "commandName": "web",
-      "environmentVariables": {
-        "Hosting:Environment": "Development"
-      }
+        "commandName": "web",
+        "environmentVariables": {
+            "Hosting:Environment": "Development"
+        },
+        "launchBrowser": true,
+        "launchUrl": "http://localhost:5000/index.html"
     }
   }
 }

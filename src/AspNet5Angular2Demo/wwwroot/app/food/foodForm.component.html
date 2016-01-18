@@ -2,5 +2,5 @@
     <div class="form-group">
         <input type="text" [(ngModel)]="foodName" class="form-control" placeholder="add new food here">
     </div>
-    <input class="btn btn-primary" type="submit" value="Add">
+    <input class="btn btn-primary" type="submit" value="Add" [disabled]="!canAddFood">
 </form>
