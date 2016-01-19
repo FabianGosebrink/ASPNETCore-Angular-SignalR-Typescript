@@ -8,10 +8,13 @@ import {IFoodItem} from '../models/IFoodItem';
 export class DataService {
 
     private actionUrl: string;
-    private headers: string;
+    private headers: Headers;
 
     constructor(private _http: Http) {
         this.actionUrl = 'http://localhost:5000/api/foodItems/';
+        this.headers = new Headers();
+        this.headers.append('Content-Type', 'application/json');
+        this.headers.append('Accept', 'application/json');
     }
 
     GetAllFood(): Observable<Response> {
@@ -23,17 +26,13 @@ export class DataService {
     }
 
     AddFood(foodName: string): Observable<Response> {
-        var headers = new Headers();
-        headers.append('Content-Type', 'application/json');
         var toAdd = JSON.stringify({ ItemName: foodName });
-        
-        return this._http.post(this.actionUrl, toAdd, {
-            headers: headers
-        }).map(res => res.json());
+
+        return this._http.post(this.actionUrl, toAdd, { headers: this.headers }).map(res => res.json());
     }
 
-    Update(id: number, foodToUpdate: any): Observable<Response> {
-        return this._http.post(this.actionUrl + id, foodToUpdate).map(res => res.json());
+    Update(id: number, foodToUpdate: IFoodItem): Observable<Response> {
+        return this._http.put(this.actionUrl + id, JSON.stringify(foodToUpdate), { headers: this.headers }).map(res => res.json());
     }
 
     DeleteFood(id: number): Observable<Response> {
