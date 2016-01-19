@@ -40,6 +40,11 @@ export class SignalRService {
         this.proxy.on("FoodDeleted", (data) => {
             this.foodchanged.emit("this could be data");
         });
+        
+        this.proxy.on("FoodUpdated", (data) => {
+            this.foodchanged.emit("this could be data");
+            console.log("FoodUpdated");
+        });
     }
 
     public FoodAdded() {

@@ -9,8 +9,10 @@ import {AboutComponent} from './about/about.component';
     directives: [ROUTER_DIRECTIVES],
     styleUrls: ['app/app.component.css']
 })
+
 @RouteConfig([
-    { path: '/', name: 'Home', component: HomeComponent, useAsDefault: true },
+    { path: '', name: 'Home', component: HomeComponent, useAsDefault: true },
     { path: '/about', name: 'About', component: AboutComponent },
 ])
+
 export class AppComponent { }

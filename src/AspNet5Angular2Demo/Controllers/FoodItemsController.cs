@@ -97,7 +97,7 @@ namespace AspNet5Angular2Demo.Controllers
             singleById.ItemName = viewModel.ItemName;
 
             FoodItem newFoodItem = _foodRepository.Update(singleById);
-
+            _coolMessageHubContext.Clients.All.FoodUpdated(newFoodItem);
             return Ok(Mapper.Map<FoodItemViewModel>(newFoodItem));
         }
 

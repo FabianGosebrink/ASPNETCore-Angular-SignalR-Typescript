@@ -1,9 +1,9 @@
-import { Component, OnInit } from 'angular2/core';
+import { Component } from 'angular2/core';
 import { CORE_DIRECTIVES } from 'angular2/common';
 import { DataService } from '../services/foodDataService';
 import { SignalRService } from '../common/signalRService';
 import { IFoodItem } from '../models/IFoodItem';
-import {FoodComponent} from '../food/foodcomponent';
+import { FoodComponent } from '../food/foodcomponent';
 
 @Component({
     selector: 'home',
@@ -12,15 +12,11 @@ import {FoodComponent} from '../food/foodcomponent';
     directives: [CORE_DIRECTIVES, FoodComponent]
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
     public message: string;
 
-    constructor(private _dataService: DataService, private _signalRService: SignalRService) {
+    constructor() {
         this.message = "Hello from HomeComponent constructor";
-    }
-
-    ngOnInit() {
-        //...
     }
 }

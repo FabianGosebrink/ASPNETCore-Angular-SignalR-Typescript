@@ -32,25 +32,24 @@ export class FoodComponent implements OnInit {
         });
     }
     
-    saveFood() {
+    public saveFood() {
         if(this.currentFoodItem.Id){
             this._dataService
                 .Update(this.currentFoodItem.Id, this.currentFoodItem)
                 .subscribe(data => {
                 this.currentFoodItem = new IFoodItem();
-            }, err => {
-                console.log(err)},
-            () => console.log('Added complete'));
-        } else{
+            }, error => {
+                console.log(error)},
+            () => console.log('Update complete'));
+        } else {
               this._dataService
                     .AddFood(this.currentFoodItem.ItemName)
                     .subscribe(data => {
                         this.currentFoodItem = new IFoodItem();
-            }, err => {
-                console.log(err)},
+            }, error => {
+                console.log(error)},
             () => console.log('Added complete'));
         }
-      
     }
     
     public deleteFoodItem(foodItem: IFoodItem) {
@@ -73,7 +72,7 @@ export class FoodComponent implements OnInit {
         this._dataService
             .GetAllFood()
             .subscribe((data:IFoodItem[]) => this.foodItems = data,
-                err => console.log(err),
+                error => console.log(error),
                 () => console.log('Get all Foods complete'));
     }
 }
