@@ -6,6 +6,7 @@ import { FoodItem } from '../models/FoodItem';
 
 @Component({
     selector: 'food-component',
+    providers: [DataService, SignalRService],
     templateUrl: 'app/food/food.component.html',
     directives: [CORE_DIRECTIVES]
 })
@@ -23,13 +24,7 @@ export class FoodComponent implements OnInit {
     ngOnInit() {
         this.getAllFood();
 
-        this._signalRService.connectionEstablished.subscribe(() => {
-            this.canAddFood = !this.canAddFood;
-        });
-
-        this._signalRService.foodchanged.subscribe(() => {
-             this.getAllFood();
-        });
+        this.subscribeToEvents();
     }
     
     public saveFood() {
@@ -74,5 +69,15 @@ export class FoodComponent implements OnInit {
             .subscribe((data:FoodItem[]) => this.foodItems = data,
                 error => console.log(error),
                 () => console.log('Get all Foods complete'));
+    }
+    
+    private subscribeToEvents():void{
+        this._signalRService.connectionEstablished.subscribe(() => {
+            this.canAddFood = !this.canAddFood;
+        });
+
+        this._signalRService.foodchanged.subscribe(() => {
+             this.getAllFood();
+        });
     }
 }

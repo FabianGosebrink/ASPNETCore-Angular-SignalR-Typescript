@@ -6,7 +6,6 @@ import { FoodComponent } from '../food/foodcomponent';
 
 @Component({
     selector: 'home',
-    providers: [DataService, SignalRService],
     templateUrl: 'app/home/home.component.html',
     directives: [CORE_DIRECTIVES, FoodComponent]
 })

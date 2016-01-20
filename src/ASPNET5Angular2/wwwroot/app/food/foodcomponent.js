@@ -73,6 +73,7 @@ var FoodComponent = (function () {
     FoodComponent = __decorate([
         core_1.Component({
             selector: 'food-component',
+            providers: [foodDataService_1.DataService, signalRService_1.SignalRService],
             templateUrl: 'app/food/food.component.html',
             directives: [common_1.CORE_DIRECTIVES]
         }), 

@@ -9,8 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
-var foodDataService_1 = require('../services/foodDataService');
-var signalRService_1 = require('../services/signalRService');
 var foodcomponent_1 = require('../food/foodcomponent');
 var HomeComponent = (function () {
     function HomeComponent() {
@@ -19,7 +17,6 @@ var HomeComponent = (function () {
     HomeComponent = __decorate([
         core_1.Component({
             selector: 'home',
-            providers: [foodDataService_1.DataService, signalRService_1.SignalRService],
             templateUrl: 'app/home/home.component.html',
             directives: [common_1.CORE_DIRECTIVES, foodcomponent_1.FoodComponent]
         }), 
