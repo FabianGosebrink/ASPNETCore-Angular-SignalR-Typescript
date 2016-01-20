@@ -10,10 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('angular2/core');
 var http_1 = require('angular2/http');
 require('rxjs/add/operator/map');
+var app_constants_1 = require('../app.constants');
 var DataService = (function () {
-    function DataService(_http) {
+    function DataService(_http, _configuration) {
         this._http = _http;
-        this.actionUrl = 'http://localhost:5000/api/foodItems/';
+        this._configuration = _configuration;
+        this.actionUrl = _configuration.ServerWithApiUrl + 'foodItems/';
         this.headers = new http_1.Headers();
         this.headers.append('Content-Type', 'application/json');
         this.headers.append('Accept', 'application/json');
@@ -36,7 +38,7 @@ var DataService = (function () {
     };
     DataService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Http, app_constants_1.Configuration])
     ], DataService);
     return DataService;
 })();

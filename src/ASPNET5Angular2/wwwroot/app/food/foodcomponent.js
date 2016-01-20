@@ -20,14 +20,8 @@ var FoodComponent = (function () {
         this.currentFoodItem = new FoodItem_1.FoodItem();
     }
     FoodComponent.prototype.ngOnInit = function () {
-        var _this = this;
         this.getAllFood();
-        this._signalRService.connectionEstablished.subscribe(function () {
-            _this.canAddFood = !_this.canAddFood;
-        });
-        this._signalRService.foodchanged.subscribe(function () {
-            _this.getAllFood();
-        });
+        this.subscribeToEvents();
     };
     FoodComponent.prototype.saveFood = function () {
         var _this = this;
@@ -69,6 +63,15 @@ var FoodComponent = (function () {
         this._dataService
             .GetAllFood()
             .subscribe(function (data) { return _this.foodItems = data; }, function (error) { return console.log(error); }, function () { return console.log('Get all Foods complete'); });
+    };
+    FoodComponent.prototype.subscribeToEvents = function () {
+        var _this = this;
+        this._signalRService.connectionEstablished.subscribe(function () {
+            _this.canAddFood = !_this.canAddFood;
+        });
+        this._signalRService.foodchanged.subscribe(function () {
+            _this.getAllFood();
+        });
     };
     FoodComponent = __decorate([
         core_1.Component({

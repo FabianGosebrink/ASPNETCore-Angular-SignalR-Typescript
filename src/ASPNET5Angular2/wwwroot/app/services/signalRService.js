@@ -8,11 +8,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("angular2/core");
+var app_constants_1 = require('../app.constants');
 var SignalRService = (function () {
-    function SignalRService() {
+    function SignalRService(_configuration) {
+        this._configuration = _configuration;
         this.foodchanged = new core_1.EventEmitter();
         this.connectionEstablished = new core_1.EventEmitter();
-        this.connection = jQuery.hubConnection("http://localhost:5000/signalr/");
+        this.connection = jQuery.hubConnection(_configuration.Server + "signalr/");
         this.proxy = this.connection.createHubProxy("coolmessages");
         this.registerOnServerEvents();
         this.startConnection();
@@ -48,7 +50,7 @@ var SignalRService = (function () {
     };
     SignalRService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [app_constants_1.Configuration])
     ], SignalRService);
     return SignalRService;
 })();
