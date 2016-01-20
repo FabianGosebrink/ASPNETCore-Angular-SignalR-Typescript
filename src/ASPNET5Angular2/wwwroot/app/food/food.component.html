@@ -1,0 +1,18 @@
+<h2>FoodList</h2>
+
+<form (ngSubmit)="saveFood()">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Server invoke</label>
+        <input type="text" [(ngModel)]="currentFoodItem.ItemName" class="form-control" placeholder="add new food here">
+    </div>
+    <input class="btn btn-primary" type="submit" value="Save" [disabled]="!canAddFood">
+</form>
+
+<ul style="list-style: none;">
+    <li *ngFor="#foodItem of foodItems" style="list-style: none;">
+        <span>{{foodItem.Id}} - {{foodItem.ItemName}} 
+            <button class="btn btn-link" (click)="setFoodItemToEdit(foodItem)">Edit</button>
+            <button class="btn btn-link" (click)="deleteFoodItem(foodItem)">Delete</button>
+        </span>
+    </li>
+</ul>

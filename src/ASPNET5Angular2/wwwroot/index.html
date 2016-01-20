@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <base href="/" />
+    <title>ASP.NET 5 Angular 2 Demo</title>
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- endinject -->
+</head>
+
+<body>
+    <my-app>Loading...</my-app>
+
+    <!-- 1. Load libraries -->
+    <!-- IE required polyfills, in this exact order -->
+    <script src="js/es6-shim.min.js"></script>
+    <script src="js/system-polyfills.js"></script>
+
+    <script src="js/angular2-polyfills.js"></script>
+    <script src="js/system.src.js"></script>
+    <script src="js/Rx.js"></script>
+    <script src="js/angular2.dev.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.SignalR.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/http.dev.js"></script>
+    <script src="js/router.dev.js"></script>
+    <script src="js/typescript.js"></script>
+    <!-- 2. Configure SystemJS -->
+    
+    <script>
+        System.config({
+            packages: {
+                app: {
+                    defaultExtension: 'js'
+                }
+            }
+        });
+        System.import('app/boot')
+            .then(null, console.error.bind(console));
+    </script>
+
+</body>
+
+</html>
