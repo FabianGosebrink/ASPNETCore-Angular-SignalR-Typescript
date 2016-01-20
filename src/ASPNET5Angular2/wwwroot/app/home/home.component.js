@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var foodDataService_1 = require('../services/foodDataService');
-var signalRService_1 = require('../common/signalRService');
+var signalRService_1 = require('../services/signalRService');
 var foodcomponent_1 = require('../food/foodcomponent');
 var HomeComponent = (function () {
     function HomeComponent() {

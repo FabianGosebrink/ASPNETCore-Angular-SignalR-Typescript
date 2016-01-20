@@ -1,8 +1,7 @@
 import { Component } from 'angular2/core';
 import { CORE_DIRECTIVES } from 'angular2/common';
 import { DataService } from '../services/foodDataService';
-import { SignalRService } from '../common/signalRService';
-import { IFoodItem } from '../models/IFoodItem';
+import { SignalRService } from '../services/signalRService';
 import { FoodComponent } from '../food/foodcomponent';
 
 @Component({

@@ -2,7 +2,7 @@ import { Injectable } from 'angular2/core';
 import {Http, Response, Headers} from 'angular2/http';
 import 'rxjs/add/operator/map'
 import {Observable} from 'rxjs/Observable';
-import {IFoodItem} from '../models/IFoodItem';
+import {FoodItem} from '../models/FoodItem';
 
 @Injectable()
 export class DataService {
@@ -31,7 +31,7 @@ export class DataService {
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers }).map(res => res.json());
     }
 
-    Update(id: number, foodToUpdate: IFoodItem): Observable<Response> {
+    Update(id: number, foodToUpdate: FoodItem): Observable<Response> {
         return this._http.put(this.actionUrl + id, JSON.stringify(foodToUpdate), { headers: this.headers }).map(res => res.json());
     }
 

@@ -10,14 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var foodDataService_1 = require('../services/foodDataService');
-var signalRService_1 = require('../common/signalRService');
-var IFoodItem_1 = require('../models/IFoodItem');
+var signalRService_1 = require('../services/signalRService');
+var FoodItem_1 = require('../models/FoodItem');
 var FoodComponent = (function () {
     function FoodComponent(_dataService, _signalRService) {
         this._dataService = _dataService;
         this._signalRService = _signalRService;
         this.canAddFood = false;
-        this.currentFoodItem = new IFoodItem_1.IFoodItem();
+        this.currentFoodItem = new FoodItem_1.FoodItem();
     }
     FoodComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -35,7 +35,7 @@ var FoodComponent = (function () {
             this._dataService
                 .Update(this.currentFoodItem.Id, this.currentFoodItem)
                 .subscribe(function (data) {
-                _this.currentFoodItem = new IFoodItem_1.IFoodItem();
+                _this.currentFoodItem = new FoodItem_1.FoodItem();
             }, function (error) {
                 console.log(error);
             }, function () { return console.log('Update complete'); });
@@ -44,7 +44,7 @@ var FoodComponent = (function () {
             this._dataService
                 .AddFood(this.currentFoodItem.ItemName)
                 .subscribe(function (data) {
-                _this.currentFoodItem = new IFoodItem_1.IFoodItem();
+                _this.currentFoodItem = new FoodItem_1.FoodItem();
             }, function (error) {
                 console.log(error);
             }, function () { return console.log('Added complete'); });

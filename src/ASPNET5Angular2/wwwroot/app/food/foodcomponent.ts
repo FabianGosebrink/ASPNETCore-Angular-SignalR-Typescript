@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from 'angular2/core';
 import { CORE_DIRECTIVES } from 'angular2/common';
 import { DataService } from '../services/foodDataService';
-import { SignalRService } from '../common/signalRService';
-import { IFoodItem } from '../models/IFoodItem';
+import { SignalRService } from '../services/signalRService';
+import { FoodItem } from '../models/FoodItem';
 
 @Component({
     selector: 'food-component',
@@ -11,13 +11,13 @@ import { IFoodItem } from '../models/IFoodItem';
 })
 
 export class FoodComponent implements OnInit {
-    public foodItems: IFoodItem[];
-    public currentFoodItem: IFoodItem;
+    public foodItems: FoodItem[];
+    public currentFoodItem: FoodItem;
     public canAddFood: boolean;
 
     constructor(private _dataService: DataService, private _signalRService: SignalRService) {
         this.canAddFood = false;
-        this.currentFoodItem = new IFoodItem();
+        this.currentFoodItem = new FoodItem();
     }
 
     ngOnInit() {
@@ -37,7 +37,7 @@ export class FoodComponent implements OnInit {
             this._dataService
                 .Update(this.currentFoodItem.Id, this.currentFoodItem)
                 .subscribe(data => {
-                this.currentFoodItem = new IFoodItem();
+                this.currentFoodItem = new FoodItem();
             }, error => {
                 console.log(error)},
             () => console.log('Update complete'));
@@ -45,14 +45,14 @@ export class FoodComponent implements OnInit {
               this._dataService
                     .AddFood(this.currentFoodItem.ItemName)
                     .subscribe(data => {
-                        this.currentFoodItem = new IFoodItem();
+                        this.currentFoodItem = new FoodItem();
             }, error => {
                 console.log(error)},
             () => console.log('Added complete'));
         }
     }
     
-    public deleteFoodItem(foodItem: IFoodItem) {
+    public deleteFoodItem(foodItem: FoodItem) {
         this._dataService.DeleteFood(foodItem.Id)
         .subscribe(
             response => {
@@ -64,14 +64,14 @@ export class FoodComponent implements OnInit {
             });
     }
     
-    public setFoodItemToEdit(foodItem: IFoodItem){
+    public setFoodItemToEdit(foodItem: FoodItem){
         this.currentFoodItem = foodItem;
     }
 
     private getAllFood(): void {
         this._dataService
             .GetAllFood()
-            .subscribe((data:IFoodItem[]) => this.foodItems = data,
+            .subscribe((data:FoodItem[]) => this.foodItems = data,
                 error => console.log(error),
                 () => console.log('Get all Foods complete'));
     }
