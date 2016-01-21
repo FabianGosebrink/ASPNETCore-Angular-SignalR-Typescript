@@ -45,14 +45,12 @@ var FoodComponent = (function () {
         }
     };
     FoodComponent.prototype.deleteFoodItem = function (foodItem) {
-        var _this = this;
         this._dataService.DeleteFood(foodItem.Id)
             .subscribe(function (response) {
-            _this._signalRService.FoodDeleted();
         }, function (error) {
             console.log(error);
         }, function () {
-            console.log("Deleted");
+            console.log("Deleted complete");
         });
     };
     FoodComponent.prototype.setFoodItemToEdit = function (foodItem) {
@@ -67,7 +65,7 @@ var FoodComponent = (function () {
     FoodComponent.prototype.subscribeToEvents = function () {
         var _this = this;
         this._signalRService.connectionEstablished.subscribe(function () {
-            _this.canAddFood = !_this.canAddFood;
+            _this.canAddFood = true;
         });
         this._signalRService.foodchanged.subscribe(function () {
             _this.getAllFood();
@@ -76,7 +74,7 @@ var FoodComponent = (function () {
     FoodComponent = __decorate([
         core_1.Component({
             selector: 'food-component',
-            providers: [foodDataService_1.DataService, signalRService_1.SignalRService],
+            providers: [foodDataService_1.DataService],
             templateUrl: 'app/food/food.component.html',
             directives: [common_1.CORE_DIRECTIVES]
         }), 

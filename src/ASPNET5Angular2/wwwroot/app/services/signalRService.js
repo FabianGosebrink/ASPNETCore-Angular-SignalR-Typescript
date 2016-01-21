@@ -12,13 +12,18 @@ var app_constants_1 = require('../app.constants');
 var SignalRService = (function () {
     function SignalRService(_configuration) {
         this._configuration = _configuration;
+        this.proxyName = "coolmessages";
         this.foodchanged = new core_1.EventEmitter();
         this.connectionEstablished = new core_1.EventEmitter();
-        this.connection = jQuery.hubConnection(_configuration.Server + "signalr/");
-        this.proxy = this.connection.createHubProxy("coolmessages");
+        this.messageReceived = new core_1.EventEmitter();
+        this.connection = jQuery.hubConnection(this._configuration.Server + "signalr/");
+        this.proxy = this.connection.createHubProxy(this.proxyName);
         this.registerOnServerEvents();
         this.startConnection();
     }
+    SignalRService.prototype.sendChatMessage = function (message) {
+        this.proxy.invoke("SendMessage", message);
+    };
     SignalRService.prototype.startConnection = function () {
         var _this = this;
         this.connection.start().done(function (data) {
@@ -39,14 +44,11 @@ var SignalRService = (function () {
         });
         this.proxy.on("FoodUpdated", function (data) {
             _this.foodchanged.emit("this could be data");
-            console.log("FoodUpdated");
         });
-    };
-    SignalRService.prototype.FoodAdded = function () {
-        this.proxy.invoke("FoodAdded");
-    };
-    SignalRService.prototype.FoodDeleted = function () {
-        this.proxy.invoke("FoodDeleted");
+        this.proxy.on("SendMessage", function (data) {
+            console.log("received in SignalRService: " + data);
+            _this.messageReceived.emit(data);
+        });
     };
     SignalRService = __decorate([
         core_1.Injectable(), 

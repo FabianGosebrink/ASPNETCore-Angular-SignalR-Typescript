@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var foodcomponent_1 = require('../food/foodcomponent');
+var chatComponent_1 = require('../chat/chatComponent');
 var HomeComponent = (function () {
     function HomeComponent() {
         this.message = "Hello from HomeComponent constructor";
@@ -18,7 +19,7 @@ var HomeComponent = (function () {
         core_1.Component({
             selector: 'home',
             templateUrl: 'app/home/home.component.html',
-            directives: [common_1.CORE_DIRECTIVES, foodcomponent_1.FoodComponent]
+            directives: [common_1.CORE_DIRECTIVES, foodcomponent_1.FoodComponent, chatComponent_1.ChatComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], HomeComponent);

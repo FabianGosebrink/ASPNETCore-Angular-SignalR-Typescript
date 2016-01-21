@@ -11,8 +11,8 @@
 <ul style="list-style: none;">
     <li *ngFor="#foodItem of foodItems" style="list-style: none;">
         <span>{{foodItem.Id}} - {{foodItem.ItemName}} 
-            <button class="btn btn-link" (click)="setFoodItemToEdit(foodItem)">Edit</button>
-            <button class="btn btn-link" (click)="deleteFoodItem(foodItem)">Delete</button>
+            <button class="btn btn-link" (click)="setFoodItemToEdit(foodItem)" [disabled]="!canAddFood">Edit</button>
+            <button class="btn btn-link" (click)="deleteFoodItem(foodItem)" [disabled]="!canAddFood">Delete</button>
         </span>
     </li>
 </ul>

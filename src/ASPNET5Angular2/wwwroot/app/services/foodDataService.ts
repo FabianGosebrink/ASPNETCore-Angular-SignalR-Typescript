@@ -12,7 +12,7 @@ export class DataService {
     private headers: Headers;
 
     constructor(private _http: Http, private _configuration: Configuration) {
-        //var conf = new CONFIGURATION();
+        
         this.actionUrl = _configuration.ServerWithApiUrl + 'foodItems/';
         
         this.headers = new Headers();

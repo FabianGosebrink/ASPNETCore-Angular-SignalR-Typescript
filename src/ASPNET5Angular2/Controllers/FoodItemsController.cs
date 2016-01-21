@@ -58,7 +58,6 @@ namespace ASPNET5Angular2.Controllers
                 return HttpBadRequest(ModelState);
             }
 
-
             FoodItem item = Mapper.Map<FoodItem>(viewModel);
             item.Created = DateTime.Now;
             FoodItem newFoodItem = _foodRepository.Add(item);
@@ -114,7 +113,7 @@ namespace ASPNET5Angular2.Controllers
             }
 
             _foodRepository.Delete(foodItemId);
-
+            _coolMessageHubContext.Clients.All.FoodDeleted();
             return new NoContentResult();
         }
     }
