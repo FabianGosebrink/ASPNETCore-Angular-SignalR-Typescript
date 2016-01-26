@@ -11,7 +11,7 @@ import {AboutComponent} from './about/about.component';
 })
 
 @RouteConfig([
-    { path: '', name: 'Home', component: HomeComponent, useAsDefault: true },
+    { path: '/', name: 'Home', component: HomeComponent, useAsDefault: true },
     { path: '/about', name: 'About', component: AboutComponent },
 ])
 

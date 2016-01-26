@@ -22,7 +22,7 @@ var AppComponent = (function () {
             styleUrls: ['app/app.component.css']
         }),
         router_1.RouteConfig([
-            { path: '', name: 'Home', component: home_component_1.HomeComponent, useAsDefault: true },
+            { path: '/', name: 'Home', component: home_component_1.HomeComponent, useAsDefault: true },
             { path: '/about', name: 'About', component: about_component_1.AboutComponent },
         ]), 
         __metadata('design:paramtypes', [])
