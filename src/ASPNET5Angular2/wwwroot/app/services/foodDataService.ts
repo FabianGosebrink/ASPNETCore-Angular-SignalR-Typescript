@@ -12,33 +12,33 @@ export class DataService {
     private headers: Headers;
 
     constructor(private _http: Http, private _configuration: Configuration) {
-        
+
         this.actionUrl = _configuration.ServerWithApiUrl + 'foodItems/';
-        
+
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json');
         this.headers.append('Accept', 'application/json');
     }
 
-    GetAllFood(): Observable<Response> {
+    public GetAllFood = (): Observable<Response> => {
         return this._http.get(this.actionUrl).map(res => res.json());
     }
 
-    GetSingleFood(id: number): Observable<Response> {
+    public GetSingleFood = (id: number): Observable<Response> => {
         return this._http.get(this.actionUrl + id).map(res => res.json());
     }
 
-    AddFood(foodName: string): Observable<Response> {
+    public AddFood = (foodName: string): Observable<Response> => {
         var toAdd = JSON.stringify({ ItemName: foodName });
 
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers }).map(res => res.json());
     }
 
-    Update(id: number, foodToUpdate: FoodItem): Observable<Response> {
+    public Update = (id: number, foodToUpdate: FoodItem): Observable<Response> => {
         return this._http.put(this.actionUrl + id, JSON.stringify(foodToUpdate), { headers: this.headers }).map(res => res.json());
     }
 
-    DeleteFood(id: number): Observable<Response> {
+    public DeleteFood = (id: number): Observable<Response> => {
         return this._http.delete(this.actionUrl + id);
     }
 }
