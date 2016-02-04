@@ -9,6 +9,7 @@ import { ChatMessage } from '../models/ChatMessage';
     directives: [CORE_DIRECTIVES]
 })
 
+
 export class ChatComponent {
 
     public currentMessage: ChatMessage;
