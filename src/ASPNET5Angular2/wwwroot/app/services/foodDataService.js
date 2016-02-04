@@ -13,29 +13,30 @@ require('rxjs/add/operator/map');
 var app_constants_1 = require('../app.constants');
 var DataService = (function () {
     function DataService(_http, _configuration) {
+        var _this = this;
         this._http = _http;
         this._configuration = _configuration;
+        this.GetAllFood = function () {
+            return _this._http.get(_this.actionUrl).map(function (res) { return res.json(); });
+        };
+        this.GetSingleFood = function (id) {
+            return _this._http.get(_this.actionUrl + id).map(function (res) { return res.json(); });
+        };
+        this.AddFood = function (foodName) {
+            var toAdd = JSON.stringify({ ItemName: foodName });
+            return _this._http.post(_this.actionUrl, toAdd, { headers: _this.headers }).map(function (res) { return res.json(); });
+        };
+        this.Update = function (id, foodToUpdate) {
+            return _this._http.put(_this.actionUrl + id, JSON.stringify(foodToUpdate), { headers: _this.headers }).map(function (res) { return res.json(); });
+        };
+        this.DeleteFood = function (id) {
+            return _this._http.delete(_this.actionUrl + id);
+        };
         this.actionUrl = _configuration.ServerWithApiUrl + 'foodItems/';
         this.headers = new http_1.Headers();
         this.headers.append('Content-Type', 'application/json');
         this.headers.append('Accept', 'application/json');
     }
-    DataService.prototype.GetAllFood = function () {
-        return this._http.get(this.actionUrl).map(function (res) { return res.json(); });
-    };
-    DataService.prototype.GetSingleFood = function (id) {
-        return this._http.get(this.actionUrl + id).map(function (res) { return res.json(); });
-    };
-    DataService.prototype.AddFood = function (foodName) {
-        var toAdd = JSON.stringify({ ItemName: foodName });
-        return this._http.post(this.actionUrl, toAdd, { headers: this.headers }).map(function (res) { return res.json(); });
-    };
-    DataService.prototype.Update = function (id, foodToUpdate) {
-        return this._http.put(this.actionUrl + id, JSON.stringify(foodToUpdate), { headers: this.headers }).map(function (res) { return res.json(); });
-    };
-    DataService.prototype.DeleteFood = function (id) {
-        return this._http.delete(this.actionUrl + id);
-    };
     DataService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http, app_constants_1.Configuration])
