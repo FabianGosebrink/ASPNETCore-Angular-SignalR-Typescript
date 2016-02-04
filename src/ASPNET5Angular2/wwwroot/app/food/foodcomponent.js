@@ -16,7 +16,7 @@ var FoodComponent = (function () {
     function FoodComponent(_dataService, _signalRService) {
         this._dataService = _dataService;
         this._signalRService = _signalRService;
-        this.canAddFood = false;
+        this.canAddFood = _signalRService.connectionExists;
         this.currentFoodItem = new FoodItem_1.FoodItem();
     }
     FoodComponent.prototype.ngOnInit = function () {

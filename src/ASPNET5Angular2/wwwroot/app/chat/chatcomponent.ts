@@ -18,7 +18,7 @@ export class ChatComponent {
 
     constructor(private _signalRService: SignalRService) {
         this.subscribeToEvents();
-        this.canSendMessage = false;
+        this.canSendMessage = _signalRService.connectionExists;
         this.currentMessage = new ChatMessage();
         this.allMessages = new Array<ChatMessage>();
     }

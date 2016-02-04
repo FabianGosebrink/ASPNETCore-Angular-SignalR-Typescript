@@ -15,7 +15,7 @@ var ChatComponent = (function () {
     function ChatComponent(_signalRService) {
         this._signalRService = _signalRService;
         this.subscribeToEvents();
-        this.canSendMessage = false;
+        this.canSendMessage = _signalRService.connectionExists;
         this.currentMessage = new ChatMessage_1.ChatMessage();
         this.allMessages = new Array();
     }

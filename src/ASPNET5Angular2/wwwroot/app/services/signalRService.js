@@ -16,6 +16,7 @@ var SignalRService = (function () {
         this.foodchanged = new core_1.EventEmitter();
         this.connectionEstablished = new core_1.EventEmitter();
         this.messageReceived = new core_1.EventEmitter();
+        this.connectionExists = false;
         this.connection = jQuery.hubConnection(this._configuration.Server + "signalr/");
         this.proxy = this.connection.createHubProxy(this.proxyName);
         this.registerOnServerEvents();
@@ -29,6 +30,7 @@ var SignalRService = (function () {
         this.connection.start().done(function (data) {
             console.log("Now connected " + data.transport.name + ", connection ID= " + data.id);
             _this.connectionEstablished.emit(true);
+            _this.connectionExists = true;
         }).fail(function (error) {
             console.log("Could not connect " + error);
             _this.connectionEstablished.emit(false);

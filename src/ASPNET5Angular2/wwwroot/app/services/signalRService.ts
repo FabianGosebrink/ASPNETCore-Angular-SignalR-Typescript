@@ -14,12 +14,14 @@ export class SignalRService {
     public foodchanged: EventEmitter<any>;
     public messageReceived: EventEmitter<ChatMessage>;
     public connectionEstablished: EventEmitter<Boolean>;
+    public connectionExists: Boolean;
 
     constructor(private _configuration: Configuration) {
         this.foodchanged = new EventEmitter();
         this.connectionEstablished = new EventEmitter<Boolean>();
         this.messageReceived = new EventEmitter<ChatMessage>();
-        
+        this.connectionExists = false;
+
         this.connection = jQuery.hubConnection(this._configuration.Server + "signalr/");
         this.proxy = this.connection.createHubProxy(this.proxyName);
 
@@ -27,7 +29,7 @@ export class SignalRService {
 
         this.startConnection();
     }
-    
+
     public sendChatMessage(message: ChatMessage) {
         this.proxy.invoke("SendMessage", message);
     }
@@ -36,13 +38,13 @@ export class SignalRService {
         this.connection.start().done((data) => {
             console.log("Now connected " + data.transport.name + ", connection ID= " + data.id);
             this.connectionEstablished.emit(true);
+            this.connectionExists = true;
         }).fail((error) => {
             console.log("Could not connect " + error);
             this.connectionEstablished.emit(false);
         });
     }
-
-
+    
     private registerOnServerEvents(): void {
         this.proxy.on("FoodAdded", (data) => {
             this.foodchanged.emit("this could be data");

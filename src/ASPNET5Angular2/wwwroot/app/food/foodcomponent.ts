@@ -14,10 +14,10 @@ import { FoodItem } from '../models/FoodItem';
 export class FoodComponent implements OnInit {
     public foodItems: FoodItem[];
     public currentFoodItem: FoodItem;
-    public canAddFood: boolean;
+    public canAddFood: Boolean;
 
     constructor(private _dataService: DataService, private _signalRService: SignalRService) {
-        this.canAddFood = false;
+        this.canAddFood = _signalRService.connectionExists;
         this.currentFoodItem = new FoodItem();
     }
 
