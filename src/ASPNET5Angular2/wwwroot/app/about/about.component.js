@@ -8,23 +8,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('angular2/core');
-var router_1 = require('angular2/router');
 var AboutComponent = (function () {
-    function AboutComponent(_router) {
-        this._router = _router;
+    function AboutComponent() {
     }
     AboutComponent.prototype.ngOnInit = function () {
-    };
-    AboutComponent.prototype.gotoDetail = function () {
-    };
-    AboutComponent.prototype.getcharacters = function () {
     };
     AboutComponent = __decorate([
         core_1.Component({
             selector: 'about',
             templateUrl: 'app/about/about.component.html'
         }), 
-        __metadata('design:paramtypes', [router_1.Router])
+        __metadata('design:paramtypes', [])
     ], AboutComponent);
     return AboutComponent;
 })();
