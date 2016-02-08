@@ -16,7 +16,7 @@ var ChatComponent = (function () {
         this._signalRService = _signalRService;
         this.subscribeToEvents();
         this.canSendMessage = _signalRService.connectionExists;
-        this.currentMessage = new ChatMessage_1.ChatMessage();
+        this.currentMessage = new ChatMessage_1.ChatMessage("", null);
         this.allMessages = new Array();
     }
     ChatComponent.prototype.sendMessage = function () {
@@ -29,8 +29,8 @@ var ChatComponent = (function () {
             _this.canSendMessage = true;
         });
         this._signalRService.messageReceived.subscribe(function (message) {
-            _this.currentMessage = new ChatMessage_1.ChatMessage();
-            _this.allMessages.push(message);
+            _this.currentMessage = new ChatMessage_1.ChatMessage("", null);
+            _this.allMessages.push(new ChatMessage_1.ChatMessage(message.Message, message.Sent.toString()));
         });
     };
     ChatComponent = __decorate([
