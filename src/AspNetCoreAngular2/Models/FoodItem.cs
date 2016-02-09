@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace ASPNET5Angular2.Models
+namespace AspNetCoreAngular2.Models
 {
     public class FoodItem
     {

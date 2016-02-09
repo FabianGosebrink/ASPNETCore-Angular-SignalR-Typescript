@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace ASPNET5Angular2.Services
+namespace AspNetCoreAngular2.Services
 {
     public class TimerService : ITimerService
     {

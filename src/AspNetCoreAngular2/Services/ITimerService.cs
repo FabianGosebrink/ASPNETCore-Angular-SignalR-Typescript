@@ -1,6 +1,6 @@
 using System;
 
-namespace ASPNET5Angular2.Services
+namespace AspNetCoreAngular2.Services
 {
     public interface ITimerService
     {

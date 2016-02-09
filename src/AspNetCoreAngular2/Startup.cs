@@ -1,7 +1,7 @@
-﻿using ASPNET5Angular2.Models;
-using ASPNET5Angular2.Repositories;
-using ASPNET5Angular2.Services;
-using ASPNET5Angular2.ViewModels;
+﻿using AspNetCoreAngular2.Models;
+using AspNetCoreAngular2.Repositories;
+using AspNetCoreAngular2.Services;
+using AspNetCoreAngular2.ViewModels;
 using AutoMapper;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Cors.Infrastructure;
@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace ASPNET5Angular2
+namespace AspNetCoreAngular2
 {
     public class Startup
     {

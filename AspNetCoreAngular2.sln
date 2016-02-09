@@ -10,13 +10,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ASPNET5Angular2", "src\ASPNET5Angular2\ASPNET5Angular2.xproj", "{B4ED0A91-8154-4C9D-B56C-B91EA56E41E3}"
-EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Microsoft.AspNet.SignalR.Messaging", "src\Microsoft.AspNet.SignalR.Messaging\Microsoft.AspNet.SignalR.Messaging.xproj", "{1A8EEF26-BA42-496D-9CAE-722581F9777C}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Microsoft.AspNet.SignalR.Sources", "src\Microsoft.AspNet.SignalR.Sources\Microsoft.AspNet.SignalR.Sources.xproj", "{C41C7A05-ADC3-4771-8F8D-18B86CE7FACC}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Microsoft.AspNet.SignalR.Server", "src\Microsoft.AspNet.SignalR.Server\Microsoft.AspNet.SignalR.Server.xproj", "{1E7F548C-CB60-46A1-B431-D67825A32698}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AspNetCoreAngular2", "src\AspNetCoreAngular2\AspNetCoreAngular2.xproj", "{B4ED0A91-8154-4C9D-B56C-B91EA56E41E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,10 +24,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B4ED0A91-8154-4C9D-B56C-B91EA56E41E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B4ED0A91-8154-4C9D-B56C-B91EA56E41E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B4ED0A91-8154-4C9D-B56C-B91EA56E41E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B4ED0A91-8154-4C9D-B56C-B91EA56E41E3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1A8EEF26-BA42-496D-9CAE-722581F9777C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1A8EEF26-BA42-496D-9CAE-722581F9777C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A8EEF26-BA42-496D-9CAE-722581F9777C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -40,14 +36,18 @@ Global
 		{1E7F548C-CB60-46A1-B431-D67825A32698}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E7F548C-CB60-46A1-B431-D67825A32698}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E7F548C-CB60-46A1-B431-D67825A32698}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4ED0A91-8154-4C9D-B56C-B91EA56E41E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4ED0A91-8154-4C9D-B56C-B91EA56E41E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4ED0A91-8154-4C9D-B56C-B91EA56E41E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4ED0A91-8154-4C9D-B56C-B91EA56E41E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{B4ED0A91-8154-4C9D-B56C-B91EA56E41E3} = {2F2A397F-1038-4229-BBB1-D07D3CCAFA50}
 		{1A8EEF26-BA42-496D-9CAE-722581F9777C} = {2F2A397F-1038-4229-BBB1-D07D3CCAFA50}
 		{C41C7A05-ADC3-4771-8F8D-18B86CE7FACC} = {2F2A397F-1038-4229-BBB1-D07D3CCAFA50}
 		{1E7F548C-CB60-46A1-B431-D67825A32698} = {2F2A397F-1038-4229-BBB1-D07D3CCAFA50}
+		{B4ED0A91-8154-4C9D-B56C-B91EA56E41E3} = {2F2A397F-1038-4229-BBB1-D07D3CCAFA50}
 	EndGlobalSection
 EndGlobal

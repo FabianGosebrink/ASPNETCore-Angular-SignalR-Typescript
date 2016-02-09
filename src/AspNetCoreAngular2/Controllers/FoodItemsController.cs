@@ -1,23 +1,20 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading;
-using ASPNET5Angular2.Hubs;
-using ASPNET5Angular2.Models;
-using ASPNET5Angular2.Repositories;
-using ASPNET5Angular2.Services;
-using ASPNET5Angular2.ViewModels;
+using AspNetCoreAngular2.Hubs;
+using AspNetCoreAngular2.Models;
+using AspNetCoreAngular2.Repositories;
+using AspNetCoreAngular2.Services;
+using AspNetCoreAngular2.ViewModels;
 using AutoMapper;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Infrastructure;
 
-namespace ASPNET5Angular2.Controllers
+namespace AspNetCoreAngular2.Controllers
 {
     [Route("api/[controller]")]
     public class FoodItemsController : Controller
     {
-       
         private readonly IFoodRepository _foodRepository;
         private readonly IHubContext _coolMessageHubContext;
 
@@ -26,12 +23,6 @@ namespace ASPNET5Angular2.Controllers
             _foodRepository = foodRepository;
             _coolMessageHubContext = connectionManager.GetHubContext<CoolMessagesHub>();
             timerService.TimerElapsed += _timerService_TimerElapsed;
-        }
-
-        private void _timerService_TimerElapsed(object sender, EventArgs e)
-        {
-            TimerEventArgs eventsArgs = e as TimerEventArgs;
-            _coolMessageHubContext.Clients.All.newCpuValue(eventsArgs.Value);
         }
 
         [HttpGet]
@@ -127,5 +118,12 @@ namespace ASPNET5Angular2.Controllers
             _coolMessageHubContext.Clients.All.FoodDeleted();
             return new NoContentResult();
         }
+
+        private void _timerService_TimerElapsed(object sender, EventArgs e)
+        {
+            TimerEventArgs eventsArgs = e as TimerEventArgs;
+            _coolMessageHubContext.Clients.All.newCpuValue(eventsArgs.Value);
+        }
+
     }
 }

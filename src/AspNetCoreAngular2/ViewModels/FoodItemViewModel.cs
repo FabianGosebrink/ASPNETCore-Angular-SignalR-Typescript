@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ASPNET5Angular2.ViewModels
+namespace AspNetCoreAngular2.ViewModels
 {
     public class FoodItemViewModel
     {
