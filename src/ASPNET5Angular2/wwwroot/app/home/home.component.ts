@@ -14,8 +14,17 @@ import { ChatComponent } from '../chat/chatComponent';
 export class HomeComponent {
 
     public message: string;
+    public cpuValue: number;
 
-    constructor() {
+    constructor(private _signalRService: SignalRService) {
         this.message = "Hello from HomeComponent constructor";
+        this.subscribeToEvents();
+    }
+
+    private subscribeToEvents(): void {
+
+        this._signalRService.newCpuValue.subscribe((cpuValue: number) => {
+            this.cpuValue = cpuValue;
+        });
     }
 }

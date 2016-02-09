@@ -16,6 +16,7 @@ var SignalRService = (function () {
         this.foodchanged = new core_1.EventEmitter();
         this.connectionEstablished = new core_1.EventEmitter();
         this.messageReceived = new core_1.EventEmitter();
+        this.newCpuValue = new core_1.EventEmitter();
         this.connectionExists = false;
         this.connection = jQuery.hubConnection(this._configuration.Server + "signalr/");
         this.proxy = this.connection.createHubProxy(this.proxyName);
@@ -50,6 +51,9 @@ var SignalRService = (function () {
         this.proxy.on("SendMessage", function (data) {
             console.log("received in SignalRService: " + data);
             _this.messageReceived.emit(data);
+        });
+        this.proxy.on("newCpuValue", function (data) {
+            _this.newCpuValue.emit(data);
         });
     };
     SignalRService = __decorate([

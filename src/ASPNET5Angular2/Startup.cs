@@ -1,5 +1,6 @@
 ﻿using ASPNET5Angular2.Models;
 using ASPNET5Angular2.Repositories;
+using ASPNET5Angular2.Services;
 using ASPNET5Angular2.ViewModels;
 using AutoMapper;
 using Microsoft.AspNet.Builder;
@@ -40,6 +41,7 @@ namespace ASPNET5Angular2
             services.AddCors(x => x.AddPolicy("corsGlobalPolicy", policy));
 
             services.AddSingleton<IFoodRepository, FoodRepository>();
+            services.AddSingleton<ITimerService, TimerService>();
 
             services.AddSignalR(options =>
             {

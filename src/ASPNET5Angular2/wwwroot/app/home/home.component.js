@@ -9,19 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
+var signalRService_1 = require('../services/signalRService');
 var foodcomponent_1 = require('../food/foodcomponent');
 var chatComponent_1 = require('../chat/chatComponent');
 var HomeComponent = (function () {
-    function HomeComponent() {
+    function HomeComponent(_signalRService) {
+        this._signalRService = _signalRService;
         this.message = "Hello from HomeComponent constructor";
+        this.subscribeToEvents();
     }
+    HomeComponent.prototype.subscribeToEvents = function () {
+        var _this = this;
+        this._signalRService.newCpuValue.subscribe(function (cpuValue) {
+            console.log("newCpuValue");
+            _this.cpuValue = cpuValue;
+        });
+    };
     HomeComponent = __decorate([
         core_1.Component({
             selector: 'home',
             templateUrl: 'app/home/home.component.html',
             directives: [common_1.CORE_DIRECTIVES, foodcomponent_1.FoodComponent, chatComponent_1.ChatComponent]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [signalRService_1.SignalRService])
     ], HomeComponent);
     return HomeComponent;
 })();

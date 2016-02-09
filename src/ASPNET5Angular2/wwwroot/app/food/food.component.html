@@ -1,18 +1,28 @@
 <h2>FoodList</h2>
 
-<form (ngSubmit)="saveFood()">
-    <div class="form-group">
-        <label for="exampleInputEmail1">Server invoke</label>
-        <input type="text" [(ngModel)]="currentFoodItem.ItemName" class="form-control" placeholder="add new food here">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <i class="fa fa-cutlery fa-fw"></i> FoodList
     </div>
-    <input class="btn btn-primary" type="submit" value="Save" [disabled]="!canAddFood">
-</form>
-
-<ul style="list-style: none;">
-    <li *ngFor="#foodItem of foodItems" style="list-style: none;">
-        <span>{{foodItem.Id}} - {{foodItem.ItemName}} 
-            <button class="btn btn-link" (click)="setFoodItemToEdit(foodItem)" [disabled]="!canAddFood">Edit</button>
-            <button class="btn btn-link" (click)="deleteFoodItem(foodItem)" [disabled]="!canAddFood">Delete</button>
-        </span>
-    </li>
-</ul>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+        <div class="list-group">
+            <a href="#" class="list-group-item" *ngFor="#foodItem of foodItems">
+                <i class="fa fa-cutlery"></i> {{foodItem.ItemName}}
+                <span class="pull-right text-muted small">
+                    <button class="btn btn-primary btn-xs" (click)="setFoodItemToEdit(foodItem)" [disabled]="!canAddFood">Edit</button>
+                    <button class="btn btn-danger btn-xs" (click)="deleteFoodItem(foodItem)" [disabled]="!canAddFood">Delete</button>
+                </span>
+            </a>
+        </div>
+        <!-- /.list-group -->
+        <form (ngSubmit)="saveFood()">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Server invoke</label>
+                <input type="text" [(ngModel)]="currentFoodItem.ItemName" class="form-control" placeholder="add new food here">
+            </div>
+            <input class="btn btn-success" type="submit" value="Save" [disabled]="!canAddFood">
+        </form>
+    </div>
+    <!-- /.panel-body -->
+</div>

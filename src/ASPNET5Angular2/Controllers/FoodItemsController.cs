@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using ASPNET5Angular2.Hubs;
 using ASPNET5Angular2.Models;
 using ASPNET5Angular2.Repositories;
+using ASPNET5Angular2.Services;
 using ASPNET5Angular2.ViewModels;
 using AutoMapper;
 using Microsoft.AspNet.Mvc;
@@ -14,13 +17,21 @@ namespace ASPNET5Angular2.Controllers
     [Route("api/[controller]")]
     public class FoodItemsController : Controller
     {
+       
         private readonly IFoodRepository _foodRepository;
         private readonly IHubContext _coolMessageHubContext;
 
-        public FoodItemsController(IFoodRepository foodRepository, IConnectionManager connectionManager)
+        public FoodItemsController(IFoodRepository foodRepository, IConnectionManager connectionManager, ITimerService timerService)
         {
             _foodRepository = foodRepository;
             _coolMessageHubContext = connectionManager.GetHubContext<CoolMessagesHub>();
+            timerService.TimerElapsed += _timerService_TimerElapsed;
+        }
+
+        private void _timerService_TimerElapsed(object sender, EventArgs e)
+        {
+            TimerEventArgs eventsArgs = e as TimerEventArgs;
+            _coolMessageHubContext.Clients.All.newCpuValue(eventsArgs.Value);
         }
 
         [HttpGet]

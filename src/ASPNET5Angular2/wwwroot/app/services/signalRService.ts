@@ -13,6 +13,7 @@ export class SignalRService {
 
     public foodchanged: EventEmitter<any>;
     public messageReceived: EventEmitter<ChatMessage>;
+    public newCpuValue: EventEmitter<Number>;
     public connectionEstablished: EventEmitter<Boolean>;
     public connectionExists: Boolean;
 
@@ -20,6 +21,7 @@ export class SignalRService {
         this.foodchanged = new EventEmitter();
         this.connectionEstablished = new EventEmitter<Boolean>();
         this.messageReceived = new EventEmitter<ChatMessage>();
+        this.newCpuValue = new EventEmitter<Number>();
         this.connectionExists = false;
 
         this.connection = jQuery.hubConnection(this._configuration.Server + "signalr/");
@@ -44,7 +46,7 @@ export class SignalRService {
             this.connectionEstablished.emit(false);
         });
     }
-    
+
     private registerOnServerEvents(): void {
         this.proxy.on("FoodAdded", (data) => {
             this.foodchanged.emit("this could be data");
@@ -61,6 +63,10 @@ export class SignalRService {
         this.proxy.on("SendMessage", (data: ChatMessage) => {
             console.log("received in SignalRService: " + data);
             this.messageReceived.emit(data);
+        });
+
+        this.proxy.on("newCpuValue", (data: number) => {
+            this.newCpuValue.emit(data);
         });
     }
 }
