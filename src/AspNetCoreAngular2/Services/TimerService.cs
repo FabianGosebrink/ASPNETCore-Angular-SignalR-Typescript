@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using Microsoft.Extensions.OptionsModel;
 
 namespace AspNetCoreAngular2.Services
 {
@@ -9,9 +10,16 @@ namespace AspNetCoreAngular2.Services
         readonly Random _random = new Random();
         public event EventHandler TimerElapsed;
 
-        public TimerService()
+        private IOptions<TimerServiceConfiguration> _optionsTimerServiceConfiguration;
+
+        public TimerService(IOptions<TimerServiceConfiguration> options)
         {
-            _timer = new Timer(OnTimerElapsed, null, 3000, 1500);
+            _optionsTimerServiceConfiguration = options;
+            _timer = new Timer(
+                OnTimerElapsed, 
+                null, 
+                _optionsTimerServiceConfiguration.Value.DueTime, 
+                _optionsTimerServiceConfiguration.Value.Period);
         }
 
         private void OnTimerElapsed(object sender)

@@ -40,6 +40,9 @@ namespace AspNetCoreAngular2
 
             services.AddCors(x => x.AddPolicy("corsGlobalPolicy", policy));
 
+            services.Configure<TimerServiceConfiguration>(Configuration.GetSection("TimeService"));
+
+
             services.AddSingleton<IFoodRepository, FoodRepository>();
             services.AddSingleton<ITimerService, TimerService>();
 
