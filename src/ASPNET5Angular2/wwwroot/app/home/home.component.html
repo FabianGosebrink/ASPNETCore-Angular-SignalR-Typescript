@@ -7,7 +7,7 @@
                     <h1 class="page-header">Dashboard</h1>
                     <h3>{{message}}</h3>
                     
-                    <h2>My current CPU value is: {{cpuValue}}</h2>
+                    <cpu-component></cpu-component>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -17,18 +17,6 @@
                 </div>
                 <div class="col-md-6">
                     <food-component></food-component>
-                </div>
-            </div>
-            <!-- /.row -->
-
-            <div class="row">
-                <div class="col-md-12">
-
-
-                    <base-chart class="chart" [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)"
-                    (chartClick)="chartClicked($event)"></base-chart>
-
-
                 </div>
             </div>
         </div>
