@@ -4,27 +4,19 @@ import { DataService } from '../services/foodDataService';
 import { SignalRService } from '../services/signalRService';
 import { FoodComponent } from '../food/foodcomponent';
 import { ChatComponent } from '../chat/chatComponent';
+import { CpuComponent } from '../cpu/cpuComponent';
 
 @Component({
     selector: 'home',
     templateUrl: 'app/home/home.component.html',
-    directives: [CORE_DIRECTIVES, FoodComponent, ChatComponent]
+    directives: [CORE_DIRECTIVES, FoodComponent, ChatComponent, CpuComponent]
 })
 
 export class HomeComponent {
 
     public message: string;
-    public cpuValue: number;
 
     constructor(private _signalRService: SignalRService) {
         this.message = "Hello from HomeComponent constructor";
-        this.subscribeToEvents();
-    }
-
-    private subscribeToEvents(): void {
-
-        this._signalRService.newCpuValue.subscribe((cpuValue: number) => {
-            this.cpuValue = cpuValue;
-        });
     }
 }
