@@ -172,6 +172,7 @@ ClientBin/
 *.pfx
 *.publishsettings
 node_modules/
+bower_components/
 orleans.codegen.cs
 
 # RIA/Silverlight projects
@@ -212,3 +213,7 @@ _Pvt_Extensions/
 ModelManifest.xml
 Angular2Demo/bower_components
 Angular2Demo/bower_components
+src/AspNet5Angular2Demo/wwwroot/app/**/*.js
+src/AspNet5Angular2Demo/wwwroot/app/**/*.js.map
+src/ASPNET5Angular2/wwwroot/**/*.js
+src/ASPNET5Angular2/wwwroot/**/*.js.map
