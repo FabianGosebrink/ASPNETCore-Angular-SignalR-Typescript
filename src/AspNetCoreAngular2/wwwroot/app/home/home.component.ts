@@ -16,7 +16,7 @@ export class HomeComponent {
 
     public message: string;
 
-    constructor(private _signalRService: SignalRService) {
+    constructor() {
         this.message = "Hello from HomeComponent constructor";
     }
 }

@@ -33,7 +33,8 @@ export class FoodComponent implements OnInit {
                 .subscribe(data => {
                     this.currentFoodItem = new FoodItem();
                 }, error => {
-                    console.log(error)},
+                    console.log(error)
+                },
                 () => console.log('Update complete'));
         } else {
             this._dataService
@@ -41,7 +42,8 @@ export class FoodComponent implements OnInit {
                 .subscribe(data => {
                     this.currentFoodItem = new FoodItem();
                 }, error => {
-                    console.log(error)},
+                    console.log(error)
+                },
                 () => console.log('Added complete'));
         }
     }
