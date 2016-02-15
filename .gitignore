@@ -217,3 +217,5 @@ src/AspNet5Angular2Demo/wwwroot/app/**/*.js
 src/AspNet5Angular2Demo/wwwroot/app/**/*.js.map
 src/ASPNET5Angular2/wwwroot/**/*.js
 src/ASPNET5Angular2/wwwroot/**/*.js.map
+src/AspNetCoreAngular2/.dist/*
+src/AspNetCoreAngular2/.temp/*

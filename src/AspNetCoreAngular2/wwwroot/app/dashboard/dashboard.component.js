@@ -9,24 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
-var signalRService_1 = require('../services/signalRService');
 var foodcomponent_1 = require('../food/foodcomponent');
 var chatComponent_1 = require('../chat/chatComponent');
 var cpuComponent_1 = require('../cpu/cpuComponent');
-var HomeComponent = (function () {
-    function HomeComponent(_signalRService) {
-        this._signalRService = _signalRService;
+var DashboardComponent = (function () {
+    function DashboardComponent() {
         this.message = "Hello from HomeComponent constructor";
     }
-    HomeComponent = __decorate([
+    DashboardComponent = __decorate([
         core_1.Component({
             selector: 'home',
-            templateUrl: 'app/home/home.component.html',
+            templateUrl: 'app/dashboard/dashboard.component.html',
             directives: [common_1.CORE_DIRECTIVES, foodcomponent_1.FoodComponent, chatComponent_1.ChatComponent, cpuComponent_1.CpuComponent]
         }), 
-        __metadata('design:paramtypes', [signalRService_1.SignalRService])
-    ], HomeComponent);
-    return HomeComponent;
+        __metadata('design:paramtypes', [])
+    ], DashboardComponent);
+    return DashboardComponent;
 })();
-exports.HomeComponent = HomeComponent;
-//# sourceMappingURL=home.component.js.map
+exports.DashboardComponent = DashboardComponent;
+//# sourceMappingURL=dashboard.component.js.map

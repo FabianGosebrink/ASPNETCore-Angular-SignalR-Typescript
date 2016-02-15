@@ -8,11 +8,11 @@ import { CpuComponent } from '../cpu/cpuComponent';
 
 @Component({
     selector: 'home',
-    templateUrl: 'app/home/home.component.html',
+    templateUrl: 'app/dashboard/dashboard.component.html',
     directives: [CORE_DIRECTIVES, FoodComponent, ChatComponent, CpuComponent]
 })
 
-export class HomeComponent {
+export class DashboardComponent {
 
     public message: string;
 

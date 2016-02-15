@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
-var home_component_1 = require('./home/home.component');
+var dashboard_component_1 = require('./dashboard/dashboard.component');
 var about_component_1 = require('./about/about.component');
 var AppComponent = (function () {
     function AppComponent() {
@@ -22,7 +22,7 @@ var AppComponent = (function () {
             styleUrls: ['app/app.component.css']
         }),
         router_1.RouteConfig([
-            { path: '/', name: 'Home', component: home_component_1.HomeComponent, useAsDefault: true },
+            { path: '/dashboard', name: 'Dashboard', component: dashboard_component_1.DashboardComponent, useAsDefault: true },
             { path: '/about', name: 'About', component: about_component_1.AboutComponent },
         ]), 
         __metadata('design:paramtypes', [])
