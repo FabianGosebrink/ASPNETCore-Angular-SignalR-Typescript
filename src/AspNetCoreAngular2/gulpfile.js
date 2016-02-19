@@ -12,9 +12,10 @@ var buildConfig = require('./gulp.config');
 
 gulp.task('electron:windows', function(done){  
     runSeq(
-        'copy-fonts',
+        'clean-temp',
         'copy-electron-files', 
-        'build-electron', 
+        'copy-fonts-to-electron-temp',
+        //'build-electron', 
         done);
 });
 
@@ -30,7 +31,7 @@ gulp.task('copy-vendor', function () {
         .pipe(gulp.dest(buildConfig.config.rootJsFolder))
 });
 
-gulp.task('copy-fonts', function(done){  
+gulp.task('copy-fonts-to-electron-temp', function(done){  
     return gulp.src(
         buildConfig.config.allRootFontsFiles
     ).pipe(gulp.dest(buildConfig.config.temp.fontsFolder));
@@ -43,11 +44,11 @@ gulp.task('copy-electron-files', function(done){
         "wwwroot/**/*.css",
         "wwwroot/**/*.html",
         "wwwroot/index.html"
-    ]).pipe(gulp.dest(buildConfig.config.temp.tempFolder));
+    ]).pipe(gulp.dest(buildConfig.config.temp.tempFolderElectron));
 });
 
 gulp.task('build-electron', function(done){  
-    return gulp.src(buildConfig.config.temp.allFiles)
+    return gulp.src(buildConfig.config.temp.allElectronFiles)
         .pipe(electron({
             version: '0.36.7',
             platform: 'win32' }))
@@ -56,4 +57,8 @@ gulp.task('build-electron', function(done){
 
 gulp.task('clean-js', function(done){  
        return del(buildConfig.config.temp.allRootVendorJsFiles, done);
+});
+
+gulp.task('clean-temp', function(done){  
+       return del(buildConfig.config.temp.folder, done);
 });

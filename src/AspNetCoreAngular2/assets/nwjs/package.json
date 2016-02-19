@@ -1,0 +1,13 @@
+{
+  "name": "aspnet5angular2demo",
+  "version": "1.0.0",
+  "main": "index.html",
+  "window": {
+    "title": "aspnet5angular2demo",
+    "toolbar": true,
+    "resizable": true,
+    "fullscreen": false,
+    "width": 1024,
+    "height": 768
+  }
+}

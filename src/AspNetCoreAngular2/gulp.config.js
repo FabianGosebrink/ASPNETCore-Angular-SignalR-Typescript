@@ -8,9 +8,11 @@ module.exports = {
         allRootFontsFiles: ["./wwwroot/fonts/*"],
         targetIndexHtmlFile: "./wwwroot/index.html",
         temp: {
-            tempFolder: "./.temp",
-            fontsFolder: "./.temp/fonts",
-            allFiles: ["./.temp/**/*"]
+            folder: "./.temp/",
+            tempFolderElectron: "./.temp/electron/",
+            tempFolderNwjs: "./.temp/nwjs/",
+            fontsFolder: "./.temp/electron/fonts/",
+            allElectronFiles: ["./.temp/electron/**/*"]
         },
         vendorJsFiles: [
             "node_modules/angular2/bundles/angular2-polyfills.js",
