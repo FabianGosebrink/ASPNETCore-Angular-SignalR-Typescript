@@ -1,5 +1,5 @@
 {
-  "name": "AspNet5Angular2Demo",
+  "name": "aspnet5angular2demo",
   "version": "1.0.0",
   "description": "",
   "main": "wwwroot/index.html",
@@ -12,13 +12,17 @@
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.0",
     "systemjs": "0.19.6",
-    "typescript": "^1.7.3",
-    "zone.js": "0.5.10"
+    "zone.js": "0.5.11"
   },
   "devDependencies": {
+    "del": "^2.2.0",
+    "electron-prebuilt": "^0.36.7",
     "gulp": "^3.9.0",
+    "gulp-atom-electron": "^1.4.0",
     "gulp-concat": "^2.6.0",
     "gulp-inject": "^3.0.0",
+    "gulp-symdest": "^1.0.0",
+    "gulp-task-listing": "^1.0.1",
     "run-sequence": "^1.1.5",
     "tslint": "^3.3.0",
     "typescript": "^1.7.5"
