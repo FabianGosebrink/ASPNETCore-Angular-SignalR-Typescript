@@ -6,13 +6,31 @@ module.exports = {
         rootJsFolder: "./wwwroot/js/",
         allRootVendorJsFiles: ['./wwwroot/js/*.js'],
         allRootFontsFiles: ["./wwwroot/fonts/*"],
-        targetIndexHtmlFile: "./wwwroot/index.html",
+        app:{
+            indexHtmlFile: "./wwwroot/index.html",
+            allJsFiles:"wwwroot/**/*.js",
+            allCssFiles:"wwwroot/**/*.css",
+            allHtmlFiles:"wwwroot/**/*.html",
+        },
         temp: {
             folder: "./.temp/",
-            tempFolderElectron: "./.temp/electron/",
-            tempFolderNwjs: "./.temp/nwjs/",
-            fontsFolder: "./.temp/electron/fonts/",
-            allElectronFiles: ["./.temp/electron/**/*"]
+            
+            electron: "./.temp/electron/",
+            electronFonts: "./.temp/electron/fonts/",
+            allElectronFiles: ["./.temp/electron/**/*"],
+            
+            nwjs: "./.temp/nwjs/",
+            nwjsFonts: "./.temp/nwjs/fonts/",
+            allNwjsFiles: ["./.temp/nwjs/**/*"],
+        },
+        assets: {
+            nwjs: "assets/nwjs/*",
+            electron: "assets/electron/*",
+        },
+        dist: {
+            folder: "./.dist/",
+            nwjsFolder: "./.dist/nwjs/",
+            electronFolder: "./.dist/electron/",
         },
         vendorJsFiles: [
             "node_modules/angular2/bundles/angular2-polyfills.js",
