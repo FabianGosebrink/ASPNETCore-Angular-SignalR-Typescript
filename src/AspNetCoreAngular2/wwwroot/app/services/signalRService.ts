@@ -1,6 +1,6 @@
-/// <reference path="../../../typings/signalr/signalr.d.ts" />
+/// <reference path='../../../typings/signalr/signalr.d.ts' />
 
-import { Injectable, EventEmitter } from "angular2/core";
+import { Injectable, EventEmitter } from 'angular2/core';
 import { Configuration } from '../app.constants';
 import { ChatMessage } from '../models/ChatMessage';
 
@@ -8,7 +8,7 @@ import { ChatMessage } from '../models/ChatMessage';
 export class SignalRService {
 
     private proxy: HubProxy;
-    private proxyName: string = "coolmessages";
+    private proxyName: string = 'coolmessages';
     private connection: HubConnection;
 
     public foodchanged: EventEmitter<any>;
@@ -24,7 +24,7 @@ export class SignalRService {
         this.newCpuValue = new EventEmitter<Number>();
         this.connectionExists = false;
 
-        this.connection = jQuery.hubConnection(this._configuration.Server + "signalr/");
+        this.connection = jQuery.hubConnection(this._configuration.Server + 'signalr/');
         this.proxy = this.connection.createHubProxy(this.proxyName);
 
         this.registerOnServerEvents();
@@ -33,39 +33,39 @@ export class SignalRService {
     }
 
     public sendChatMessage(message: ChatMessage) {
-        this.proxy.invoke("SendMessage", message);
+        this.proxy.invoke('SendMessage', message);
     }
 
     private startConnection(): void {
         this.connection.start().done((data) => {
-            console.log("Now connected " + data.transport.name + ", connection ID= " + data.id);
+            console.log('Now connected ' + data.transport.name + ', connection ID= ' + data.id);
             this.connectionEstablished.emit(true);
             this.connectionExists = true;
         }).fail((error) => {
-            console.log("Could not connect " + error);
+            console.log('Could not connect ' + error);
             this.connectionEstablished.emit(false);
         });
     }
 
     private registerOnServerEvents(): void {
-        this.proxy.on("FoodAdded", (data) => {
-            this.foodchanged.emit("this could be data");
+        this.proxy.on('FoodAdded', (data) => {
+            this.foodchanged.emit('this could be data');
         });
 
-        this.proxy.on("FoodDeleted", (data) => {
-            this.foodchanged.emit("this could be data");
+        this.proxy.on('FoodDeleted', (data) => {
+            this.foodchanged.emit('this could be data');
         });
 
-        this.proxy.on("FoodUpdated", (data) => {
-            this.foodchanged.emit("this could be data");
+        this.proxy.on('FoodUpdated', (data) => {
+            this.foodchanged.emit('this could be data');
         });
 
-        this.proxy.on("SendMessage", (data: ChatMessage) => {
-            console.log("received in SignalRService: " + data);
+        this.proxy.on('SendMessage', (data: ChatMessage) => {
+            console.log('received in SignalRService: ' + data);
             this.messageReceived.emit(data);
         });
 
-        this.proxy.on("newCpuValue", (data: number) => {
+        this.proxy.on('newCpuValue', (data: number) => {
             this.newCpuValue.emit(data);
         });
     }

@@ -29,7 +29,7 @@ export class DataService {
     }
 
     public AddFood = (foodName: string): Observable<Response> => {
-        var toAdd = JSON.stringify({ ItemName: foodName });
+        var toAdd: string = JSON.stringify({ ItemName: foodName });
 
         return this._http.post(this.actionUrl, toAdd, { headers: this.headers }).map(res => res.json());
     }

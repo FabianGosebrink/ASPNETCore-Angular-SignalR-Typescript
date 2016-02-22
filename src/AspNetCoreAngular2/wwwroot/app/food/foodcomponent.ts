@@ -21,11 +21,11 @@ export class FoodComponent implements OnInit {
         this.currentFoodItem = new FoodItem();
     }
 
-    ngOnInit() {
+    public ngOnInit() {
         this.getAllFood();
         this.subscribeToEvents();
     }
-    
+
     public saveFood() {
         if(this.currentFoodItem.Id){
             this._dataService
@@ -47,19 +47,19 @@ export class FoodComponent implements OnInit {
                 () => console.log('Added complete'));
         }
     }
-    
+
     public deleteFoodItem(foodItem: FoodItem) {
         this._dataService.DeleteFood(foodItem.Id)
             .subscribe(
                 response => {
-                    //this._signalRService.FoodDeleted();
+                    // this._signalRService.FoodDeleted();
                 }, error => {
                     console.log(error);
-                },() => {
+                }, () => {
                     console.log("Deleted complete");
                 });
     }
-    
+
     public setFoodItemToEdit(foodItem: FoodItem){
         this.currentFoodItem = foodItem;
     }
@@ -67,11 +67,11 @@ export class FoodComponent implements OnInit {
     private getAllFood(): void {
         this._dataService
             .GetAllFood()
-            .subscribe((data:FoodItem[]) => this.foodItems = data,
+            .subscribe((data: FoodItem[]) => this.foodItems = data,
                 error => console.log(error),
                 () => console.log('Get all Foods complete'));
     }
-    
+
     private subscribeToEvents():void{
         this._signalRService.connectionEstablished.subscribe(() => {
             this.canAddFood = true;

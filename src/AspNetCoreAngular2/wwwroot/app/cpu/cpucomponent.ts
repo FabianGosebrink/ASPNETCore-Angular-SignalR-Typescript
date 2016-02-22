@@ -15,7 +15,7 @@ export class CpuComponent implements OnInit {
 
     }
 
-    ngOnInit() {
+    public ngOnInit() {
         this.subscribeToEvents();
     }
 
