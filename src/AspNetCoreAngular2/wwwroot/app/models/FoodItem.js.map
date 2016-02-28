@@ -1,1 +1,1 @@
-{"version":3,"file":"FoodItem.js","sourceRoot":"","sources":["FoodItem.ts"],"names":["FoodItem","FoodItem.constructor"],"mappings":"AACA;IAAAA;IAIAC,CAACA;IAADD,eAACA;AAADA,CAACA,AAJD,IAIC;AAJY,gBAAQ,WAIpB,CAAA"}
+{"version":3,"file":"FoodItem.js","sourceRoot":"","sources":["FoodItem.ts"],"names":["FoodItem","FoodItem.constructor"],"mappings":";;;;;YACA;gBAAAA;gBAIAC,CAACA;gBAADD,eAACA;YAADA,CAACA,AAJD,IAIC;YAJD,+BAIC,CAAA"}

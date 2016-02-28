@@ -1,5 +1,5 @@
 ﻿import {bootstrap} from 'angular2/platform/browser';
-import {Component, provide} from 'angular2/core';
+import {Component, provide, bind} from 'angular2/core';
 import {APP_BASE_HREF, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {AppComponent} from './app.component';
@@ -11,5 +11,7 @@ bootstrap(AppComponent, [
     HTTP_PROVIDERS,
     Configuration,
     SignalRService,
-    provide(LocationStrategy, {useClass: HashLocationStrategy})
+    // provide(LocationStrategy, {useClass: HashLocationStrategy})
+    bind(LocationStrategy).toClass(HashLocationStrategy),
+    provide(APP_BASE_HREF, {useValue: '/'})
 ]);

@@ -16,7 +16,7 @@ gulp.task('electron:windows', function(done){
         'clean-temp-electron',
         'copy-electron-files', 
         'copy-fonts-to-electron-temp',
-        //'build-electron', 
+        'build-electron', 
         done);
 });
 

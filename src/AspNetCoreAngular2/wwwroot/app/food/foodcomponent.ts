@@ -67,9 +67,9 @@ export class FoodComponent implements OnInit {
     private getAllFood(): void {
         this._dataService
             .GetAllFood()
-            .subscribe((data: FoodItem[]) => this.foodItems = data,
+            .subscribe(data => this.foodItems = data,
                 error => console.log(error),
-                () => console.log('Get all Foods complete'));
+                () => console.log('Get all Foods complete ' + this.foodItems ));
     }
 
     private subscribeToEvents():void{

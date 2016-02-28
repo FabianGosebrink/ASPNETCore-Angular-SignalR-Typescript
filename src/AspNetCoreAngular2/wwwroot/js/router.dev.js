@@ -805,7 +805,7 @@ System.register("angular2/src/router/url_parser", ["angular2/src/facade/collecti
     var params = [];
     if (lang_1.isPresent(paramMap)) {
       collection_1.StringMapWrapper.forEach(paramMap, function(value, key) {
-        if (value == true) {
+        if (value === true) {
           params.push(key);
         } else {
           params.push(key + '=' + value);
@@ -1489,12 +1489,13 @@ System.register("angular2/src/router/path_recognizer", ["angular2/src/facade/lan
           break;
         }
         if (lang_1.isPresent(currentSegment)) {
-          captured.push(currentSegment.path);
           if (segment instanceof StarSegment) {
             positionalParams[segment.name] = currentSegment.toString();
+            captured.push(currentSegment.toString());
             nextSegment = null;
             break;
           }
+          captured.push(currentSegment.path);
           if (segment instanceof DynamicSegment) {
             positionalParams[segment.name] = currentSegment.path;
           } else if (!segment.match(currentSegment.path)) {
@@ -1711,6 +1712,7 @@ System.register("angular2/src/router/route_config_nomalizer", ["angular2/src/rou
         path: config.path,
         loader: wrappedLoader,
         name: config.name,
+        data: config.data,
         useAsDefault: config.useAsDefault
       });
     }
@@ -1737,6 +1739,7 @@ System.register("angular2/src/router/route_config_nomalizer", ["angular2/src/rou
             path: config.path,
             loader: componentDefinitionObject.loader,
             name: config.name,
+            data: config.data,
             useAsDefault: config.useAsDefault
           });
         } else {
@@ -2957,7 +2960,7 @@ System.register("angular2/src/router/router", ["angular2/src/facade/async", "ang
             }
             var emitPath = instruction.toUrlPath();
             var emitQuery = instruction.toUrlQuery();
-            if (emitPath.length > 0) {
+            if (emitPath.length > 0 && emitPath[0] != '/') {
               emitPath = '/' + emitPath;
             }
             if (change['type'] == 'hashchange') {
@@ -2980,7 +2983,7 @@ System.register("angular2/src/router/router", ["angular2/src/facade/async", "ang
       }
       var emitPath = instruction.toUrlPath();
       var emitQuery = instruction.toUrlQuery();
-      if (emitPath.length > 0) {
+      if (emitPath.length > 0 && emitPath[0] != '/') {
         emitPath = '/' + emitPath;
       }
       var promise = _super.prototype.commit.call(this, instruction);

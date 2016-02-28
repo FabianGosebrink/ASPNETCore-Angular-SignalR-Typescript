@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,6 +40,7 @@
     <!-- IE required polyfills, in this exact order -->
     <script src="js/es6-shim.min.js"></script>
     <script src="js/system-polyfills.js"></script>
+    <script src="js/shims_for_IE.js"></script>
 
     <script src="js/angular2-polyfills.js"></script>
     <script src="js/system.src.js"></script>
@@ -53,18 +53,21 @@
     <script src="js/jquery.js"></script>
     <script src="js/jquery.SignalR.js"></script>
     <script src="js/bootstrap.js"></script>
-    
+    <script src="/signalr/hubs"></script>
+
+    </script>
     <!-- 2. Configure SystemJS -->
 
     <script>
         System.config({
-            packages: {
-                app: {
-                    defaultExtension: 'js'
-                }
-            }
-        });
-        System.import('app/boot')
+        packages: {
+          app: {
+            format: 'register',
+            defaultExtension: 'js'
+          }
+        }
+      });
+      System.import('app/boot')
             .then(null, console.error.bind(console));
     </script>
 </body>
