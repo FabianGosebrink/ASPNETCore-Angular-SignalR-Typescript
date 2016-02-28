@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', 'rxjs/Observable', '../app.constants'], function(exports_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', '../app.constants'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', 'rxj
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, Observable_1, app_constants_1;
+    var core_1, http_1, Rx_1, app_constants_1;
     var DataService;
     return {
         setters:[
@@ -18,36 +18,31 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', 'rxj
             function (http_1_1) {
                 http_1 = http_1_1;
             },
-            function (_1) {},
-            function (Observable_1_1) {
-                Observable_1 = Observable_1_1;
+            function (Rx_1_1) {
+                Rx_1 = Rx_1_1;
             },
             function (app_constants_1_1) {
                 app_constants_1 = app_constants_1_1;
             }],
         execute: function() {
             DataService = (function () {
-                function DataService(_http, _configuration) {
+                function DataService(_http) {
                     var _this = this;
                     this._http = _http;
-                    this._configuration = _configuration;
                     this.GetAllFood = function () {
                         return _this._http.get(_this.actionUrl)
                             .map(function (response) { return response.json(); })
-                            .do(function (data) { return console.log(data); })
                             .catch(_this.handleError);
                     };
                     this.GetSingleFood = function (id) {
                         return _this._http.get(_this.actionUrl + id)
                             .map(function (response) { return response.json(); })
-                            .do(function (data) { return console.log(data); })
                             .catch(_this.handleError);
                     };
                     this.AddFood = function (foodName) {
                         var toAdd = JSON.stringify({ ItemName: foodName });
                         return _this._http.post(_this.actionUrl, toAdd, { headers: _this.headers })
                             .map(function (response) { return response.json(); })
-                            .do(function (response) { return console.log(response); })
                             .catch(_this.handleError);
                     };
                     this.Update = function (id, foodToUpdate) {
@@ -60,18 +55,20 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', 'rxj
                             .catch(_this.handleError);
                         ;
                     };
-                    this.actionUrl = _configuration.ServerWithApiUrl + 'foodItems/';
+                    this.actionUrl = app_constants_1.CONFIGURATION.baseUrls.server +
+                        app_constants_1.CONFIGURATION.baseUrls.apiUrl +
+                        'foodItems/';
                     this.headers = new http_1.Headers();
                     this.headers.append('Content-Type', 'application/json');
                     this.headers.append('Accept', 'application/json');
                 }
                 DataService.prototype.handleError = function (error) {
                     console.error(error);
-                    return Observable_1.Observable.throw(error.json().error || 'Server error');
+                    return Rx_1.Observable.throw(error.json().error || 'Server error');
                 };
                 DataService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [http_1.Http, app_constants_1.Configuration])
+                    __metadata('design:paramtypes', [http_1.Http])
                 ], DataService);
                 return DataService;
             })();

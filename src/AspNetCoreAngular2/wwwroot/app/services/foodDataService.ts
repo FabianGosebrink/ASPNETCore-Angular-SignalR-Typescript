@@ -1,9 +1,8 @@
 import { Injectable } from 'angular2/core';
 import { Http, Response, Headers } from 'angular2/http';
-import 'rxjs/add/operator/map'
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Rx';
 import { FoodItem } from '../models/FoodItem';
-import { Configuration } from '../app.constants';
+import { CONFIGURATION } from '../app.constants';
 
 @Injectable()
 export class DataService {
@@ -11,9 +10,11 @@ export class DataService {
     private actionUrl: string;
     private headers: Headers;
 
-    constructor(private _http: Http, private _configuration: Configuration) {
+    constructor(private _http: Http) {
 
-        this.actionUrl = _configuration.ServerWithApiUrl + 'foodItems/';
+        this.actionUrl = CONFIGURATION.baseUrls.server +
+            CONFIGURATION.baseUrls.apiUrl +
+            'foodItems/';
 
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json');

@@ -21,15 +21,14 @@ System.register(['angular2/core', '../app.constants'], function(exports_1) {
             }],
         execute: function() {
             SignalRService = (function () {
-                function SignalRService(_configuration) {
-                    this._configuration = _configuration;
+                function SignalRService() {
                     this.proxyName = 'coolmessages';
                     this.foodchanged = new core_1.EventEmitter();
                     this.connectionEstablished = new core_1.EventEmitter();
                     this.messageReceived = new core_1.EventEmitter();
                     this.newCpuValue = new core_1.EventEmitter();
                     this.connectionExists = false;
-                    this.connection = jQuery.hubConnection(this._configuration.Server + 'signalr/');
+                    this.connection = jQuery.hubConnection(app_constants_1.CONFIGURATION.baseUrls.server + 'signalr/');
                     this.proxy = this.connection.createHubProxy(this.proxyName);
                     this.registerOnServerEvents();
                     this.startConnection();
@@ -69,7 +68,7 @@ System.register(['angular2/core', '../app.constants'], function(exports_1) {
                 };
                 SignalRService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [app_constants_1.Configuration])
+                    __metadata('design:paramtypes', [])
                 ], SignalRService);
                 return SignalRService;
             })();
