@@ -1,7 +1,7 @@
 /// <reference path='../../../typings/signalr/signalr.d.ts' />
 
 import { Injectable, EventEmitter } from 'angular2/core';
-import { CONFIGURATION } from '../app.constants';
+import { CONFIGURATION } from '../shared/app.constants';
 import { ChatMessage } from '../models/ChatMessage';
 
 @Injectable()

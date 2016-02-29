@@ -1,8 +1,8 @@
-﻿import {bootstrap} from 'angular2/platform/browser';
-import {Component, provide, bind} from 'angular2/core';
-import {APP_BASE_HREF, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2/router';
-import {HTTP_PROVIDERS} from 'angular2/http';
-import {AppComponent} from './app.component';
+﻿import { bootstrap } from 'angular2/platform/browser';
+import { provide, bind } from 'angular2/core';
+import { APP_BASE_HREF, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy } from 'angular2/router';
+import { HTTP_PROVIDERS } from 'angular2/http';
+import { AppComponent } from './app.component';
 import { SignalRService } from './services/signalRService';
 
 bootstrap(AppComponent, [

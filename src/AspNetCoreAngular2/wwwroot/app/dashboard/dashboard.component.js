@@ -34,7 +34,7 @@ System.register(['angular2/core', 'angular2/common', '../food/foodcomponent', '.
                 }
                 DashboardComponent = __decorate([
                     core_1.Component({
-                        selector: 'home',
+                        selector: 'dashboard',
                         templateUrl: 'app/dashboard/dashboard.component.html',
                         directives: [common_1.CORE_DIRECTIVES, foodcomponent_1.FoodComponent, chatComponent_1.ChatComponent, cpuComponent_1.CpuComponent]
                     }), 

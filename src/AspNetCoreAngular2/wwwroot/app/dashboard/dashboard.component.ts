@@ -5,7 +5,7 @@ import { ChatComponent } from '../chat/chatComponent';
 import { CpuComponent } from '../cpu/cpuComponent';
 
 @Component({
-    selector: 'home',
+    selector: 'dashboard',
     templateUrl: 'app/dashboard/dashboard.component.html',
     directives: [CORE_DIRECTIVES, FoodComponent, ChatComponent, CpuComponent]
 })
