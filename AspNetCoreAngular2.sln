@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E44E1DEB-3EC1-49B3-BAEF-7195C1FA7F16}"
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Microsoft.AspNet.SignalR.Messaging", "src\Microsoft.AspNet.SignalR.Messaging\Microsoft.AspNet.SignalR.Messaging.xproj", "{1A8EEF26-BA42-496D-9CAE-722581F9777C}"

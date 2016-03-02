@@ -36,7 +36,6 @@ System.register(['angular2/core', 'angular2/common', '../services/foodDataServic
                     this.currentFoodItem = new FoodItem_1.FoodItem();
                 }
                 FoodComponent.prototype.ngOnInit = function () {
-                    this.getAllFood();
                     this.subscribeToEvents();
                 };
                 FoodComponent.prototype.saveFood = function () {
@@ -67,7 +66,7 @@ System.register(['angular2/core', 'angular2/common', '../services/foodDataServic
                     }, function (error) {
                         console.log(error);
                     }, function () {
-                        console.log("Deleted complete");
+                        console.log('Deleted complete');
                     });
                 };
                 FoodComponent.prototype.setFoodItemToEdit = function (foodItem) {
@@ -83,6 +82,7 @@ System.register(['angular2/core', 'angular2/common', '../services/foodDataServic
                     var _this = this;
                     this._signalRService.connectionEstablished.subscribe(function () {
                         _this.canAddFood = true;
+                        _this.getAllFood();
                     });
                     this._signalRService.foodchanged.subscribe(function () {
                         _this.getAllFood();

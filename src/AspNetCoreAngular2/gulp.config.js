@@ -35,10 +35,10 @@ module.exports = {
         vendorJsFiles: [
             "node_modules/angular2/bundles/angular2-polyfills.js",
             "node_modules/angular2/bundles/angular2.dev.js",
-            "bower_components/bootstrap/dist/js/bootstrap.js",
+            "node_modules/bootstrap/dist/js/bootstrap.js",
             "node_modules/es6-shim/es6-shim.min.js",
             "node_modules/angular2/bundles/http.dev.js",
-            "bower_components/jquery/dist/jquery.js",
+            "node_modules/jquery/dist/jquery.js",
             "bower_components/signalr/jquery.signalR.js",
             "node_modules/angular2/bundles/router.dev.js",
             "node_modules/angular2/es6/dev/src/testing/shims_for_IE.js",

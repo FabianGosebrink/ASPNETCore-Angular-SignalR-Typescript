@@ -34,8 +34,10 @@ System.register(['angular2/core', 'angular2/common', '../services/signalRService
                     this.allMessages = new Array();
                 }
                 ChatComponent.prototype.sendMessage = function () {
-                    this.currentMessage.Sent = new Date();
-                    this._signalRService.sendChatMessage(this.currentMessage);
+                    if (this.canSendMessage) {
+                        this.currentMessage.Sent = new Date();
+                        this._signalRService.sendChatMessage(this.currentMessage);
+                    }
                 };
                 ChatComponent.prototype.subscribeToEvents = function () {
                     var _this = this;
@@ -43,7 +45,7 @@ System.register(['angular2/core', 'angular2/common', '../services/signalRService
                         _this.canSendMessage = true;
                     });
                     this._signalRService.messageReceived.subscribe(function (message) {
-                        _this.currentMessage = new ChatMessage_1.ChatMessage("", null);
+                        _this.currentMessage = new ChatMessage_1.ChatMessage('', null);
                         _this.allMessages.push(new ChatMessage_1.ChatMessage(message.Message, message.Sent.toString()));
                     });
                 };
@@ -51,7 +53,7 @@ System.register(['angular2/core', 'angular2/common', '../services/signalRService
                     core_1.Component({
                         selector: 'chat-component',
                         templateUrl: 'app/chat/chat.component.html',
-                        directives: [common_1.CORE_DIRECTIVES]
+                        directives: [common_1.CORE_DIRECTIVES],
                     }), 
                     __metadata('design:paramtypes', [signalRService_1.SignalRService])
                 ], ChatComponent);

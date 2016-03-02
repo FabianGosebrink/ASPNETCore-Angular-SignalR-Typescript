@@ -5,6 +5,7 @@ var symdest = require('gulp-symdest');
 var del = require('del');
 var NwBuilder = require('nw-builder');
 var taskListing = require('gulp-task-listing');
+var concat = require('gulp-concat');
  
 gulp.task('default', ['help']);
 gulp.task('help', taskListing.withFilters(/-/));
@@ -34,6 +35,22 @@ gulp.task('copy:vendor:js:to:wwwroot', function(done){
         'clean-vendor-js-in-root',
         'copy-vendor-js-to-wwwroot', 
         done);
+});
+
+gulp.task('test', function () {
+    
+    return gulp.src(
+        ["./wwwroot/app/boot.js", 
+        "./wwwroot/app/app.component.js",
+        "./wwwroot/app/**/*.js"])
+    .pipe(concat("hallelujah.js"))
+    .pipe(gulp.dest("./wwwroot/"));
+    
+    /*
+     return gulp.src(allSources)
+        .pipe(concat(targetFileName))
+        .pipe(uglify())
+        .pipe(gulp.dest(path.join(prodFolder, 'js')));*/
 });
 
 gulp.task('copy-vendor-js-to-wwwroot', function () {

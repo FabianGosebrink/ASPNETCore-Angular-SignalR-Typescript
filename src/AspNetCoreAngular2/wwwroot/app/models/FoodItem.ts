@@ -1,7 +1,7 @@
 
 export class FoodItem {
-    Id: number;
-    ItemName: string;
-    Created: Date;
+    public Id: number;
+    public ItemName: string;
+    public Created: Date;
 }
 

@@ -19,13 +19,10 @@ System.register(['angular2/core'], function(exports_1) {
             AboutComponent = (function () {
                 function AboutComponent() {
                 }
-                AboutComponent.prototype.ngOnInit = function () {
-                    //... 
-                };
                 AboutComponent = __decorate([
                     core_1.Component({
                         selector: 'about',
-                        templateUrl: 'app/about/about.component.html'
+                        templateUrl: 'app/about/about.component.html',
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AboutComponent);
