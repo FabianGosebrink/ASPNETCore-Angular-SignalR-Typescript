@@ -37,22 +37,6 @@ gulp.task('copy:vendor:js:to:wwwroot', function(done){
         done);
 });
 
-gulp.task('test', function () {
-    
-    return gulp.src(
-        ["./wwwroot/app/boot.js", 
-        "./wwwroot/app/app.component.js",
-        "./wwwroot/app/**/*.js"])
-    .pipe(concat("hallelujah.js"))
-    .pipe(gulp.dest("./wwwroot/"));
-    
-    /*
-     return gulp.src(allSources)
-        .pipe(concat(targetFileName))
-        .pipe(uglify())
-        .pipe(gulp.dest(path.join(prodFolder, 'js')));*/
-});
-
 gulp.task('copy-vendor-js-to-wwwroot', function () {
     return gulp.src(buildConfig.config.vendorJsFiles)
         .pipe(gulp.dest(buildConfig.config.rootJsFolder))
@@ -132,4 +116,12 @@ gulp.task('clean-temp-electron', function(done){
 
 gulp.task('clean-temp-nwjs', function(done){  
        return del(buildConfig.config.temp.nwjs, done);
+});
+
+gulp.task('clean-app-js-and-jsmap', function (done) {
+    return del([
+        "./wwwroot/**/*.js",
+        "./wwwroot/**/*.js.map",
+        "!./wwwroot/js/*.js"
+    ], done);
 });

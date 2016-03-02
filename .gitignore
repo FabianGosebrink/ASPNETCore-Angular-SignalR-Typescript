@@ -220,3 +220,8 @@ src/ASPNET5Angular2/wwwroot/**/*.js.map
 src/AspNetCoreAngular2/.dist/*
 src/AspNetCoreAngular2/.temp/*
 src/AspNetCoreAngular2/cache/*
+src/AspNetCoreAngular2/wwwroot/app/**/*.js
+src/AspNetCoreAngular2/wwwroot/app/*.js
+src/AspNetCoreAngular2/wwwroot/app/**/*.js.map
+src/AspNetCoreAngular2/wwwroot/app/*.js.map
+

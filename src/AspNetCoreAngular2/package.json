@@ -32,7 +32,7 @@
     "typings": "^0.6.8"
   },
   "scripts": {
-    "postinstall": "bower install && npm run typings install && gulp copy:vendor:js:to:wwwroot",
+    "postinstall": "bower install && npm run typings install && gulp copy:vendor:js:to:wwwroot && tsc",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "typings": "typings"
