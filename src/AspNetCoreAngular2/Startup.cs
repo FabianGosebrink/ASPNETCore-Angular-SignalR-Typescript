@@ -23,7 +23,7 @@ namespace AspNetCoreAngular2
         }
 
         public IConfigurationRoot Configuration { get; set; }
-        
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
@@ -67,13 +67,15 @@ namespace AspNetCoreAngular2
 
             app.UseIISPlatformHandler();
 
+            app.UseDefaultFiles();
+
             app.UseStaticFiles();
 
             app.UseMvc();
 
             app.UseSignalR();
         }
-        
+
         public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }
