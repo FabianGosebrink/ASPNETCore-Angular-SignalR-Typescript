@@ -1,7 +1,7 @@
 import { Component } from 'angular2/core';
 import { CORE_DIRECTIVES } from 'angular2/common';
-import { SignalRService } from '../services/signalRService';
-import { ChatMessage } from '../models/ChatMessage';
+import { SignalRService } from '../../services/signalRService';
+import { ChatMessage } from '../../models/ChatMessage';
 
 @Component({
     selector: 'chat-component',

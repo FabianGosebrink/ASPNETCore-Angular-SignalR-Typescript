@@ -1,7 +1,7 @@
 ﻿import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
-import {DashboardComponent} from './dashboard/dashboard.component';
-import {AboutComponent} from './about/about.component';
+import {DashboardComponent} from './components/dashboard/dashboard.component';
+import {AboutComponent} from './components/about/about.component';
 
 @Component({
     selector: 'my-app',

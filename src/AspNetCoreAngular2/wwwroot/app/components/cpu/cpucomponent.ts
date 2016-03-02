@@ -1,6 +1,6 @@
 import { Component, OnInit } from 'angular2/core';
 import { CORE_DIRECTIVES } from 'angular2/common';
-import { SignalRService } from '../services/signalRService';
+import { SignalRService } from '../../services/signalRService';
 
 @Component({
     selector: 'cpu-component',
