@@ -22,7 +22,6 @@ export class FoodComponent implements OnInit {
     }
 
     public ngOnInit() {
-        this.getAllFood();
         this.subscribeToEvents();
     }
 
@@ -56,7 +55,7 @@ export class FoodComponent implements OnInit {
                 }, error => {
                     console.log(error);
                 }, () => {
-                    console.log("Deleted complete");
+                    console.log('Deleted complete');
                 });
     }
 
@@ -75,6 +74,7 @@ export class FoodComponent implements OnInit {
     private subscribeToEvents():void{
         this._signalRService.connectionEstablished.subscribe(() => {
             this.canAddFood = true;
+            this.getAllFood();
         });
 
         this._signalRService.foodchanged.subscribe(() => {

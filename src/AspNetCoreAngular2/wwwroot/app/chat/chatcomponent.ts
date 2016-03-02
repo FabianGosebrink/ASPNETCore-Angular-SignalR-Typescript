@@ -6,7 +6,7 @@ import { ChatMessage } from '../models/ChatMessage';
 @Component({
     selector: 'chat-component',
     templateUrl: 'app/chat/chat.component.html',
-    directives: [CORE_DIRECTIVES]
+    directives: [CORE_DIRECTIVES],
 })
 
 
@@ -24,8 +24,10 @@ export class ChatComponent {
     }
 
     public sendMessage() {
-        this.currentMessage.Sent = new Date();
-        this._signalRService.sendChatMessage(this.currentMessage);
+        if (this.canSendMessage) {
+            this.currentMessage.Sent = new Date();
+            this._signalRService.sendChatMessage(this.currentMessage);
+        }
     }
 
     private subscribeToEvents(): void {
@@ -34,7 +36,7 @@ export class ChatComponent {
         });
 
         this._signalRService.messageReceived.subscribe((message: ChatMessage) => {
-            this.currentMessage = new ChatMessage("", null);
+            this.currentMessage = new ChatMessage('', null);
             this.allMessages.push(new ChatMessage(message.Message, message.Sent.toString()));
         });
     }
