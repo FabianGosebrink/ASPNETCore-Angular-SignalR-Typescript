@@ -9,4 +9,4 @@ This is the output after starting the dnx web server
 <img src="_gitAssets/commandLineWebServer.jpg"/>
 
 After this you can browse to the site
-<img src="_gitAssets/Screenshot1.jpg"/>
+<img src="_gitAssets/screenshot1.jpg"/>
