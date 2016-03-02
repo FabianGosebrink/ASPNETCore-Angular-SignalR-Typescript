@@ -2,7 +2,7 @@
 
 ## In this repo we will try a first look at SignalR 3, ASP.NET Core and Angular 2
 
-Just clone this repo and run <pre>npm install</pre>
+Just clone this repo and run <pre>npm i --no-progress</pre>
 After this you can type <pre>dnx web</pre> to start the ASP.NET Server
 
 This is the output after starting the dnx web server
