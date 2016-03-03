@@ -6,33 +6,40 @@ module.exports = {
         rootJsFolder: "./wwwroot/js/",
         allRootVendorJsFiles: ['./wwwroot/js/*.js'],
         allRootFontsFiles: ["./wwwroot/fonts/*"],
-        app:{
+        es6ShimJs: "es6-shim.min.js",
+        app: {
+            folder: "app/",
             indexHtmlFile: "./wwwroot/index.html",
-            allJsFiles:"wwwroot/**/*.js",
-            allCssFiles:"wwwroot/**/*.css",
-            allHtmlFiles:"wwwroot/**/*.html",
+            allJsFiles: "wwwroot/**/*.js",
+            allCssFiles: "wwwroot/**/*.css",
+            allHtmlFiles: "wwwroot/**/*.html",
+            systemConfigJsFile: "wwwroot/system.config.js"
         },
         temp: {
             folder: "./.temp/",
-            
+
             electron: "./.temp/electron/",
             electronFonts: "./.temp/electron/fonts/",
             allElectronFiles: ["./.temp/electron/**/*"],
-            
-            nwjs: "./.temp/nwjs/",
-            nwjsFonts: "./.temp/nwjs/fonts/",
-            allNwjsFiles: ["./.temp/nwjs/**/*"],
+
+            web: "./.temp/web/",
+            webFonts: "./.temp/web/fonts/",
+            webCss: "./.temp/web/css/",
+            webJs: "./.temp/web/js/",
         },
         assets: {
-            nwjs: "assets/nwjs/*",
             electron: "assets/electron/*",
         },
         dist: {
             folder: "./.dist/",
-            nwjsFolder: "./.dist/nwjs/",
             electronFolder: "./.dist/electron/",
+
+            webFolder: "./.dist/web/",
+            webFontsFolder: "./.dist/web/fonts",
+            cssMinFilename: "vendor.min.css",
+            JsMinFilename: "vendor.min.js"
         },
-        vendorJsFiles: [
+        vendorJsFilesForDev: [
             "node_modules/angular2/bundles/angular2-polyfills.js",
             "node_modules/angular2/bundles/angular2.dev.js",
             "node_modules/bootstrap/dist/js/bootstrap.js",
@@ -45,6 +52,30 @@ module.exports = {
             "node_modules/rxjs/bundles/Rx.js",
             "node_modules/systemjs/dist/system-polyfills.js",
             "node_modules/systemjs/dist/system.src.js",
+        ],
+        vendorJsFilesForProd: [
+            "system-polyfills.js",
+            "shims_for_IE.js",
+            "angular2-polyfills.js",
+            "system.src.js",
+            "Rx.js",
+            "angular2.dev.js",
+            "http.dev.js",
+            "router.dev.js",
+            "jquery.js",
+            "jquery.signalR.js",
+            "bootstrap.js",
+        ],
+        jsFilesToCopyAsIs: [
+            "es6-shim.min.js"
+        ],
+        vendorCssFiles: [
+            "bootstrap.css",
+            "metisMenu.min.css",
+            "timeline.css",
+            "sb-admin-2.css",
+            "morris.css",
+            "font-awesome.min.css"
         ]
     }
 };
