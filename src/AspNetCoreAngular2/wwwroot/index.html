@@ -55,19 +55,7 @@
     <script src="js/bootstrap.js"></script>
 
     <!-- 2. Configure SystemJS -->
-
-    <script>
-        System.config({
-        packages: {
-          app: {
-            format: 'register',
-            defaultExtension: 'js'
-          }
-        }
-      });
-      System.import('app/boot')
-            .then(null, console.error.bind(console));
-    </script>
+    <script src="system.config.js"></script>
 </body>
 
 </html>
