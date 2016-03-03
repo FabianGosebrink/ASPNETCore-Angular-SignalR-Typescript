@@ -4,7 +4,7 @@ import { SignalRService } from '../../services/signalRService';
 
 @Component({
     selector: 'cpu-component',
-    templateUrl: 'app/cpu/cpu.component.html',
+    templateUrl: 'app/components/cpu/cpu.component.html',
     directives: [CORE_DIRECTIVES]
 })
 

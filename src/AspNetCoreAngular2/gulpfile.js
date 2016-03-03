@@ -6,34 +6,35 @@ var del = require('del');
 var NwBuilder = require('nw-builder');
 var taskListing = require('gulp-task-listing');
 var concat = require('gulp-concat');
- 
+var path = require('path');
+
 gulp.task('default', ['help']);
 gulp.task('help', taskListing.withFilters(/-/));
 
 var buildConfig = require('./gulp.config');
 
-gulp.task('electron:windows', function(done){  
+gulp.task('electron:windows', function (done) {
     runSeq(
         'clean-temp-electron',
-        'copy-electron-files', 
+        'copy-electron-files',
         'copy-fonts-to-electron-temp',
-        'build-electron', 
+        'build-electron',
         done);
 });
 
-gulp.task('nwjs:windows', function(done){  
+gulp.task('nwjs:windows', function (done) {
     runSeq(
         'clean-temp-nwjs',
-        'copy-nwjs-files', 
+        'copy-nwjs-files',
         'copy-fonts-to-nwjs-temp',
         'nwjs-build-node-webkit',
         done);
 });
 
-gulp.task('copy:vendor:js:to:wwwroot', function(done){  
+gulp.task('copy:vendor:js:to:wwwroot', function (done) {
     runSeq(
         'clean-vendor-js-in-root',
-        'copy-vendor-js-to-wwwroot', 
+        'copy-vendor-js-to-wwwroot',
         done);
 });
 
@@ -42,20 +43,20 @@ gulp.task('copy-vendor-js-to-wwwroot', function () {
         .pipe(gulp.dest(buildConfig.config.rootJsFolder))
 });
 
-gulp.task('copy-nwjs-files', function(done){  
+gulp.task('copy-nwjs-files', function (done) {
     return gulp.src([
-         buildConfig.config.assets.nwjs,
-       buildConfig.config.app.allJsFiles,
+        buildConfig.config.assets.nwjs,
+        buildConfig.config.app.allJsFiles,
         buildConfig.config.app.allCssFiles,
         buildConfig.config.app.allHtmlFiles,
         buildConfig.config.app.indexHtmlFile
     ]).pipe(gulp.dest(buildConfig.config.temp.nwjs));
 });
 
-gulp.task('copy-fonts-to-nwjs-temp', function(done){  
+gulp.task('copy-fonts-to-nwjs-temp', function (done) {
     return gulp.src(
         buildConfig.config.allRootFontsFiles
-    ).pipe(gulp.dest(buildConfig.config.temp.nwjsFonts));
+        ).pipe(gulp.dest(buildConfig.config.temp.nwjsFonts));
 });
 
 gulp.task('nwjs-build-node-webkit', function () {
@@ -82,13 +83,13 @@ gulp.task('nwjs-build-node-webkit', function () {
 
 });
 
-gulp.task('copy-fonts-to-electron-temp', function(done){  
+gulp.task('copy-fonts-to-electron-temp', function (done) {
     return gulp.src(
         buildConfig.config.allRootFontsFiles
-    ).pipe(gulp.dest(buildConfig.config.temp.electronFonts));
+        ).pipe(gulp.dest(buildConfig.config.temp.electronFonts));
 });
 
-gulp.task('copy-electron-files', function(done){  
+gulp.task('copy-electron-files', function (done) {
     return gulp.src([
         buildConfig.config.assets.electron,
         buildConfig.config.app.allJsFiles,
@@ -98,24 +99,28 @@ gulp.task('copy-electron-files', function(done){
     ]).pipe(gulp.dest(buildConfig.config.temp.electron));
 });
 
-gulp.task('build-electron', function(done){  
-    return gulp.src(buildConfig.config.temp.allElectronFiles)
+gulp.task('build-electron', function (done) {
+    return gulp.src(path.join(buildConfig.config.temp.electron, '**', '*'))
         .pipe(electron({
-            version: '0.36.7',
-            platform: 'win32' }))
+            version: '0.36.9',
+            platform: 'win32',
+            arch: 'x64',
+            companyName: 'Offering Solutions',
+            linuxExecutableName: 'ASPNETCoreAngularJS2Example',
+        }))
         .pipe(symdest(buildConfig.config.dist.electronFolder + 'win'));
 });
 
-gulp.task('clean-vendor-js-in-root', function(done){  
-       return del(buildConfig.config.temp.allRootVendorJsFiles, done);
+gulp.task('clean-vendor-js-in-root', function (done) {
+    return del(buildConfig.config.temp.allRootVendorJsFiles, done);
 });
 
-gulp.task('clean-temp-electron', function(done){  
-       return del(buildConfig.config.temp.electron, done);
+gulp.task('clean-temp-electron', function (done) {
+    return del(buildConfig.config.temp.electron, done);
 });
 
-gulp.task('clean-temp-nwjs', function(done){  
-       return del(buildConfig.config.temp.nwjs, done);
+gulp.task('clean-temp-nwjs', function (done) {
+    return del(buildConfig.config.temp.nwjs, done);
 });
 
 gulp.task('clean-app-js-and-jsmap', function (done) {

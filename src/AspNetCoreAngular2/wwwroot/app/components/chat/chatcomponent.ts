@@ -5,7 +5,7 @@ import { ChatMessage } from '../../models/ChatMessage';
 
 @Component({
     selector: 'chat-component',
-    templateUrl: 'app/chat/chat.component.html',
+    templateUrl: 'app/components/chat/chat.component.html',
     directives: [CORE_DIRECTIVES],
 })
 

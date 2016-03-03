@@ -6,7 +6,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "angular2": "2.0.0-beta.7",
+    "angular2": "2.0.0-beta.8",
     "bootstrap": "^3.3.6",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.3",
@@ -26,6 +26,7 @@
     "gulp-symdest": "^1.0.0",
     "gulp-task-listing": "^1.0.1",
     "nw-builder": "^2.2.0",
+    "path": "^0.12.7",
     "run-sequence": "^1.1.5",
     "tslint": "^3.3.0",
     "typescript": "^1.7.5",

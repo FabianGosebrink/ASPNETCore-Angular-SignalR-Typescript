@@ -6,7 +6,7 @@ import { CpuComponent } from '../cpu/cpuComponent';
 
 @Component({
     selector: 'dashboard',
-    templateUrl: 'app/dashboard/dashboard.component.html',
+    templateUrl: 'app/components/dashboard/dashboard.component.html',
     directives: [CORE_DIRECTIVES, FoodComponent, ChatComponent, CpuComponent]
 })
 
