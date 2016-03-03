@@ -9,10 +9,10 @@ var path = require('path');
 
 var buildConfig = require('../gulp.config');
 
-gulp.task('common:copy:vendor:js:to:wwwroot', function (done) {
+gulp.task('common-copy-vendor-js-to-wwwroot', function (done) {
     runSeq(
         'common-clean-vendor-js-in-root',
-        'common-copy-vendor-js-to-wwwroot',
+        'common-copy-vendor-js-to-wwwroot-internal',
         done);
 });
 
@@ -24,8 +24,8 @@ gulp.task('common-clean-app-js-and-jsmap', function (done) {
     ], done);
 });
 
-gulp.task('common-copy-vendor-js-to-wwwroot', function () {
-    return gulp.src(buildConfig.config.vendorJsFilesForDev)
+gulp.task('common-copy-vendor-js-to-wwwroot-internal', function () {
+    return gulp.src(buildConfig.config.sources.jsFilesInclSourcePaths)
         .pipe(gulp.dest(buildConfig.config.rootJsFolder))
 });
 

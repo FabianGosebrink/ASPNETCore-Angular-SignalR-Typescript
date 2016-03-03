@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,19 +10,6 @@
 
     <title>ASP.NET Core 1.0 Angular 2 Demo</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="css/bootstrap.css">
-
-    <!-- MetisMenu CSS -->
-    <link href="css/metisMenu.min.css" rel="stylesheet">
-    <!-- Timeline CSS -->
-    <link href="css/timeline.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="css/sb-admin-2.css" rel="stylesheet">
-    <!-- Morris Charts CSS -->
-    <link href="css/morris.css" rel="stylesheet">
-    <!-- Custom Fonts -->
-    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -31,31 +18,35 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/metisMenu.min.css">
+    <link rel="stylesheet" href="css/timeline.css">
+    <link rel="stylesheet" href="css/sb-admin-2.css">
+    <link rel="stylesheet" href="css/morris.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- endinject -->
 </head>
 
 <body>
     <my-app>Loading...</my-app>
-
-    <!-- 1. Load libraries -->
-    <!-- IE required polyfills, in this exact order -->
+    
+    <!-- inject:js -->
     <script src="js/es6-shim.min.js"></script>
     <script src="js/system-polyfills.js"></script>
     <script src="js/shims_for_IE.js"></script>
-
     <script src="js/angular2-polyfills.js"></script>
     <script src="js/system.src.js"></script>
     <script src="js/Rx.js"></script>
     <script src="js/angular2.dev.js"></script>
-
     <script src="js/http.dev.js"></script>
     <script src="js/router.dev.js"></script>
-
     <script src="js/jquery.js"></script>
     <script src="js/jquery.SignalR.js"></script>
     <script src="js/bootstrap.js"></script>
-
-    <!-- 2. Configure SystemJS -->
     <script src="system.config.js"></script>
+    <!-- endinject -->
 </body>
 
 </html>

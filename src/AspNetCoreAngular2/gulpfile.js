@@ -1,11 +1,6 @@
 var gulp = require('gulp');
 var runSeq = require('run-sequence');
-var electron = require('gulp-atom-electron');
-var symdest = require('gulp-symdest');
-var del = require('del');
 var taskListing = require('gulp-task-listing');
-var concat = require('gulp-concat');
-var path = require('path');
 
 var buildConfig = require('./gulp.config');
 
@@ -15,9 +10,15 @@ gulp.task('help', taskListing.withFilters(/-/));
 require('./gulpTasks/electron');
 require('./gulpTasks/web');
 
-gulp.task('build:all', function (done) {
+gulp.task('build:all:prod', function (done) {
     runSeq(
-        //'common-clean-vendor-js-in-root',
+        'web:build:prod',
         'build:electron:windows',
+        done);
+});
+
+gulp.task('build:web:dev', function (done) {
+    runSeq(
+        'web:build:dev',
         done);
 });
