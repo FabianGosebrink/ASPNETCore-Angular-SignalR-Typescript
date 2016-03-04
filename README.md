@@ -2,6 +2,8 @@
 
 ## With this repository we can create a X-Platform / Cross Platform Application running with bower, npm, gulp, ASP.NET Core, SignalR 3, Cordova, Electron and Angular 2 on client side.
 
+####Warning: I am working with Angular 2, which is currently beta, ASP.NET Core which is also an release candidate and SignalR 3 which is also not released yet...but it works. Enjoy :-)
+
 Just clone this repo and run <pre>npm i --no-progress</pre>
 After this you can type <pre>dnx web</pre> to start the ASP.NET Server
 
@@ -17,7 +19,18 @@ Please the the gulp tasks running <pre>gulp</pre> on command line in the root fo
 
 Running the Main Tasks will build you your application.
 
-You can deploy the API to Azure or your server.
+<pre>gulp build:all</pre>
+
+Will give you the output in the .dist-Folder
+<img src="_gitAssets/dist-Folder.jpg"/>
+
+<i>Electron</i>: Is containing the executable for the application<br/>
+<i>Android</i>: Is containing the Android app<br/>
+<i>Web</i>: Is containing the web-files to drop it on a server<br/>
+<i>Windows</i>: Is containing the Visual Studio Solution with Windows Phone 8.1, Windows 8.1 and the Windows 10 (Universal Windows) app
+<img src="_gitAssets/windows-folder.jpg"/>
+
+
 
 Screenshots from the mobile emulator for Windows Phone:
 <img src="_gitAssets/xplatform1.jpg"/>
@@ -25,4 +38,5 @@ Screenshots from the mobile emulator for Windows Phone:
 Screenshots from the mobile emulator for Windows 8.1 App:
 <img src="_gitAssets/xplatform2_win81.jpg"/>
 
-Electron has to follow...is TBD
+Screenshots from the executable:
+<img src="_gitAssets/xplatform3.jpg"/>

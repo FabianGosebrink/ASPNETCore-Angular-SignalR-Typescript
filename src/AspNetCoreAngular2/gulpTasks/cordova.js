@@ -52,7 +52,7 @@ gulp.task('cordova-build-windows', function (done) {
     sh.cd(buildConfig.config.temp.cordova);
     sh.exec('cordova platform add windows');
     sh.exec('cordova build windows');
-    sh.cd('..');
+    sh.cd('../..');
     done();
 });
 
@@ -60,7 +60,7 @@ gulp.task('cordova-build-android', function (done) {
     sh.cd(buildConfig.config.temp.cordova);
     sh.exec('cordova platform add android');
     sh.exec('cordova build android');
-    sh.cd('..');
+    sh.cd('../..');
     done();
 });
 
