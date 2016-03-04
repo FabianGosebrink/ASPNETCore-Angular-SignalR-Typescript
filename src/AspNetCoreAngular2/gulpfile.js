@@ -9,10 +9,12 @@ gulp.task('help', taskListing.withFilters(/-/));
 
 require('./gulpTasks/electron');
 require('./gulpTasks/web');
+require('./gulpTasks/cordova');
 
-gulp.task('build:all:prod', function (done) {
+gulp.task('build:all', function (done) {
     runSeq(
-        'web:build:prod',
-        'build:electron:windows',
+        'build:web:prod',
+        'build:electron',
+        'build:apps',
         done);
 });

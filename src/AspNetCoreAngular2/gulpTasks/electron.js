@@ -10,10 +10,10 @@ var path = require('path');
 var buildConfig = require('../gulp.config');
 require('./common.js');
 
-gulp.task('build:electron:windows', function (done) {
+gulp.task('build:electron', function (done) {
     runSeq(
         'electron-clean-temp',
-        'common:copy:vendor:js:to:wwwroot',
+        'common-copy-vendor-js-to-wwwroot',
         'electron-copy-files-to-temp',
         'electron-copy-fonts-to-temp',
         'electron-build-win',
@@ -21,9 +21,9 @@ gulp.task('build:electron:windows', function (done) {
 });
 
 gulp.task('electron-copy-fonts-to-temp', function (done) {
-    return gulp.src(
-            buildConfig.config.allRootFontsFiles
-        ).pipe(gulp.dest(buildConfig.config.temp.electronFonts));
+    return gulp.src([
+        buildConfig.config.allRootFontsFiles
+    ]).pipe(gulp.dest(buildConfig.config.temp.electronFonts));
 });
 
 gulp.task('electron-copy-files-to-temp', function (done) {

@@ -6,7 +6,7 @@ module.exports = {
         rootJsFolder: "./wwwroot/js/",
         rootCssFolder: "./wwwroot/css/",
 
-        allRootFontsFiles: ["./wwwroot/fonts/*"],
+        allRootFontsFiles: "./wwwroot/fonts/*",
 
         app: {
             folder: "app/",
@@ -49,16 +49,23 @@ module.exports = {
             webFonts: "./.temp/web/fonts/",
             webCss: "./.temp/web/css/",
             webJs: "./.temp/web/js/",
+            
+            cordova: "./.temp/cordova/",
         },
         assets: {
             electron: "assets/electron/*",
+            cordova: "assets/cordova/",
         },
         dist: {
             folder: "./.dist/",
+            
             electronFolder: "./.dist/electron/",
-
+            
             webFolder: "./.dist/web/",
             webFontsFolder: "./.dist/web/fonts",
+            
+            appFolder:"./.dist/app",
+            
             cssMinFilename: "vendor.min.css",
             jsMinFilename: "vendor.min.js"
         },

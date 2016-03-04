@@ -14,7 +14,7 @@ var inject = require('gulp-inject');
 var buildConfig = require('../gulp.config');
 var common = require('./common.js');
 
-gulp.task('web:build:prod', function (done) {
+gulp.task('build:web:prod', function (done) {
     runSeq(
         'web-clean-temp',
         'web-clean-dist',
@@ -29,7 +29,7 @@ gulp.task('web:build:prod', function (done) {
         done);
 });
 
-gulp.task('web:build:dev', function (done) {
+gulp.task('build:web:dev', function (done) {
     runSeq(
         'common-copy-vendor-js-to-wwwroot',
         'web-inject-into-index',
@@ -57,9 +57,9 @@ gulp.task('web-copy-files-to-temp', function (done) {
 });
 
 gulp.task('web-copy-fonts-to-prod', function (done) {
-    return gulp.src(
+    return gulp.src([
         buildConfig.config.allRootFontsFiles
-        ).pipe(gulp.dest(buildConfig.config.dist.webFontsFolder));
+    ]).pipe(gulp.dest(buildConfig.config.dist.webFontsFolder));
 });
 
 gulp.task('web-concat-minify-css-and-copy-to-prod', function (done) {
@@ -148,22 +148,22 @@ gulp.task('web-inject-into-index', function (done) {
     var allMappedJsSources = allJsFiles.map(function (file) {
         return path.join(buildConfig.config.rootJsFolder, file);
     });
-    
+
     allMappedJsSources.push(buildConfig.config.app.systemConfigJsFile);
-    
+
     var allCssFiles = buildConfig.config.app.allRootVendorCssFiles;
 
     var allMappedCssSources = allCssFiles.map(function (file) {
         return path.join(buildConfig.config.rootCssFolder, file);
     });
-    
+
     var allSources = [].concat(allMappedJsSources, allMappedCssSources);
-    
+
     var target = gulp.src(buildConfig.config.app.indexHtmlFile);
 
     var sources = gulp.src(allSources, {
-            read: false
-        });
+        read: false
+    });
 
     return target.pipe(inject(sources, {
         ignorePath: "wwwroot/",
