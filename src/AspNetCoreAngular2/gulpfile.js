@@ -16,9 +16,3 @@ gulp.task('build:all:prod', function (done) {
         'build:electron:windows',
         done);
 });
-
-gulp.task('build:web:dev', function (done) {
-    runSeq(
-        'web:build:dev',
-        done);
-});
