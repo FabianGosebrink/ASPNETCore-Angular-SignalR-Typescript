@@ -1,4 +1,4 @@
-# Angular 2, ASP.NET Core With SignalR 3 - XPlatform
+# Angular 2 // ASP.NET Core // SignalR 3 - XPlatform
 
 ## With this repository we can create a X-Platform / Cross Platform Application running with bower, npm, gulp, ASP.NET Core, SignalR 3, Cordova, Electron and Angular 2 on client side.
 
