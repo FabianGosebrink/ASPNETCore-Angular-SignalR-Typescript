@@ -1,10 +1,10 @@
 # Angular 2 // ASP.NET Core // SignalR 3 - XPlatform
 
-## With this repository we can create a X-Platform / Cross Platform Application running with bower, npm, gulp, ASP.NET Core, SignalR 3, Cordova, Electron and Angular 2 with Typescript on client side.
+## With this repository we can create a X-Platform / Cross Platform Application running with bower, npm, gulp, ASP.NET Core, SignalR 3, Cordova, Electron and Angular 2 with Typescript.
 
 ####Warning: I am working with Angular 2, which is currently beta, ASP.NET Core which is also an release candidate and SignalR 3 which is also not released yet...but it works. Enjoy :-)
 
-Just clone this repo and run <pre>npm i --no-progress</pre>
+Just clone this repo and run <pre>npm install</pre>
 After this you can type <pre>dnx web</pre> to start the ASP.NET Server
 
 This is the output after starting the dnx web server
