@@ -22,7 +22,7 @@ Running the Main Tasks will build you your application.
 <pre>gulp build:all</pre>
 
 Will give you the output in the .dist-Folder
-<img src="_gitAssets/dist-Folder.jpg"/>
+<img src="_gitAssets/dist-folder.jpg"/>
 
 <i>Electron</i>: Is containing the executable for the application<br/>
 <i>Android</i>: Is containing the Android app<br/>
