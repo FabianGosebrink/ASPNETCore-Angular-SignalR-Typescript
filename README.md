@@ -27,7 +27,7 @@ Will give you the output in the .dist-Folder
 <i>Electron</i>: Is containing the executable for the application<br/>
 <i>Android</i>: Is containing the Android app<br/>
 <i>Web</i>: Is containing the web-files to drop it on a server<br/>
-<i>Windows</i>: Is containing the Visual Studio Solution with Windows Phone 8.1, Windows 8.1 and the Windows 10 (Universal Windows) app
+<i>Windows</i>: Is containing the Visual Studio Solution with Windows Phone 8.1, Windows 8.1 and the Windows 10 (Universal Windows) app<br/>
 <img src="_gitAssets/windows-folder.jpg"/>
 
 
