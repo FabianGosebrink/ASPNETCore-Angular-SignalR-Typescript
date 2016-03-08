@@ -31,105 +31,109 @@ gulp.task('build:web:prod', function (done) {
 
 gulp.task('build:web:dev', function (done) {
     runSeq(
-        'common-copy-vendor-js-to-wwwroot',
+        'web-copy-vendor-js-to-wwwroot',
         'web-inject-into-index',
         done);
 });
 
 gulp.task('web-clean-temp', function (done) {
-    return del(buildConfig.config.temp.web, done);
+    return del(buildConfig.temp.web, done);
 });
 
 gulp.task('web-clean-dist', function (done) {
-    return del(buildConfig.config.dist.webFolder, done);
+    return del(buildConfig.dist.webFolder, done);
 });
 
 gulp.task('web-copy-files-to-temp', function (done) {
 
     return gulp.src([
-        buildConfig.config.app.allJsFiles,
-        buildConfig.config.app.allCssFiles,
-        buildConfig.config.app.allHtmlFiles,
-        buildConfig.config.app.indexHtmlFile,
-        buildConfig.config.app.systemConfigJsFile
+        buildConfig.app.allJsFiles,
+        buildConfig.app.allCssFiles,
+        buildConfig.app.allHtmlFiles,
+        buildConfig.app.indexHtmlFile,
+        buildConfig.app.systemConfigJsFile
     ])
-        .pipe(gulp.dest(buildConfig.config.temp.web));
+        .pipe(gulp.dest(buildConfig.temp.web));
 });
 
 gulp.task('web-copy-fonts-to-prod', function (done) {
     return gulp.src([
-        buildConfig.config.allRootFontsFiles
-    ]).pipe(gulp.dest(buildConfig.config.dist.webFontsFolder));
+        buildConfig.allRootFontsFiles
+    ]).pipe(gulp.dest(buildConfig.dist.webFontsFolder));
+});
+
+gulp.task('web-copy-vendor-js-to-wwwroot', function () {
+    return common.copyVendorJsToWwwroot();
 });
 
 gulp.task('web-concat-minify-css-and-copy-to-prod', function (done) {
 
-    var files = buildConfig.config.app.allRootVendorCssFiles;
+    var files = buildConfig.app.allRootVendorCssFiles;
 
     var allMappedSources = files.map(function (file) {
-        return path.join(buildConfig.config.temp.webCss, file);
+        return path.join(buildConfig.temp.webCss, file);
     });
 
     return gulp.src(allMappedSources)
-        .pipe(concat(buildConfig.config.dist.cssMinFilename))
+        .pipe(concat(buildConfig.dist.cssMinFilename))
         .pipe(cssMinifier())
-        .pipe(gulp.dest(buildConfig.config.dist.webFolder + "css"));
+        .pipe(gulp.dest(buildConfig.dist.webFolder + "css"));
 });
 
 gulp.task('web-copy-files-as-is-to-js', function (done) {
 
     var files = [
-        path.join(buildConfig.config.temp.webJs, buildConfig.config.sources.es6ShimJs),
-        path.join(buildConfig.config.temp.web, buildConfig.config.sources.systemConfigJs)
+        path.join(buildConfig.temp.webJs, buildConfig.sources.es6ShimJs),
+        path.join(buildConfig.temp.web, buildConfig.sources.systemConfigJs)
     ];
 
     return gulp.src(files)
-        .pipe(gulp.dest(buildConfig.config.dist.webFolder + "js"));
+        .pipe(gulp.dest(buildConfig.dist.webFolder + "js"));
 });
 
 gulp.task('web-concat-minify-vendor-js-and-copy-to-prod', function (done) {
 
-    var files = buildConfig.config.app.allRootVendorJsFiles;
+    var files = buildConfig.app.allRootVendorJsFiles;
 
     var allMappedSources = files.map(function (file) {
-        return path.join(buildConfig.config.temp.webJs, file);
+        return path.join(buildConfig.temp.webJs, file);
     });
 
     return gulp.src(allMappedSources)
-        .pipe(concat(buildConfig.config.dist.jsMinFilename))
+        .pipe(concat(buildConfig.dist.jsMinFilename))
         .pipe(uglify())
-        .pipe(gulp.dest(buildConfig.config.dist.webFolder + "js"));
+        .pipe(gulp.dest(buildConfig.dist.webFolder + "js"));
 });
 
 gulp.task('web-copy-app-to-prod', function (done) {
 
     var appFiles = [
-        buildConfig.config.temp.web +
-        buildConfig.config.app.folder +
+        buildConfig.temp.web +
+        buildConfig.app.folder +
         "**/*"
     ];
 
     return gulp.src(appFiles)
-        .pipe(gulp.dest(buildConfig.config.dist.webFolder + "app"));
+        .pipe(gulp.dest(buildConfig.dist.webFolder + "app"));
 });
 
 gulp.task('web-copy-system.config-to-prod', function (done) {
 
     return gulp.src(path.join(
-        buildConfig.config.temp.web, "system.config.js"
+        buildConfig.temp.web, "system.config.js"
         ))
-        .pipe(gulp.dest(buildConfig.config.dist.webFolder));
+        .pipe(gulp.dest(buildConfig.dist.webFolder));
 });
 
 gulp.task('web-inject-and-copy-index-to-prod', function (done) {
 
-    var target = gulp.src(buildConfig.config.temp.web + "index.html");
+    var target = gulp.src(buildConfig.temp.web + "index.html");
 
     var sources = gulp.src([
-        path.join(buildConfig.config.dist.webFolder, "css", buildConfig.config.dist.cssMinFilename),
-        path.join(buildConfig.config.dist.webFolder, "js", buildConfig.config.sources.es6ShimJs),
-        path.join(buildConfig.config.dist.webFolder, "js", buildConfig.config.dist.jsMinFilename),
-        path.join(buildConfig.config.dist.webFolder, buildConfig.config.sources.systemConfigJs)
+        path.join(buildConfig.dist.webFolder, "css", buildConfig.dist.cssMinFilename),
+        path.join(buildConfig.dist.webFolder, "js", buildConfig.sources.es6ShimJs),
+        path.join(buildConfig.dist.webFolder, "js", buildConfig.dist.jsMinFilename),
+        path.join(buildConfig.dist.webFolder, buildConfig.sources.systemConfigJs)
     ], {
             read: false
         });
@@ -137,29 +141,29 @@ gulp.task('web-inject-and-copy-index-to-prod', function (done) {
     return target.pipe(inject(sources, {
         ignorePath: ".dist/web/",
         addRootSlash: false
-    })).pipe(gulp.dest(buildConfig.config.dist.webFolder));
+    })).pipe(gulp.dest(buildConfig.dist.webFolder));
 });
 
 
 gulp.task('web-inject-into-index', function (done) {
 
-    var allJsFiles = buildConfig.config.app.allRootVendorJsFiles;
+    var allJsFiles = buildConfig.app.allRootVendorJsFiles;
 
     var allMappedJsSources = allJsFiles.map(function (file) {
-        return path.join(buildConfig.config.rootJsFolder, file);
+        return path.join(buildConfig.rootJsFolder, file);
     });
 
-    allMappedJsSources.push(buildConfig.config.app.systemConfigJsFile);
+    allMappedJsSources.push(buildConfig.app.systemConfigJsFile);
 
-    var allCssFiles = buildConfig.config.app.allRootVendorCssFiles;
+    var allCssFiles = buildConfig.app.allRootVendorCssFiles;
 
     var allMappedCssSources = allCssFiles.map(function (file) {
-        return path.join(buildConfig.config.rootCssFolder, file);
+        return path.join(buildConfig.rootCssFolder, file);
     });
 
     var allSources = [].concat(allMappedJsSources, allMappedCssSources);
 
-    var target = gulp.src(buildConfig.config.app.indexHtmlFile);
+    var target = gulp.src(buildConfig.app.indexHtmlFile);
 
     var sources = gulp.src(allSources, {
         read: false
@@ -168,5 +172,5 @@ gulp.task('web-inject-into-index', function (done) {
     return target.pipe(inject(sources, {
         ignorePath: "wwwroot/",
         addRootSlash: false
-    })).pipe(gulp.dest(buildConfig.config.root));
+    })).pipe(gulp.dest(buildConfig.root));
 });
