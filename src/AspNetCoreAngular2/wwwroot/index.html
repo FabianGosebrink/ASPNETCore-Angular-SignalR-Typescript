@@ -30,22 +30,11 @@
 <body>
     <my-app>Loading...</my-app>
 
-    <!-- inject:js -->
-    <script src="js/es6-shim.min.js"></script>
-    <script src="js/system-polyfills.js"></script>
-    <script src="js/shims_for_IE.js"></script>
-
-    <script src="js/angular2-polyfills.js"></script>
-    <script src="js/system.src.js"></script>
-    <script src="js/Rx.js"></script>
-    <script src="js/angular2.dev.js"></script>
-    <script src="js/http.dev.js"></script>
-    <script src="js/router.dev.js"></script>
-    <script src="js/jquery.js"></script>
+    <!--loads libraries-->
+    <script src="dist/vendor.bundle.js"></script>
     <script src="js/jquery.SignalR.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="system.config.js"></script>
-    <!-- endinject -->
+    <!--loads the application-->
+    <script src="dist/app.bundle.js"></script>
 </body>
 
 </html>

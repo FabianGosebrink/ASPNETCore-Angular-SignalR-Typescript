@@ -1,18 +1,18 @@
-{
-  "compilerOptions": {
-    "target": "es5",
-    "module": "system",
-    "sourceMap": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "moduleResolution": "node",
-    "removeComments": false,
-    "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": true
-  },
-  "exclude": [
-    "node_modules",
-    "typings/main.d.ts",
-    "typings/main"
-  ]
+﻿{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "moduleResolution":  "node",
+        "removeComments": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "noEmitHelpers": false,
+        "sourceMap": true
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "compileOnSave": false,
+    "buildOnSave": false
 }
+
