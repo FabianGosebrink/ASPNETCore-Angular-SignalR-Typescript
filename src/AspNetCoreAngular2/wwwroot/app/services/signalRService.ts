@@ -1,15 +1,15 @@
-/// <reference path='../../../typings/signalr/signalr.d.ts' />
-
-import { Injectable, EventEmitter } from 'angular2/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { CONFIGURATION } from '../shared/app.constants';
 import { ChatMessage } from '../models/ChatMessage';
+
+declare var $;
 
 @Injectable()
 export class SignalRService {
 
     private proxy: HubProxy;
     private proxyName: string = 'coolmessages';
-    private connection: HubConnection;
+    private connection;
 
     public foodchanged: EventEmitter<any>;
     public messageReceived: EventEmitter<ChatMessage>;
@@ -24,7 +24,7 @@ export class SignalRService {
         this.newCpuValue = new EventEmitter<Number>();
         this.connectionExists = false;
 
-        this.connection = jQuery.hubConnection(CONFIGURATION.baseUrls.server + 'signalr/');
+        this.connection = $.hubConnection(CONFIGURATION.baseUrls.server + 'signalr/');
         this.proxy = this.connection.createHubProxy(this.proxyName);
 
         this.registerOnServerEvents();

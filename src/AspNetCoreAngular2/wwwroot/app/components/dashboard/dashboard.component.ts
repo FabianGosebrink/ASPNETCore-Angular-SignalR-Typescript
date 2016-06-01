@@ -1,5 +1,5 @@
-import { Component } from 'angular2/core';
-import { CORE_DIRECTIVES } from 'angular2/common';
+import { Component } from '@angular/core';
+import { CORE_DIRECTIVES } from '@angular/common';
 import { FoodComponent } from '../food/foodcomponent';
 import { ChatComponent } from '../chat/chatComponent';
 import { CpuComponent } from '../cpu/cpuComponent';

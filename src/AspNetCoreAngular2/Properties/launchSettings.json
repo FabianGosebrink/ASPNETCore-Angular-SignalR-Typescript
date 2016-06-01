@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:1824/",
+      "applicationUrl": "http://localhost:5000/",
       "sslPort": 0
     }
   },
@@ -16,12 +16,12 @@
       }
     },
     "web": {
-        "commandName": "web",
-        "environmentVariables": {
-            "Hosting:Environment": "Development"
-        },
-        "launchBrowser": true,
-        "launchUrl": "http://localhost:5000/index.html"
+      "commandName": "web",
+      "launchBrowser": true,
+      "launchUrl": "http://localhost:5000/index.html",
+      "environmentVariables": {
+        "Hosting:Environment": "Development"
+      }
     }
   }
 }
