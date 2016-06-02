@@ -20,14 +20,14 @@ gulp.task('build:web:prod', function (done) {
         'web-clean-temp',
         'web-clean-dist',
         'web-webpack',
-        'web-copy-files-to-temp',
-        'web-copy-fonts-to-prod',
-        'web-concat-minify-css-and-copy-to-prod',
-        'web-copy-files-as-is-to-js',
+        //'web-copy-files-to-temp',
+        //'web-copy-fonts-to-prod',
+        //'web-concat-minify-css-and-copy-to-prod',
+        //'web-copy-files-as-is-to-js',
         //'web-concat-minify-vendor-js-and-copy-to-prod',
-        'web-copy-app-to-prod',
+        //'web-copy-app-to-prod',
         //'web-copy-system.config-to-prod',
-        'web-inject-and-copy-index-to-prod',
+        //'web-inject-and-copy-index-to-prod',
         done);
 });
 

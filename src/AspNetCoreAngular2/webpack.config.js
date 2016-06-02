@@ -7,22 +7,26 @@ module.exports = {
     },
     output: {
         path: __dirname,
-        filename: "[name].bundle.js"
+        filename: ".temp/[name].bundle.js"
     },
     resolve: {
-        extensions: ['', '.ts', '.js']
+        extensions: ['', '.ts', '.js', '.html']
     },
     devtool: 'source-map',
     module: {
         loaders: [
-          {
-              test: /\.ts/,
-              loaders: ['ts-loader'],
-              exclude: /node_modules/
-          }
+            {
+                test: /\.ts/,
+                loaders: ['ts-loader'],
+                exclude: /node_modules/
+            },
+            {
+                test: /\.html$/,
+                loader: 'raw'
+            }
         ]
     },
     plugins: [
-      new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js")
+        new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */".temp/vendor.bundle.js")
     ]
 }
