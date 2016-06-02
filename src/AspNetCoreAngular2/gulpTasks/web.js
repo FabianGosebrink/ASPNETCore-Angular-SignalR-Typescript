@@ -10,6 +10,7 @@ var order = require("gulp-order");
 var cssMinifier = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
 var inject = require('gulp-inject');
+var webpack = require('webpack-stream');
 
 var buildConfig = require('../gulp.config');
 var common = require('./common.js');
@@ -18,13 +19,14 @@ gulp.task('build:web:prod', function (done) {
     runSeq(
         'web-clean-temp',
         'web-clean-dist',
+        'web-webpack',
         'web-copy-files-to-temp',
         'web-copy-fonts-to-prod',
         'web-concat-minify-css-and-copy-to-prod',
         'web-copy-files-as-is-to-js',
-        'web-concat-minify-vendor-js-and-copy-to-prod',
+        //'web-concat-minify-vendor-js-and-copy-to-prod',
         'web-copy-app-to-prod',
-        'web-copy-system.config-to-prod',
+        //'web-copy-system.config-to-prod',
         'web-inject-and-copy-index-to-prod',
         done);
 });
@@ -36,6 +38,12 @@ gulp.task('build:web:dev', function (done) {
         done);
 });
 
+gulp.task('web-webpack', function (done) {
+    return gulp.src(['../wwwroot/app/**/*.ts'])
+        .pipe(webpack(require('../webpack.config.js')))
+        .pipe(gulp.dest('./wwwroot/dist/'));
+});
+
 gulp.task('web-clean-temp', function (done) {
     return del(buildConfig.temp.web, done);
 });
@@ -45,7 +53,6 @@ gulp.task('web-clean-dist', function (done) {
 });
 
 gulp.task('web-copy-files-to-temp', function (done) {
-
     return gulp.src([
         buildConfig.app.allJsFiles,
         buildConfig.app.allCssFiles,
@@ -82,12 +89,8 @@ gulp.task('web-concat-minify-css-and-copy-to-prod', function (done) {
 
 gulp.task('web-copy-files-as-is-to-js', function (done) {
 
-    var files = [
-        path.join(buildConfig.temp.webJs, buildConfig.sources.es6ShimJs),
-        path.join(buildConfig.temp.web, buildConfig.sources.systemConfigJs)
-    ];
-
-    return gulp.src(files)
+    return gulp.src(["wwwroot/js/" + buildConfig.sources.signalR,
+        "wwwroot/dist/*.bundle.js"])
         .pipe(gulp.dest(buildConfig.dist.webFolder + "js"));
 });
 
@@ -121,7 +124,7 @@ gulp.task('web-copy-system.config-to-prod', function (done) {
 
     return gulp.src(path.join(
         buildConfig.temp.web, "system.config.js"
-        ))
+    ))
         .pipe(gulp.dest(buildConfig.dist.webFolder));
 });
 
@@ -131,9 +134,9 @@ gulp.task('web-inject-and-copy-index-to-prod', function (done) {
 
     var sources = gulp.src([
         path.join(buildConfig.dist.webFolder, "css", buildConfig.dist.cssMinFilename),
-        path.join(buildConfig.dist.webFolder, "js", buildConfig.sources.es6ShimJs),
-        path.join(buildConfig.dist.webFolder, "js", buildConfig.dist.jsMinFilename),
-        path.join(buildConfig.dist.webFolder, buildConfig.sources.systemConfigJs)
+        path.join(buildConfig.dist.webFolder, "js/vendor.bundle.js"),
+        path.join(buildConfig.dist.webFolder, "js", buildConfig.sources.signalR),
+        path.join(buildConfig.dist.webFolder, "js/app.bundle.js")
     ], {
             read: false
         });

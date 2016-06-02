@@ -7,7 +7,7 @@ module.exports = {
     },
     output: {
         path: __dirname,
-        filename: "./wwwroot/dist/[name].bundle.js"
+        filename: "[name].bundle.js"
     },
     resolve: {
         extensions: ['', '.ts', '.js']
@@ -23,6 +23,6 @@ module.exports = {
         ]
     },
     plugins: [
-      new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"./wwwroot/dist/vendor.bundle.js")
+      new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js")
     ]
 }
