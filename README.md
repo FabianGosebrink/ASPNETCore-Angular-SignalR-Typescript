@@ -4,8 +4,6 @@
 
 #### Warning: I am working with Angular 2 in RC state, ASP.NET Core which is also an release candidate and SignalR 3 which is also not released yet...but it works. Enjoy :-)
 
-### Warning 2: X-Platform does not work in the moment. Going to fix this soon.
-
 Just clone this repo and run <pre>npm install</pre>
 After this you can type <pre>dnx web</pre> to start the ASP.NET Server or just press the Play-Button in Visual Studio.
 
