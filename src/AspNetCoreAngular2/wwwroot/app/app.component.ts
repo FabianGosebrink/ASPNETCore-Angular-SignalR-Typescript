@@ -5,9 +5,9 @@ import {AboutComponent} from './components/about/about.component';
 
 @Component({
     selector: 'my-app',
-    templateUrl: 'app/app.component.html',
+    template: require('./app.component.html'),
     directives: [ROUTER_DIRECTIVES],
-    styleUrls: ['app/app.component.css']
+    styles: [require('./app.component.css')]
 })
 
 @RouteConfig([

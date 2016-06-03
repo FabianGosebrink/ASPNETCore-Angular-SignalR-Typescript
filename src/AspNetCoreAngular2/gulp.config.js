@@ -11,7 +11,7 @@ module.exports = {
         folder: "app/",
         indexHtmlFile: "./wwwroot/index.html",
         allJsFiles: "wwwroot/dist/*.bundle.js",
-        allCssFiles: "wwwroot/**/*.css",
+        allCssFiles: "wwwroot/css/*.css",
         allHtmlFiles: "wwwroot/**/*.html",
         systemConfigJsFile: "wwwroot/system.config.js",
         allRootVendorJsFiles: [
@@ -59,7 +59,7 @@ module.exports = {
     sources: {
         es6ShimJs: "es6-shim.min.js",
         systemConfigJs: "system.config.js",
-        signalR: "jquery.signalR.js",
+        signalR: "./wwwroot/js/jquery.signalR.js",
         jsFilesInclSourcePaths: [
             "node_modules/angular2/bundles/angular2-polyfills.js",
             "node_modules/angular2/bundles/angular2.dev.js",

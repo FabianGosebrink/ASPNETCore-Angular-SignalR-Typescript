@@ -7,7 +7,7 @@ import { FoodItem } from '../../models/FoodItem';
 @Component({
     selector: 'food-component',
     providers: [DataService],
-    templateUrl: 'app/components/food/food.component.html',
+    template: require('./food.component.html'),
     directives: [CORE_DIRECTIVES]
 })
 

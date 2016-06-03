@@ -1,4 +1,5 @@
 ﻿var webpack = require("webpack");
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -7,7 +8,7 @@ module.exports = {
     },
     output: {
         path: __dirname,
-        filename: ".temp/[name].bundle.js"
+        filename: "[name].bundle.js"
     },
     resolve: {
         extensions: ['', '.ts', '.js', '.html']
@@ -22,11 +23,15 @@ module.exports = {
             },
             {
                 test: /\.html$/,
+                loader: 'html'
+            },
+            {
+                test: /\.css$/,
                 loader: 'raw'
             }
         ]
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */".temp/vendor.bundle.js")
+        new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js")
     ]
 }

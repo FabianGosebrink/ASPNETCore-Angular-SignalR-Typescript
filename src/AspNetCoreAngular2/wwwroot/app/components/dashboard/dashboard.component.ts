@@ -6,7 +6,7 @@ import { CpuComponent } from '../cpu/cpuComponent';
 
 @Component({
     selector: 'dashboard',
-    templateUrl: 'app/components/dashboard/dashboard.component.html',
+    template: require('./dashboard.component.html'),
     directives: [CORE_DIRECTIVES, FoodComponent, ChatComponent, CpuComponent]
 })
 

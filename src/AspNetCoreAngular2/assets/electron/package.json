@@ -1,5 +1,5 @@
 {
   "main" : "index.js",
   "version" : "0.0.1",
-  "name": "ng2-electron sample"
+  "name": "Angular2SignalR"
 }
