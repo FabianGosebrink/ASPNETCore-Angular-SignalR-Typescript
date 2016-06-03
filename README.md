@@ -14,3 +14,17 @@ This is the output after starting the dnx web server
 
 After this you can browse to the site
 ![alt text](_gitAssets/screenshot1.jpg "dnx web server")
+
+With <pre>gulp</pre> you can list all tasks
+![alt text](_gitAssets/gulp-tasks.jpg "dnx web server")
+
+![alt text](_gitAssets/dist-folder.jpg "dnx web server")
+
+Mobile
+![alt text](_gitAssets/xplatform1.jpg "dnx web server")
+
+Win 8.1
+![alt text](_gitAssets/xplatform2_win81.jpg "dnx web server")
+
+Desktop
+![alt text](_gitAssets/xplatform3.jpg "dnx web server")
