@@ -11,12 +11,11 @@ var cssMinifier = require('gulp-minify-css');
 var inject = require('gulp-inject');
 
 var buildConfig = require('../gulp.config');
-var common = require('./common.js');
 
 gulp.task('build:electron', function (done) {
     runSeq(
         'electron-clean-temp',
-        'electron-clean-dist',
+        //'electron-clean-dist',
         'electron-webpack',
         'electron-copy-css-files-to-temp',
         'electron-copy-js-files-to-temp',
@@ -33,7 +32,7 @@ gulp.task('electron-clean-temp', function (done) {
 });
 
 gulp.task('electron-clean-dist', function (done) {
-    return del(buildConfig.dist.electron, done);
+    return del(buildConfig.dist.electronFolder, done);
 });
 
 gulp.task('electron-webpack', function (done) {

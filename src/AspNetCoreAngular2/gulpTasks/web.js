@@ -6,14 +6,12 @@ var del = require('del');
 var taskListing = require('gulp-task-listing');
 var concat = require('gulp-concat');
 var path = require('path');
-var order = require("gulp-order");
 var cssMinifier = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
 var inject = require('gulp-inject');
 var webpack = require('webpack-stream');
 
 var buildConfig = require('../gulp.config');
-var common = require('./common.js');
 
 gulp.task('build:web:prod', function (done) {
     runSeq(
@@ -71,12 +69,6 @@ gulp.task('web-copy-index-file-to-temp', function (done) {
         .pipe(gulp.dest(buildConfig.temp.web));
 });
 
-gulp.task('web-copy-index-file-to-temp', function (done) {
-    return gulp.src([
-        buildConfig.app.indexHtmlFile
-    ])
-        .pipe(gulp.dest(buildConfig.temp.web));
-});
 
 gulp.task('web-copy-other-files-to-prod', function (done) {
     return gulp.src([

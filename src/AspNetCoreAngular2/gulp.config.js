@@ -1,10 +1,7 @@
 'use strict';
 
 module.exports = {
-    root: "./wwwroot/",
     rootJsFolder: "./wwwroot/js/",
-    rootCssFolder: "./wwwroot/css/",
-
     allRootFontsFiles: "./wwwroot/fonts/*",
 
     app: {
@@ -27,16 +24,8 @@ module.exports = {
         ],
     },
     temp: {
-        folder: "./.temp/",
-
         electron: "./.temp/electron/",
-        electronFonts: "./.temp/electron/fonts/",
-
         web: "./.temp/web/",
-        webFonts: "./.temp/web/fonts/",
-        webCss: "./.temp/web/css/",
-        webJs: "./.temp/web/js/",
-
         cordova: "./.temp/cordova/",
     },
     assets: {
@@ -44,17 +33,11 @@ module.exports = {
         cordova: "assets/cordova/",
     },
     dist: {
-        folder: "./.dist/",
-
         electronFolder: "./.dist/electron/",
-
         webFolder: "./.dist/web/",
-        webFontsFolder: "./.dist/web/fonts",
+        appFolder: "./.dist/apps/",
 
-        appFolder: "./.dist/app",
-
-        cssMinFilename: "vendor.min.css",
-        jsMinFilename: "vendor.min.js"
+        cssMinFilename: "vendor.min.css"
     },
     sources: {
         es6ShimJs: "es6-shim.min.js",
