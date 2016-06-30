@@ -17,17 +17,62 @@ gulp.task('build:web:prod', function (done) {
     runSeq(
         'web-clean-temp',
         'web-clean-dist',
-        'web-webpack',
+        'web-webpack-prod',
         'web-copy-css-files-to-temp',
         'web-copy-js-files-to-temp',
         'web-copy-index-file-to-temp',
         'web-copy-fonts-to-temp',
         'web-inject-files-in-index',
-        'web-copy-other-files-to-prod',
+        'web-copy-all-files-to-prod',
         done);
 });
 
-gulp.task('web-webpack', function (done) {
+gulp.task('build:web:dev', function (done) {
+    runSeq(
+        'web-dev-clean-js',
+        'web-dev-webpack',
+        'web-dev-copy-signalR',
+        'web-dev-inject-files-in-index',
+        done);
+});
+
+gulp.task('web-dev-clean-js', function (done) {
+    return del(buildConfig.rootJsFolder, done);
+});
+
+gulp.task('web-dev-webpack', function (done) {
+    return gulp.src([buildConfig.app.allTsFiles])
+        .pipe(webpack(require('../webpack.config.js')))
+        .pipe(gulp.dest(buildConfig.rootJsFolder));
+});
+
+gulp.task('web-dev-copy-signalR', function (done) {
+    return gulp.src([buildConfig.sources.signalR])
+        .pipe(gulp.dest(buildConfig.rootJsFolder));
+});
+
+
+gulp.task('web-dev-inject-files-in-index', function (done) {
+
+    var target = gulp.src("./wwwroot/index.html");
+
+    var sources = gulp.src([
+        path.join("./wwwroot/css", "*.css"),
+        path.join("./wwwroot/js", "vendor.bundle.js"),
+        path.join("./wwwroot/js", "jquery.signalR.js"),
+        path.join("./wwwroot/js", "app.bundle.js")
+    ], {
+            read: false
+        });
+
+    return target.pipe(inject(sources, {
+        ignorePath: "wwwroot/",
+        addRootSlash: false
+    })).pipe(gulp.dest("./wwwroot"));
+});
+
+
+gulp.task('web-webpack-prod', function (done) {
     return gulp.src(['../wwwroot/app/**/*.ts'])
         .pipe(webpack(require('../webpack.config.js')))
         .pipe(gulp.dest(buildConfig.temp.web + "js"));
@@ -70,7 +115,7 @@ gulp.task('web-copy-index-file-to-temp', function (done) {
 });
 
 
-gulp.task('web-copy-other-files-to-prod', function (done) {
+gulp.task('web-copy-all-files-to-prod', function (done) {
     return gulp.src([
         buildConfig.temp.web + "**/*.*"
     ]).pipe(gulp.dest(buildConfig.dist.webFolder));
