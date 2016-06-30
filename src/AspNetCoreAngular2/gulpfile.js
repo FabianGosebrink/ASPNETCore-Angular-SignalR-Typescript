@@ -1,3 +1,4 @@
+/// <binding BeforeBuild='build:web:dev' />
 var gulp = require('gulp');
 var runSeq = require('run-sequence');
 var taskListing = require('gulp-task-listing');
