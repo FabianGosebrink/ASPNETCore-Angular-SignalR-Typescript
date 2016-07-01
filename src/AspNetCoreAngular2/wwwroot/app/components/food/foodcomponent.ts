@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone} from '@angular/core';
 import { CORE_DIRECTIVES } from '@angular/common';
 import { DataService } from '../../services/foodDataService';
 import { SignalRService } from '../../services/signalRService';
@@ -16,9 +16,10 @@ export class FoodComponent implements OnInit {
     public currentFoodItem: FoodItem;
     public canAddFood: Boolean;
 
-    constructor(private _dataService: DataService, private _signalRService: SignalRService) {
+    constructor(private _dataService: DataService, private _signalRService: SignalRService, private _ngZone: NgZone) {
         this.canAddFood = _signalRService.connectionExists;
         this.currentFoodItem = new FoodItem();
+        this.foodItems = [];
     }
 
     public ngOnInit() {
@@ -26,7 +27,7 @@ export class FoodComponent implements OnInit {
     }
 
     public saveFood() {
-        if(this.currentFoodItem.Id){
+        if (this.currentFoodItem.Id) {
             this._dataService
                 .Update(this.currentFoodItem.Id, this.currentFoodItem)
                 .subscribe(data => {
@@ -50,35 +51,42 @@ export class FoodComponent implements OnInit {
     public deleteFoodItem(foodItem: FoodItem) {
         this._dataService.DeleteFood(foodItem.Id)
             .subscribe(
-                response => {
-                    // this._signalRService.FoodDeleted();
-                }, error => {
-                    console.log(error);
-                }, () => {
-                    console.log('Deleted complete');
-                });
+            response => {
+                // this._signalRService.FoodDeleted();
+            }, error => {
+                console.log(error);
+            }, () => {
+                console.log('Deleted complete');
+            });
     }
 
-    public setFoodItemToEdit(foodItem: FoodItem){
+    public setFoodItemToEdit(foodItem: FoodItem) {
         this.currentFoodItem = foodItem;
     }
 
     private getAllFood(): void {
-        this._dataService
-            .GetAllFood()
-            .subscribe(data => this.foodItems = data,
+        this._ngZone.run(() => {
+            this._dataService
+                .GetAllFood()
+                .subscribe(
+                data => {
+                    this.foodItems = data;
+                },
                 error => console.log(error),
-                () => console.log('Get all Foods complete ' + this.foodItems ));
+                () => console.log('Get all Foods complete ' + this.foodItems));
+        });
+
     }
 
-    private subscribeToEvents():void{
+    private subscribeToEvents(): void {
         this._signalRService.connectionEstablished.subscribe(() => {
             this.canAddFood = true;
             this.getAllFood();
         });
 
         this._signalRService.foodchanged.subscribe(() => {
-             this.getAllFood();
+            this.foodItems = [];
+            this.getAllFood();
         });
     }
 }
