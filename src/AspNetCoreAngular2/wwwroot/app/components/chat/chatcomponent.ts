@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { CORE_DIRECTIVES } from '@angular/common';
 import { SignalRService } from '../../services/signalRService';
 import { ChatMessage } from '../../models/ChatMessage';
@@ -16,7 +16,7 @@ export class ChatComponent {
     public allMessages: ChatMessage[];
     public canSendMessage: Boolean;
 
-    constructor(private _signalRService: SignalRService) {
+    constructor(private _signalRService: SignalRService, private _ngZone: NgZone) {
         this.subscribeToEvents();
         this.canSendMessage = _signalRService.connectionExists;
         this.currentMessage = new ChatMessage('', null);
@@ -36,8 +36,10 @@ export class ChatComponent {
         });
 
         this._signalRService.messageReceived.subscribe((message: ChatMessage) => {
-            this.currentMessage = new ChatMessage('', null);
-            this.allMessages.push(new ChatMessage(message.Message, message.Sent.toString()));
+            this._ngZone.run(() => {
+                this.currentMessage = new ChatMessage('', null);
+                this.allMessages.push(new ChatMessage(message.Message, message.Sent.toString()));
+            });
         });
     }
 }

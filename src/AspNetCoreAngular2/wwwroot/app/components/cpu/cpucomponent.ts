@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { CORE_DIRECTIVES } from '@angular/common';
 import { SignalRService } from '../../services/signalRService';
 
@@ -11,7 +11,7 @@ import { SignalRService } from '../../services/signalRService';
 export class CpuComponent implements OnInit {
     public cpuValue: number;
 
-    constructor(private _signalRService: SignalRService) {
+    constructor(private _signalRService: SignalRService, private _ngZone: NgZone) {
 
     }
 
@@ -21,7 +21,9 @@ export class CpuComponent implements OnInit {
 
     private subscribeToEvents(): void {
         this._signalRService.newCpuValue.subscribe((cpuValue: number) => {
-            this.cpuValue = cpuValue;
+            this._ngZone.run(() => {
+                this.cpuValue = cpuValue
+            });
         });
     }
 }
