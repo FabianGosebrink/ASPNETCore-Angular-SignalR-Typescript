@@ -49,7 +49,7 @@ export class SignalRService {
 
     private registerOnServerEvents(): void {
         this.proxy.on('FoodAdded', (data) => {
-            this.foodchanged.emit('this could be data');
+            this.foodchanged.emit(data);
         });
 
         this.proxy.on('FoodDeleted', (data) => {

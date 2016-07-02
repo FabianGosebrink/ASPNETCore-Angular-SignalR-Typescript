@@ -84,8 +84,7 @@ export class FoodComponent implements OnInit {
             this.getAllFood();
         });
 
-        this._signalRService.foodchanged.subscribe(() => {
-            this.foodItems = [];
+        this._signalRService.foodchanged.subscribe((data) => {
             this.getAllFood();
         });
     }
