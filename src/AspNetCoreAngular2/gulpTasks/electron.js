@@ -98,7 +98,7 @@ gulp.task('electron-inject-files-in-index', function (done) {
 gulp.task('electron-build-win', function (done) {
     return gulp.src(path.join(buildConfig.temp.electron, '**', '*'))
         .pipe(electron({
-            version: '0.36.9',
+            version: '1.2.6',
             platform: 'win32',
             arch: 'x64',
             companyName: 'Offering Solutions',
