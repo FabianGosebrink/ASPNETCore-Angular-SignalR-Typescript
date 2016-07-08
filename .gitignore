@@ -227,3 +227,4 @@ src/AspNetCoreAngular2/wwwroot/app/*.js.map
 
 src/AspNetCoreAngular2/wwwroot/js/*.js
 src/AspNetCoreAngular2/wwwroot/js/
+src/AspNetCoreAngular2/wwwroot/js/*.js.map
