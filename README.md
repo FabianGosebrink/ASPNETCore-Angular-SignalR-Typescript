@@ -4,7 +4,22 @@
 
 #### Warning: I am working with Angular 2 in RC state, ASP.NET Core which is also an release candidate here because of SignalR (I will watch out to update as soon as there is something stable) and SignalR 3 ...but it works. Enjoy :-)
 
-Just clone this repo and run <pre>npm install</pre> and <pre>bower install</pre> (for signalR)
+Just clone this repo and run 
+```javascript 
+npm install
+``` 
+and 
+```javascript 
+bower install
+```  
+
+(for signalR)
+
+Then
+```javascript 
+npm start
+```  
+gets you going.
 
 If you want to run this solutions out of Visual Studio make sure you ran the gulp task 
 

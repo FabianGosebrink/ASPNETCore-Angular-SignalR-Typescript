@@ -66,6 +66,7 @@
     "tsc:w": "tsc -w",
     "typings": "typings",
     "postinstall": "typings install",
-    "build": "webpack"
+    "buildGulp": "gulp build:web:dev",
+    "start": "tsc && npm run buildGulp && concurrently \"dnx web\" \"webpack-dev-server --inline --progress --port 8080 --content-base ./wwwroot/ \" "
   }
 }
