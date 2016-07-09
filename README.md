@@ -21,6 +21,13 @@ npm start
 ```  
 gets you going.
 
+Browse to
+```javascript 
+http://localhost:8080
+```  
+
+To see the page then.
+
 ![building and using process](_gitAssets/build.gif "npm start and build")
 
 If you want to run this solutions out of Visual Studio make sure you ran the gulp task 
