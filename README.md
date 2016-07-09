@@ -21,7 +21,7 @@ npm start
 ```  
 gets you going.
 
-![alt text](ASPNET-Core-Angular2-SignalR-Typescript-build.gif "npm start and build")
+![building and using process](_gitAssets/build.gif "npm start and build")
 
 If you want to run this solutions out of Visual Studio make sure you ran the gulp task 
 
