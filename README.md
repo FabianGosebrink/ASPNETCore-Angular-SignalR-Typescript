@@ -2,8 +2,8 @@
 
 ## With this repository we can create a X-Platform / Cross Platform Application running with bower, npm, ASP.NET Core, SignalR 3 and Angular 2 with Typescript.
 
-## [Offering.solutions](http://offering.solutions "blogLink")
-## [fabian-gosebrink.com](http://fabian-gosebrink.com "homepage")
+### [Offering.solutions](http://offering.solutions "blogLink")
+### [fabian-gosebrink.com](http://fabian-gosebrink.com "homepage")
 
 #### Warning: I am working with Angular 2 in RC state, ASP.NET Core which is also an release candidate here because of SignalR (I will watch out to update as soon as there is something stable) and SignalR 3 ...but it works. Enjoy :-)
 
