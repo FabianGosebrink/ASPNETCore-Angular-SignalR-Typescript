@@ -4,7 +4,7 @@
 
 ## Social
 
-### <a href="https://twitter.com/FabianGosebrink" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @FabianGosebrink</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+### <a href="https://twitter.com/FabianGosebrink" target="_blank" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @FabianGosebrink</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ### [Offering.solutions](http://offering.solutions "blogLink")
 ### [fabian-gosebrink.com](http://fabian-gosebrink.com "homepage")
