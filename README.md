@@ -1,32 +1,97 @@
-# Angular 2 ASP.NET CORE 1.0 Starter Template
+# Angular 2 // ASP.NET Core // SignalR
 
-This is a starter template for developing Angular2 with ASP.NET Core 1.0 Applications.
+## With this repository we can create a X-Platform / Cross Platform Application running with bower, npm, ASP.NET Core, SignalR 3 and Angular 2 with Typescript.
 
-This template is done with npm. Its an Angular2 application with an http-service getting values from an ASP.NET CORE WebAPI.
+## Social
 
-## Blogpost
+### <a href="https://twitter.com/FabianGosebrink" target="_blank" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @FabianGosebrink</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-[Angular 2 and ASP.NET Core Starter](http://offering.solutions/articles/asp-net/angular-2-and-asp-net-core-starter/)
+### [Offering.solutions](http://offering.solutions "blogLink")
+### [fabian-gosebrink.com](http://fabian-gosebrink.com "homepage")
 
-## Start
 
-Start by typing
+## Code
+#### Warning: I am working with Angular 2 in RC state, ASP.NET Core and SignalR - but it works. Enjoy :-)
 
-`npm install`
+Just clone this repo and run 
+```javascript 
+npm install
+``` 
+and 
+```javascript 
+bower install
+```  
 
-at the level of the "package.json" file
+(for signalR)
 
-### Option 1
+Then
+```javascript 
+npm start
+```  
+gets you going.
 
-Now you can just press "play" inside Visual Studio to get started.
+Browse to
+```javascript 
+http://localhost:8080
+```  
 
-If you change the *.ts-files you need to run the `tsc` command manually.
+To see the page then.
 
-### Option 2
+![building and using process](_gitAssets/build.gif "npm start and build")
 
-`npm start` will run the gulp task for you, starting the lite-server and the tsc-watcher. You have to start the ASP.NET server manually by typing `dotnet run` separately.
+If you want to run this solutions out of Visual Studio make sure you ran the gulp task 
 
-See this nice link which the Angular team did by working with Visual Studio and Angular 2 [Visual Studio 2015 QuickStart
-](https://angular.io/docs/ts/latest/cookbook/visual-studio-2015.html)
+```javascript
+gulp build:web:dev 
+```
 
-![alt text](_gitAssets/03bff784-213f-4836-be3c-7288a33396a3.jpg "Screenshot")
+before. It will build the application and inject all files into index.html in wwwroot.
+
+Make sure the "AspNetCoreAngular2"-Project in Visual Studio is you Startup-Project by right-clicking it and "Set as Startup Project".
+
+If you want to get production builds you can type
+
+```javascript
+gulp build:web:prod 
+```
+
+to build the production-ready build or type 
+
+```javascript
+gulp build:all
+```
+
+to get the .dist-folder filled with all the cross-platform builds.
+
+After this you can type 
+
+```csharp
+dotnet run
+```
+
+to start the ASP.NET Server or just press the Play-Button in Visual Studio.
+
+This is the output after starting the dnx web server
+![alt text](_gitAssets/commandLineWebServer.png "dnx web server")
+
+After this you can browse to the site
+![alt text](_gitAssets/screenshot1.jpg "dnx web server")
+
+With 
+
+```javascript
+gulp
+```
+you can list all tasks
+![alt text](_gitAssets/gulp-tasks.png "dnx web server")
+
+![alt text](_gitAssets/dist-folder.png "dnx web server")
+
+Mobile
+![alt text](_gitAssets/xplatform1.jpg "dnx web server")
+
+Win 8.1
+![alt text](_gitAssets/xplatform2_win81.jpg "dnx web server")
+
+Desktop
+![alt text](_gitAssets/xplatform3.jpg "dnx web server")
