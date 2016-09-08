@@ -12,3 +12,4 @@ src/Microsoft.AspNetCore.SignalR.Server/bin
 src/Microsoft.AspNetCore.SignalR.Messaging/obj
 src/Microsoft.AspNetCore.SignalR.Server/obj
 src/AspNetCoreAngular2/.dist
+src/AspNetCoreAngular2/typings/

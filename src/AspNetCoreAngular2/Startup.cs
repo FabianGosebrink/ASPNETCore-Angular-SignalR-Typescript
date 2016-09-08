@@ -36,10 +36,11 @@ namespace ASPNETCoreAngular2Demo
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
-
+            app.UseCors(builder =>
+               builder.DisallowCredentials());
             app.UseWebSockets();
             app.UseSignalR("/signalr");
-
+           
             app.UseMvc();
         }
 
@@ -47,15 +48,6 @@ namespace ASPNETCoreAngular2Demo
         {
             //Add Cors support to the service
             services.AddCors();
-
-            var policy = new CorsPolicy();
-
-            policy.Headers.Add("*");
-            policy.Methods.Add("*");
-            policy.Origins.Add("*");
-            policy.SupportsCredentials = false;
-
-            services.AddCors(x => x.AddPolicy("corsGlobalPolicy", policy));
 
             // Setup options with DI
             services.AddOptions();
