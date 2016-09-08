@@ -34,19 +34,24 @@ namespace ASPNETCoreAngular2Demo
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            app.UseCors(builder =>
+                    builder.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .DisallowCredentials()
+            );
+
             app.UseDefaultFiles();
             app.UseStaticFiles();
-            app.UseCors(builder =>
-               builder.DisallowCredentials());
+
             app.UseWebSockets();
             app.UseSignalR("/signalr");
-           
+
             app.UseMvc();
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //Add Cors support to the service
             services.AddCors();
 
             // Setup options with DI
