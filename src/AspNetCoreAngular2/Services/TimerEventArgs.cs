@@ -1,6 +1,6 @@
 using System;
 
-namespace AspNetCoreAngular2.Services
+namespace ASPNETCoreAngular2Demo.Services
 {
     public class TimerEventArgs : EventArgs
     {

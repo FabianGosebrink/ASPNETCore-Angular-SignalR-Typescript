@@ -27,9 +27,9 @@ export class FoodComponent implements OnInit {
     }
 
     public saveFood() {
-        if (this.currentFoodItem.Id) {
+        if (this.currentFoodItem.id) {
             this._dataService
-                .Update(this.currentFoodItem.Id, this.currentFoodItem)
+                .Update(this.currentFoodItem.id, this.currentFoodItem)
                 .subscribe(data => {
                     this.currentFoodItem = new FoodItem();
                 }, error => {
@@ -38,7 +38,7 @@ export class FoodComponent implements OnInit {
                 () => console.log('Update complete'));
         } else {
             this._dataService
-                .AddFood(this.currentFoodItem.ItemName)
+                .AddFood(this.currentFoodItem.itemName)
                 .subscribe(data => {
                     this.currentFoodItem = new FoodItem();
                 }, error => {
@@ -49,7 +49,7 @@ export class FoodComponent implements OnInit {
     }
 
     public deleteFoodItem(foodItem: FoodItem) {
-        this._dataService.DeleteFood(foodItem.Id)
+        this._dataService.DeleteFood(foodItem.id)
             .subscribe(
             response => {
                 // this._signalRService.FoodDeleted();
@@ -73,7 +73,7 @@ export class FoodComponent implements OnInit {
                     this.foodItems = data;
                 },
                 error => console.log(error),
-                () => console.log('Get all Foods complete ' + this.foodItems));
+                () => console.log('Get all Foods complete ' + JSON.stringify(this.foodItems)));
         });
 
     }

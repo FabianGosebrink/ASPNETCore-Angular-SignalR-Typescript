@@ -7,7 +7,7 @@ declare var $;
 @Injectable()
 export class SignalRService {
 
-    private proxy: HubProxy;
+    private proxy;
     private proxyName: string = 'coolmessages';
     private connection;
 

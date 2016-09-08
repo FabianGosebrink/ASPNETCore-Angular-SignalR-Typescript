@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading;
-using Microsoft.Extensions.OptionsModel;
+using Microsoft.Extensions.Options;
 
-namespace AspNetCoreAngular2.Services
+namespace ASPNETCoreAngular2Demo.Services
 {
     public class TimerService : ITimerService
     {
@@ -10,24 +10,19 @@ namespace AspNetCoreAngular2.Services
         readonly Random _random = new Random();
         public event EventHandler TimerElapsed;
 
-        private IOptions<TimerServiceConfiguration> _optionsTimerServiceConfiguration;
-
         public TimerService(IOptions<TimerServiceConfiguration> options)
         {
-            _optionsTimerServiceConfiguration = options;
+            var optionsTimerServiceConfiguration = options;
             _timer = new Timer(
                 OnTimerElapsed, 
                 null, 
-                _optionsTimerServiceConfiguration.Value.DueTime, 
-                _optionsTimerServiceConfiguration.Value.Period);
+                optionsTimerServiceConfiguration.Value.DueTime, 
+                optionsTimerServiceConfiguration.Value.Period);
         }
 
         private void OnTimerElapsed(object sender)
         {
-            if (TimerElapsed != null)
-            {
-                TimerElapsed(this, new TimerEventArgs(_random.Next(0, 100)));
-            }
+            TimerElapsed?.Invoke(this, new TimerEventArgs(_random.Next(0, 100)));
         }
     }
 }

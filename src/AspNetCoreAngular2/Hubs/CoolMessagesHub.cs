@@ -1,8 +1,8 @@
-﻿using AspNetCoreAngular2.Models;
-using Microsoft.AspNet.SignalR;
-using Microsoft.AspNet.SignalR.Hubs;
+﻿using ASPNETCoreAngular2Demo.Models;
+using Microsoft.AspNetCore.SignalR;
+using Microsoft.AspNetCore.SignalR.Hubs;
 
-namespace AspNetCoreAngular2.Hubs
+namespace ASPNETCoreAngular2Demo.Hubs
 {
     [HubName("coolmessages")]
     public class CoolMessagesHub : Hub

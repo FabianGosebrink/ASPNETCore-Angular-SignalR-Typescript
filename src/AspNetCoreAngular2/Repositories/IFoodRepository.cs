@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using AspNetCoreAngular2.Models;
+using ASPNETCoreAngular2Demo.Models;
 
-namespace AspNetCoreAngular2.Repositories
+namespace ASPNETCoreAngular2Demo.Repositories
 {
     public interface IFoodRepository
     {

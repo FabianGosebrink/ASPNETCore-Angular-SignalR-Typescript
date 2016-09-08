@@ -1,0 +1,95 @@
+--temp-output:C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\obj\Debug\net451\
+--out:C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\bin\Debug\net451\Microsoft.AspNetCore.SignalR.Messaging.dll
+--define:DEBUG
+--define:TRACE
+--define:NET451
+--suppress-warning:CS1701
+--suppress-warning:CS1702
+--suppress-warning:CS1705
+--allow-unsafe:True
+--warnings-as-errors:True
+--optimize:False
+--key-file:C:\Users\Fabian\Desktop\1\tools\Key.snk
+--output-name:Microsoft.AspNetCore.SignalR.Messaging
+--description:Core messaging components for ASP.NET SignalR.
+--file-version:0.2.0.0
+--version:0.2.0.0
+--informational-version:0.2.0
+--target-framework:.NETFramework,Version=v4.5.1
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Sources\DisposableAction.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Sources\Disposer.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Sources\ExceptionsExtensions.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Sources\InterlockedHelper.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Sources\ListHelper.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Sources\SipHashBasedStringEqualityComparer.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Sources\TaskAsyncHelper.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Sources\TaskAwaiterHelper.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Sources\TaskQueue.cs
+--reference:C:\Users\Fabian\.nuget\packages\Microsoft.Extensions.DependencyInjection.Abstractions\1.0.0\lib\netstandard1.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+--reference:C:\Users\Fabian\.nuget\packages\Microsoft.Extensions.Logging\1.0.0\lib\netstandard1.1\Microsoft.Extensions.Logging.dll
+--reference:C:\Users\Fabian\.nuget\packages\Microsoft.Extensions.Logging.Abstractions\1.0.0\lib\netstandard1.1\Microsoft.Extensions.Logging.Abstractions.dll
+--reference:C:\Users\Fabian\.nuget\packages\Microsoft.Extensions.Options\1.0.0\lib\netstandard1.0\Microsoft.Extensions.Options.dll
+--reference:C:\Users\Fabian\.nuget\packages\Microsoft.Extensions.PlatformAbstractions\1.0.0\lib\net451\Microsoft.Extensions.PlatformAbstractions.dll
+--reference:C:\Users\Fabian\.nuget\packages\Microsoft.Extensions.Primitives\1.0.0\lib\netstandard1.0\Microsoft.Extensions.Primitives.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Collections.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Collections.Concurrent.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.ComponentModel.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Diagnostics.Debug.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Globalization.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Linq.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Linq.Expressions.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Reflection.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Resources.ResourceManager.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Runtime.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Runtime.Extensions.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Runtime.InteropServices.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Facades\System.Threading.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\mscorlib.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\System.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\System.Core.dll
+--reference:C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\Microsoft.CSharp.dll
+--resource:"C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\obj\Debug\net451\Microsoft.AspNetCore.SignalR.Messaging.Resources.resources",Microsoft.AspNetCore.SignalR.Messaging.Resources.resources
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\AssemblyInfo.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\Command.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\CommandType.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\Cursor.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\DefaultSubscription.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\IMessageBus.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\IStringMinifier.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\ISubscriber.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\ISubscription.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\LocalEventKeyInfo.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\Message.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\MessageBroker.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\MessageBus.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\MessageBusExtensions.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\MessageBusOptions.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\MessageBusServiceCollectionExtensions.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\MessageResult.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\MessageStore.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\MessageStoreResult.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\QueuingBehavior.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\ScaleoutConfiguration.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\ScaleoutMapping.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\ScaleoutMappingStore.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\ScaleoutMessage.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\ScaleoutMessageBus.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\ScaleoutOptions.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\ScaleoutStore.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\ScaleoutStream.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\ScaleoutStreamManager.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\ScaleoutSubscription.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\StringMinifier.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\Subscription.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\Topic.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\TopicLookup.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\TopicState.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\Volatile.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\PerformanceCounters\IPerformanceCounter.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\PerformanceCounters\IPerformanceCounterManager.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\PerformanceCounters\NoOpPerformanceCounter.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\PerformanceCounters\PerformanceCounterAttribute.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\PerformanceCounters\PerformanceCounterManager.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\PerformanceCounters\PerformanceCounterWrapper.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\Properties\AssemblyInfo.cs
+C:\Users\Fabian\Desktop\1\src\Microsoft.AspNetCore.SignalR.Messaging\Properties\Resources.Designer.cs

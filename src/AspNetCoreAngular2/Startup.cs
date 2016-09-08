@@ -1,33 +1,50 @@
-﻿using AspNetCoreAngular2.Models;
-using AspNetCoreAngular2.Repositories;
-using AspNetCoreAngular2.Services;
-using AspNetCoreAngular2.ViewModels;
-using AutoMapper;
-using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Cors.Infrastructure;
-using Microsoft.AspNet.Hosting;
+﻿using ASPNETCoreAngular2Demo.Models;
+using ASPNETCoreAngular2Demo.Repositories;
+using ASPNETCoreAngular2Demo.Services;
+using ASPNETCoreAngular2Demo.ViewModels;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Cors.Infrastructure;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace AspNetCoreAngular2
+namespace ASPNETCoreAngular2Demo
 {
     public class Startup
     {
+        public IConfigurationRoot Configuration { get; }
+
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json")
-                .AddEnvironmentVariables();
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+
+            builder.AddEnvironmentVariables();
             Configuration = builder.Build();
         }
 
-        public IConfigurationRoot Configuration { get; set; }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
+        {
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddDebug();
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
+            app.UseWebSockets();
+            app.UseSignalR("/signalr");
+
+            app.UseMvc();
+        }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
-
             //Add Cors support to the service
             services.AddCors();
 
@@ -36,46 +53,28 @@ namespace AspNetCoreAngular2
             policy.Headers.Add("*");
             policy.Methods.Add("*");
             policy.Origins.Add("*");
-            policy.SupportsCredentials = true;
+            policy.SupportsCredentials = false;
 
             services.AddCors(x => x.AddPolicy("corsGlobalPolicy", policy));
 
-            services.Configure<TimerServiceConfiguration>(Configuration.GetSection("TimeService"));
-
+            // Setup options with DI
+            services.AddOptions();
 
             services.AddSingleton<IFoodRepository, FoodRepository>();
             services.AddSingleton<ITimerService, TimerService>();
+            services.Configure<TimerServiceConfiguration>(Configuration.GetSection("TimeService"));
 
             services.AddSignalR(options =>
             {
                 options.Hubs.EnableDetailedErrors = true;
             });
 
-            Mapper.Initialize(mapper =>
+            AutoMapper.Mapper.Initialize(mapper =>
             {
                 mapper.CreateMap<FoodItem, FoodItemViewModel>().ReverseMap();
             });
+
+            services.AddMvc();
         }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
-        {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-
-            app.UseCors("corsGlobalPolicy");
-
-            app.UseIISPlatformHandler();
-
-            app.UseDefaultFiles();
-
-            app.UseStaticFiles();
-
-            app.UseMvc();
-
-            app.UseSignalR();
-        }
-
-        public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }

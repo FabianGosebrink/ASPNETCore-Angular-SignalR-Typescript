@@ -1,18 +1,20 @@
-﻿{
-    "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
-        "moduleResolution":  "node",
-        "removeComments": true,
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "noEmitHelpers": false,
-        "sourceMap": true
-    },
-    "exclude": [
-        "node_modules"
-    ],
-    "compileOnSave": false,
-    "buildOnSave": false
+{
+ "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": false,
+    "noImplicitAny": false
+  },
+  "compileOnSave": true,
+  "exclude": [
+    "node_modules",
+    "wwwroot/js",
+    "wwwroot/app",
+    "typings/main",
+    "typings/main.d.ts"
+  ]
 }
-

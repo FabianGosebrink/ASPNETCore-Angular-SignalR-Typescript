@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace AspNetCoreAngular2.Services
+﻿namespace ASPNETCoreAngular2Demo.Services
 {
     public class TimerServiceConfiguration
     {

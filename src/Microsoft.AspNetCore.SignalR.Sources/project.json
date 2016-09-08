@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0-*",
+  "shared": "*.cs",
+  "dependencies": {},
+  "frameworks": {
+    "net451": {},
+    "netstandard1.3": {
+      "dependencies": {
+        "System.Runtime": "4.1.0-*"
+      }
+    }
+  }
+}

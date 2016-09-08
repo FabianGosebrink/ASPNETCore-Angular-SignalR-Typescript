@@ -1,6 +1,6 @@
 using System;
 
-namespace AspNetCoreAngular2.Models
+namespace ASPNETCoreAngular2Demo.Models
 {
     public class ChatMessage
     {
