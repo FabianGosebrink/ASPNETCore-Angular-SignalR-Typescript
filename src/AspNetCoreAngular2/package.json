@@ -67,7 +67,7 @@
     "typings": "typings",
     "postinstall": "typings install && bower install",
     "buildGulp": "gulp build:web:dev",
-    "webpackDevServer": "webpack-dev-server --inline --progress --port 8080 --content-base ./wwwroot/",
+    "webpackDevServer": "webpack-dev-server --inline --progress --port 8080 --content-base ./wwwroot/", 
     "start": "tsc && npm install && npm run buildGulp && concurrently \"dotnet run\" \"npm run webpackDevServer\""
   }
 }
