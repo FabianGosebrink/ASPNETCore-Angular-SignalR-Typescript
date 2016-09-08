@@ -12,7 +12,7 @@ require('./gulpTasks/cordova');
 
 gulp.task('build:all', function (done) {
     runSeq(
-        'build:web:dev',
+        //'build:web:dev',
         'build:web:prod',
         'build:electron',
         'build:apps',

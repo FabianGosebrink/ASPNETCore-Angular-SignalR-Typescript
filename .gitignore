@@ -7,3 +7,7 @@ src/AspNetCoreAngular2/bin
 src/AspNetCoreAngular2/.vscode
 .vs/
 npm-debug.log
+src/Microsoft.AspNetCore.SignalR.Messaging/bin
+src/Microsoft.AspNetCore.SignalR.Server/bin
+src/Microsoft.AspNetCore.SignalR.Messaging/obj
+src/Microsoft.AspNetCore.SignalR.Server/obj
