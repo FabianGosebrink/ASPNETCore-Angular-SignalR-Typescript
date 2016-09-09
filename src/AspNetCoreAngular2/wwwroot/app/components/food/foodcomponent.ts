@@ -1,5 +1,4 @@
 import { Component, OnInit, NgZone} from '@angular/core';
-import { CORE_DIRECTIVES } from '@angular/common';
 import { DataService } from '../../services/foodDataService';
 import { SignalRService } from '../../services/signalRService';
 import { FoodItem } from '../../models/FoodItem';
@@ -7,8 +6,7 @@ import { FoodItem } from '../../models/FoodItem';
 @Component({
     selector: 'food-component',
     providers: [DataService],
-    template: require('./food.component.html'),
-    directives: [CORE_DIRECTIVES]
+    template: require('./food.component.html')
 })
 
 export class FoodComponent implements OnInit {
@@ -24,6 +22,7 @@ export class FoodComponent implements OnInit {
 
     public ngOnInit() {
         this.subscribeToEvents();
+        this.getAllFood();
     }
 
     public saveFood() {
@@ -81,7 +80,7 @@ export class FoodComponent implements OnInit {
     private subscribeToEvents(): void {
         this._signalRService.connectionEstablished.subscribe(() => {
             this.canAddFood = true;
-            this.getAllFood();
+            //this.getAllFood();
         });
 
         this._signalRService.foodchanged.subscribe((data) => {

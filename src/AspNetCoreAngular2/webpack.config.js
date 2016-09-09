@@ -4,11 +4,12 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: {
         "vendor": "./wwwroot/app/vendor",
+        "polyfills": "./wwwroot/app/polyfills",
         "app": "./wwwroot/app/boot"
     },
     output: {
         path: __dirname,
-        filename: "[name].bundle.js"
+        filename: "[name]-[hash:8].bundle.js"
     },
     resolve: {
         extensions: ['', '.ts', '.js', '.html']
@@ -32,8 +33,8 @@ module.exports = {
         ]
     },
     plugins: [
-         new webpack.optimize.CommonsChunkPlugin({
-            name: ['app', 'vendor']
-        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: ["app", "vendor", "polyfills"]
+        })
     ]
 }

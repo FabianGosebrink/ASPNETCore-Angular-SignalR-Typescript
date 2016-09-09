@@ -58,9 +58,10 @@ gulp.task('web-dev-inject-files-in-index', function (done) {
 
     var sources = gulp.src([
         path.join("./wwwroot/css", "*.css"),
-        path.join("./wwwroot/js", "vendor.bundle.js"),
+        path.join("./wwwroot/js", "polyfills-*.bundle.js"),
+        path.join("./wwwroot/js", "vendor-*.bundle.js"),
         path.join("./wwwroot/js", "jquery.signalR.js"),
-        path.join("./wwwroot/js", "app.bundle.js")
+        path.join("./wwwroot/js", "app-*.bundle.js")
     ], {
             read: false
         });
@@ -127,9 +128,10 @@ gulp.task('web-inject-files-in-index', function (done) {
 
     var sources = gulp.src([
         path.join(buildConfig.temp.web, "css", buildConfig.dist.cssMinFilename),
-        path.join(buildConfig.temp.web, "js", "vendor.bundle.js"),
+        path.join(buildConfig.temp.web, "js", "polyfills-*.bundle.js"),
+        path.join(buildConfig.temp.web, "js", "vendor-*.bundle.js"),
         path.join(buildConfig.temp.web, "js", "jquery.signalR.js"),
-        path.join(buildConfig.temp.web, "js", "app.bundle.js")
+        path.join(buildConfig.temp.web, "js", "app-*.bundle.js")
     ], {
             read: false
         });
