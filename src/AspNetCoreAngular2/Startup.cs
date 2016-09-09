@@ -34,25 +34,27 @@ namespace ASPNETCoreAngular2Demo
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UseCors(builder =>
-                    builder.AllowAnyOrigin()
-                        .AllowAnyHeader()
-                        .AllowAnyMethod()
-                        .DisallowCredentials()
-            );
+            app.UseCors("AllowAllOrigins");
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
             app.UseWebSockets();
-            app.UseSignalR("/signalr");
+            app.UseSignalR();
 
             app.UseMvc();
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                    });
+            });
 
             // Setup options with DI
             services.AddOptions();
