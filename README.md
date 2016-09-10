@@ -14,40 +14,19 @@
 #### Warning: I am working with Angular 2 in RC state, ASP.NET Core and SignalR - but it works. Enjoy :-)
 
 Just clone this repo and run 
-```javascript 
-npm install
-``` 
-and 
-```javascript 
-bower install
-```  
 
-(for signalR)
-
-Then
 ```javascript 
 npm start
-```  
-gets you going.
+```
 
 Browse to
 ```javascript 
 http://localhost:8080
 ```  
 
-To see the page then.
+To see the page then. SignalR is not working there because of CORS-Issues with signalR. Just load the application in Visual Studio and press the Play Button.
 
 ![building and using process](_gitAssets/build.gif "npm start and build")
-
-If you want to run this solutions out of Visual Studio make sure you ran the gulp task 
-
-```javascript
-gulp build:web:dev 
-```
-
-before. It will build the application and inject all files into index.html in wwwroot.
-
-Make sure the "AspNetCoreAngular2"-Project in Visual Studio is you Startup-Project by right-clicking it and "Set as Startup Project".
 
 If you want to get production builds you can type
 
