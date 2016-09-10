@@ -31,7 +31,7 @@ gulp.task('build:web:dev', function (done) {
     runSeq(
         'web-dev-clean-js',
         'web-dev-webpack',
-        'web-dev-copy-signalR',
+        'web-dev-copy-signalR-and-jquery',
         'web-dev-inject-files-in-index',
         done);
 });
@@ -46,8 +46,11 @@ gulp.task('web-dev-webpack', function (done) {
         .pipe(gulp.dest(buildConfig.rootJsFolder));
 });
 
-gulp.task('web-dev-copy-signalR', function (done) {
-    return gulp.src([buildConfig.sources.signalR])
+gulp.task('web-dev-copy-signalR-and-jquery', function (done) {
+    return gulp.src([
+        buildConfig.sources.signalR,
+        buildConfig.sources.jQuery,
+    ])
         .pipe(gulp.dest(buildConfig.rootJsFolder));
 });
 
@@ -59,8 +62,9 @@ gulp.task('web-dev-inject-files-in-index', function (done) {
     var sources = gulp.src([
         path.join("./wwwroot/css", "*.css"),
         path.join("./wwwroot/js", "polyfills-*.bundle.js"),
-        path.join("./wwwroot/js", "vendor-*.bundle.js"),
+        path.join("./wwwroot/js", "jquery.js"),
         path.join("./wwwroot/js", "jquery.signalR.js"),
+        path.join("./wwwroot/js", "vendor-*.bundle.js"),
         path.join("./wwwroot/js", "app-*.bundle.js")
     ], {
             read: false
@@ -97,7 +101,8 @@ gulp.task('web-copy-css-files-to-temp', function (done) {
 
 gulp.task('web-copy-js-files-to-temp', function (done) {
     return gulp.src([
-        buildConfig.sources.signalR
+        buildConfig.sources.signalR,
+        buildConfig.sources.jQuery,
     ])
         .pipe(gulp.dest(buildConfig.temp.web + "js/"));
 });
@@ -129,8 +134,9 @@ gulp.task('web-inject-files-in-index', function (done) {
     var sources = gulp.src([
         path.join(buildConfig.temp.web, "css", buildConfig.dist.cssMinFilename),
         path.join(buildConfig.temp.web, "js", "polyfills-*.bundle.js"),
-        path.join(buildConfig.temp.web, "js", "vendor-*.bundle.js"),
+        path.join(buildConfig.temp.web, "js", "jquery.js"),
         path.join(buildConfig.temp.web, "js", "jquery.signalR.js"),
+        path.join(buildConfig.temp.web, "js", "vendor-*.bundle.js"),
         path.join(buildConfig.temp.web, "js", "app-*.bundle.js")
     ], {
             read: false

@@ -23,7 +23,7 @@ export class SignalRService {
         this.messageReceived = new EventEmitter<ChatMessage>();
         this.newCpuValue = new EventEmitter<Number>();
         this.connectionExists = false;
-        console.log(JSON.stringify($));
+
         this.connection = $.hubConnection(CONFIGURATION.baseUrls.server + 'signalr/');
         this.proxy = this.connection.createHubProxy(this.proxyName);
 
