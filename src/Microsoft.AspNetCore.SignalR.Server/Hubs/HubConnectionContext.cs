@@ -1,0 +1,76 @@
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+
+
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.SignalR.Infrastructure;
+
+namespace Microsoft.AspNetCore.SignalR.Hubs
+{
+    /// <summary>
+    /// Encapsulates all information about an individual SignalR connection for an <see cref="IHub"/>.
+    /// </summary>
+    public class HubConnectionContext : HubConnectionContextBase, IHubCallerConnectionContext<object>
+    {
+        private readonly string _connectionId;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HubConnectionContext"/>.
+        /// </summary>
+        public HubConnectionContext()
+        {
+            All = new NullClientProxy();
+            Others = new NullClientProxy();
+            Caller = new NullClientProxy();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HubConnectionContext"/>.
+        /// </summary>
+        /// <param name="pipelineInvoker">The pipeline invoker.</param>
+        /// <param name="connection">The connection.</param>
+        /// <param name="hubName">The hub name.</param>
+        /// <param name="connectionId">The connection id.</param>
+        public HubConnectionContext(IHubPipelineInvoker pipelineInvoker, IConnection connection, string hubName, string connectionId)
+            : base(connection, pipelineInvoker, hubName)
+        {
+            _connectionId = connectionId;
+
+            Caller = new SignalProxy(connection, pipelineInvoker, connectionId, hubName, PrefixHelper.HubConnectionIdPrefix, ListHelper<string>.Empty);
+            All = AllExcept();
+            Others = AllExcept(connectionId);
+        }
+
+        /// <summary>
+        /// All connected clients except the calling client.
+        /// </summary>
+        public dynamic Others { get; set; }
+
+        /// <summary>
+        /// Represents the calling client.
+        /// </summary>
+        public dynamic Caller { get; set; }
+
+        /// <summary>
+        /// Returns a dynamic representation of all clients in a group except the calling client.
+        /// </summary>
+        /// <param name="groupName">The name of the group</param>
+        /// <returns>A dynamic representation of all clients in a group except the calling client.</returns>
+        public dynamic OthersInGroup(string groupName)
+        {
+            return Group(groupName, _connectionId);
+        }
+
+        /// <summary>
+        /// Returns a dynamic representation of all clients in the specified groups except the calling client.
+        /// </summary>
+        /// <param name="groupNames">The name of the groups</param>
+        /// <returns>A dynamic representation of all clients in a group except the calling client.</returns>
+        public dynamic OthersInGroups(IList<string> groupNames)
+        {
+            return Groups(groupNames, _connectionId);
+        }
+    }
+}

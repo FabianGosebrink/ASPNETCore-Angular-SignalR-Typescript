@@ -1,0 +1,26 @@
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+
+
+using System.Threading.Tasks;
+
+namespace Microsoft.AspNetCore.SignalR
+{
+    /// <summary>
+    /// A communication channel for a <see cref="PersistentConnection"/> and its connections.
+    /// </summary>
+    public interface IConnection
+    {
+        /// <summary>
+        /// The main signal for this connection. This is the main signalr for a <see cref="PersistentConnection"/>.
+        /// </summary>
+        string DefaultSignal { get; }
+
+        /// <summary>
+        /// Sends a message to connections subscribed to the signal.
+        /// </summary>
+        /// <param name="message">The message to send.</param>
+        /// <returns>A task that returns when the message has be sent.</returns>
+        Task Send(ConnectionMessage message);
+    }
+}

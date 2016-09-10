@@ -1,5 +1,4 @@
 import { Component, OnInit, NgZone} from '@angular/core';
-import { CORE_DIRECTIVES } from '@angular/common';
 import { DataService } from '../../services/foodDataService';
 import { SignalRService } from '../../services/signalRService';
 import { FoodItem } from '../../models/FoodItem';
@@ -7,8 +6,7 @@ import { FoodItem } from '../../models/FoodItem';
 @Component({
     selector: 'food-component',
     providers: [DataService],
-    template: require('./food.component.html'),
-    directives: [CORE_DIRECTIVES]
+    template: require('./food.component.html')
 })
 
 export class FoodComponent implements OnInit {
@@ -24,12 +22,13 @@ export class FoodComponent implements OnInit {
 
     public ngOnInit() {
         this.subscribeToEvents();
+        this.getAllFood();
     }
 
     public saveFood() {
-        if (this.currentFoodItem.Id) {
+        if (this.currentFoodItem.id) {
             this._dataService
-                .Update(this.currentFoodItem.Id, this.currentFoodItem)
+                .Update(this.currentFoodItem.id, this.currentFoodItem)
                 .subscribe(data => {
                     this.currentFoodItem = new FoodItem();
                 }, error => {
@@ -38,7 +37,7 @@ export class FoodComponent implements OnInit {
                 () => console.log('Update complete'));
         } else {
             this._dataService
-                .AddFood(this.currentFoodItem.ItemName)
+                .AddFood(this.currentFoodItem.itemName)
                 .subscribe(data => {
                     this.currentFoodItem = new FoodItem();
                 }, error => {
@@ -49,7 +48,7 @@ export class FoodComponent implements OnInit {
     }
 
     public deleteFoodItem(foodItem: FoodItem) {
-        this._dataService.DeleteFood(foodItem.Id)
+        this._dataService.DeleteFood(foodItem.id)
             .subscribe(
             response => {
                 // this._signalRService.FoodDeleted();
@@ -73,7 +72,7 @@ export class FoodComponent implements OnInit {
                     this.foodItems = data;
                 },
                 error => console.log(error),
-                () => console.log('Get all Foods complete ' + this.foodItems));
+                () => console.log('Get all Foods complete ' + JSON.stringify(this.foodItems)));
         });
 
     }
@@ -81,7 +80,7 @@ export class FoodComponent implements OnInit {
     private subscribeToEvents(): void {
         this._signalRService.connectionEstablished.subscribe(() => {
             this.canAddFood = true;
-            this.getAllFood();
+            //this.getAllFood();
         });
 
         this._signalRService.foodchanged.subscribe((data) => {

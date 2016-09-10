@@ -8,7 +8,7 @@
     <div class="panel-body">
         <div class="list-group">
             <a href="#" class="list-group-item" *ngFor="let foodItem of foodItems">
-                <i class="fa fa-cutlery"></i> {{foodItem.ItemName}}
+                <i class="fa fa-cutlery"></i> {{foodItem.itemName}}
                 <span class="pull-right text-muted small">
                     <button class="btn btn-primary btn-xs" (click)="setFoodItemToEdit(foodItem)" [disabled]="!canAddFood">Edit</button>
                     <button class="btn btn-danger btn-xs" (click)="deleteFoodItem(foodItem)" [disabled]="!canAddFood">Delete</button>
@@ -16,12 +16,12 @@
             </a>
         </div>
         <!-- /.list-group -->
-        <form (ngSubmit)="saveFood()">
+        <form (ngSubmit)="saveFood()" name="foodForm">
             <div class="form-group">
                 <label for="exampleInputEmail1">Server invoke</label>
-                <input type="text" [(ngModel)]="currentFoodItem.ItemName" class="form-control" placeholder="add new food here">
+                <input type="text" [(ngModel)]="currentFoodItem.itemName" class="form-control" placeholder="add new food here" name="itemName">
             </div>
-            <input class="btn btn-success" type="submit" value="Save" [disabled]="!canAddFood">
+            <input class="btn btn-success" type="submit" value="Save" [disabled]="!canAddFood" name="saveForm">
         </form>
     </div>
     <!-- /.panel-body -->
