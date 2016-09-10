@@ -31,7 +31,7 @@ gulp.task('build:web:dev', function (done) {
     runSeq(
         'web-dev-clean-js',
         'web-dev-webpack',
-        'web-dev-copy-signalR-and-jquery',
+        'web-dev-copy-signalR',
         'web-dev-inject-files-in-index',
         done);
 });
@@ -46,10 +46,9 @@ gulp.task('web-dev-webpack', function (done) {
         .pipe(gulp.dest(buildConfig.rootJsFolder));
 });
 
-gulp.task('web-dev-copy-signalR-and-jquery', function (done) {
+gulp.task('web-dev-copy-signalR', function (done) {
     return gulp.src([
-        buildConfig.sources.signalR,
-        buildConfig.sources.jQuery,
+        buildConfig.sources.signalR
     ])
         .pipe(gulp.dest(buildConfig.rootJsFolder));
 });
@@ -100,8 +99,7 @@ gulp.task('web-copy-css-files-to-temp', function (done) {
 
 gulp.task('web-copy-js-files-to-temp', function (done) {
     return gulp.src([
-        buildConfig.sources.signalR,
-        buildConfig.sources.jQuery,
+        buildConfig.sources.signalR
     ])
         .pipe(gulp.dest(buildConfig.temp.web + "js/"));
 });
