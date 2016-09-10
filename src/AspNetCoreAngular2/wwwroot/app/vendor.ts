@@ -17,4 +17,4 @@ import "reflect-metadata";
 // You can import js, ts, css, sass, ...
 import 'jQuery'
 import 'bootstrap/dist/js/bootstrap';
-//import './vendor/jquery.signalR.js';
+//import './vendor/jquery.signalR.js'; // TODO IMPORT signalr HERE

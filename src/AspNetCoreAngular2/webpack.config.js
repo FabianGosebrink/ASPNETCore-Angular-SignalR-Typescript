@@ -17,7 +17,10 @@ module.exports = {
     devtool: 'source-map',
     module: {
         loaders: [
-            { test: /jquery/, loader: 'expose?$!expose?jQuery' },
+            {
+                test: /jquery/,
+                loader: 'expose?$!expose?jQuery'
+            },
             {
                 test: /\.ts/,
                 loaders: ['ts-loader'],
@@ -38,4 +41,4 @@ module.exports = {
             name: ["app", "vendor", "polyfills"]
         })
     ]
-}
+};
