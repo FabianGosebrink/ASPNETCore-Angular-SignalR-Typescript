@@ -3,6 +3,7 @@ import { CONFIGURATION } from '../shared/app.constants';
 import { ChatMessage } from '../models/ChatMessage';
 
 declare var $;
+declare var window;
 
 @Injectable()
 export class SignalRService {
@@ -24,7 +25,9 @@ export class SignalRService {
         this.newCpuValue = new EventEmitter<Number>();
         this.connectionExists = false;
 
-        this.connection = $.hubConnection(CONFIGURATION.baseUrls.server + 'signalr/');
+        console.log(window.$);
+
+        this.connection = window.$.hubConnection(CONFIGURATION.baseUrls.server + 'signalr/');
         this.proxy = this.connection.createHubProxy(this.proxyName);
 
         this.registerOnServerEvents();
