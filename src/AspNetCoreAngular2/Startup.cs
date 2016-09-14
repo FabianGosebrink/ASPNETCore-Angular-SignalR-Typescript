@@ -34,7 +34,10 @@ namespace ASPNETCoreAngular2Demo
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UseCors("AllowAllOrigins");
+            app.UseCors(config =>
+               config.AllowAnyHeader()
+                   .AllowAnyMethod()
+                   .AllowAnyOrigin());
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
@@ -47,17 +50,7 @@ namespace ASPNETCoreAngular2Demo
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAllOrigins",
-                    builder =>
-                    {
-                        builder
-                            .AllowAnyOrigin()
-                            .AllowAnyHeader()
-                            .AllowAnyMethod();
-                    });
-            });
+            services.AddCors();
 
             // Setup options with DI
             services.AddOptions();

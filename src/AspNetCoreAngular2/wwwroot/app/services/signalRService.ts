@@ -61,7 +61,7 @@ export class SignalRService {
         });
 
         this.proxy.on('SendMessage', (data: ChatMessage) => {
-            console.log('received in SignalRService: ' + data);
+            console.log('received in SignalRService: ' + JSON.stringify(data));
             this.messageReceived.emit(data);
         });
 
