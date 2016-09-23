@@ -23,6 +23,13 @@ Browse to
 ```javascript 
 http://localhost:8080
 ```  
+(No SignalR but live-reloading)
+
+Or
+```javascript 
+http://localhost:5000
+```
+(SignalR but no live-reload)
 
 To see the page then. SignalR is not working there because of CORS-Issues with signalR. Just load the application in Visual Studio and press the Play Button.
 
