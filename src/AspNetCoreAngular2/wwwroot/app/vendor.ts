@@ -1,9 +1,4 @@
-﻿// Polyfill(s) for older browsers.
-import "core-js/es6";
-import "core-js/es7/reflect";
-require("zone.js/dist/zone");
-
-// RxJS.
+﻿// RxJS.
 import "rxjs";
 
 // Angular 2.
