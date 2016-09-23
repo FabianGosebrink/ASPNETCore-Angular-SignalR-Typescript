@@ -35,15 +35,13 @@ namespace ASPNETCoreAngular2Demo
             loggerFactory.AddDebug();
 
             app.UseCors(config =>
-               config.AllowAnyHeader()
-                   .AllowAnyMethod()
-                   .AllowAnyOrigin());
+                 config.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
             app.UseWebSockets();
-            app.UseSignalR();
+            app.UseSignalR("/signalr");
 
             app.UseMvc();
         }

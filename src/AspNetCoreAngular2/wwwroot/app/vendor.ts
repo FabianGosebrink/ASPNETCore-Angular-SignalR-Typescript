@@ -1,4 +1,9 @@
-﻿// RxJS.
+﻿// Polyfill(s) for older browsers.
+import "core-js/es6";
+import "core-js/es7/reflect";
+require("zone.js/dist/zone");
+
+// RxJS.
 import "rxjs";
 
 // Angular 2.
@@ -13,8 +18,6 @@ import "@angular/router";
 // Reflect Metadata.
 import "reflect-metadata";
 
-// Other vendors for example jQuery, Lodash or Bootstrap
-// You can import js, ts, css, sass, ...
-import 'jQuery'
+// Other libraries.
+import 'jquery/src/jquery';
 import 'bootstrap/dist/js/bootstrap';
-//import './vendor/jquery.signalR.js'; // TODO IMPORT signalr HERE
