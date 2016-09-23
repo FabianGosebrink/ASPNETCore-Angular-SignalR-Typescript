@@ -34,12 +34,8 @@ namespace ASPNETCoreAngular2Demo
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UseCors(builder =>
-                    builder.AllowAnyOrigin()
-                        .AllowAnyHeader()
-                        .AllowAnyMethod()
-                        .DisallowCredentials()
-            );
+            app.UseCors(config =>
+                 config.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
             app.UseDefaultFiles();
             app.UseStaticFiles();

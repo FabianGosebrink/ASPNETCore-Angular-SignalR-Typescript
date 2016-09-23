@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
-import { CORE_DIRECTIVES } from '@angular/common';
-import { FoodComponent } from '../food/foodcomponent';
-import { ChatComponent } from '../chat/chatComponent';
-import { CpuComponent } from '../cpu/cpuComponent';
 
 @Component({
     selector: 'dashboard',
-    template: require('./dashboard.component.html'),
-    directives: [CORE_DIRECTIVES, FoodComponent, ChatComponent, CpuComponent]
+    template: require('./dashboard.component.html')
 })
 
 export class DashboardComponent {

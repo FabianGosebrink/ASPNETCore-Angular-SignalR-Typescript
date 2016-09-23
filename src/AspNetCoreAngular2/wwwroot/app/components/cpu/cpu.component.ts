@@ -1,11 +1,9 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { CORE_DIRECTIVES } from '@angular/common';
 import { SignalRService } from '../../services/signalRService';
 
 @Component({
     selector: 'cpu-component',
-    template: require('./cpu.component.html'),
-    directives: [CORE_DIRECTIVES]
+    template: require('./cpu.component.html')
 })
 
 export class CpuComponent implements OnInit {

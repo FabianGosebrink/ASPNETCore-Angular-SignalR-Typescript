@@ -1,12 +1,10 @@
 import { Component, NgZone } from '@angular/core';
-import { CORE_DIRECTIVES } from '@angular/common';
 import { SignalRService } from '../../services/signalRService';
 import { ChatMessage } from '../../models/ChatMessage';
 
 @Component({
     selector: 'chat-component',
-    template: require('./chat.component.html'),
-    directives: [CORE_DIRECTIVES],
+    template: require('./chat.component.html')
 })
 
 

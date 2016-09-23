@@ -19,7 +19,7 @@
         <form (ngSubmit)="saveFood()">
             <div class="form-group">
                 <label for="exampleInputEmail1">Server invoke</label>
-                <input type="text" [(ngModel)]="currentFoodItem.itemName" class="form-control" placeholder="add new food here">
+                <input type="text" [(ngModel)]="currentFoodItem.itemName" class="form-control" placeholder="add new food here"  name="itemName">
             </div>
             <input class="btn btn-success" type="submit" value="Save" [disabled]="!canAddFood">
         </form>
