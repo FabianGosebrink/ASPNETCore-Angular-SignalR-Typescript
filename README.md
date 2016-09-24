@@ -11,7 +11,6 @@
 
 
 ## Code
-#### Warning: I am working with Angular 2 in RC state, ASP.NET Core and SignalR (which is also not released yet) - but it works. Enjoy :-)
 
 Just clone this repo and run 
 
