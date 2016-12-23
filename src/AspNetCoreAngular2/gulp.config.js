@@ -38,6 +38,6 @@ module.exports = {
     },
     sources: {
         es6ShimJs: "es6-shim.min.js",
-        signalR: "./bower_components/signalr/jquery.signalR.js"
+        signalR: "./assets/signalr/jquery.signalR.js"
     }
 };
