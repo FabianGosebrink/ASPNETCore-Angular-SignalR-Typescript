@@ -1,6 +1,6 @@
-# Angular 2 // ASP.NET Core // SignalR
+# Angular // ASP.NET Core // SignalR
 
-## With this repository we can create a X-Platform / Cross Platform Application running with bower, npm, ASP.NET Core, SignalR and Angular 2 with Typescript.
+## With this repository we can create a X-Platform / Cross Platform Application running with npm, ASP.NET Core, SignalR and Angular with Typescript.
 
 ## Social
 
