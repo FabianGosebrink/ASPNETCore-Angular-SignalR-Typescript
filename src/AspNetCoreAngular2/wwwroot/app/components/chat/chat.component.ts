@@ -4,7 +4,7 @@ import { ChatMessage } from '../../models/ChatMessage';
 
 @Component({
     selector: 'chat-component',
-    template: require('./chat.component.html')
+    templateUrl: 'chat.component.html'
 })
 
 

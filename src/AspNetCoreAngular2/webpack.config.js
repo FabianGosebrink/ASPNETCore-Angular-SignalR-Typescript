@@ -1,5 +1,6 @@
 ﻿var webpack = require("webpack");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -22,9 +23,8 @@ module.exports = {
                 loader: 'expose?$!expose?jQuery'
             },
             {
-                test: /\.ts/,
-                loaders: ['ts-loader'],
-                exclude: /node_modules/
+                test: /\.ts$/,
+                loaders: ['awesome-typescript-loader', 'angular2-template-loader']
             },
             {
                 test: /\.html$/,
@@ -32,7 +32,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: 'raw'
+                loader: ExtractTextPlugin.extract('style', 'css?sourceMap')
             }
         ]
     },

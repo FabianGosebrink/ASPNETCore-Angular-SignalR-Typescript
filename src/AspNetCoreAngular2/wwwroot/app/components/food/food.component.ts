@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone} from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { DataService } from '../../services/foodDataService';
 import { SignalRService } from '../../services/signalRService';
 import { FoodItem } from '../../models/FoodItem';
@@ -6,7 +6,7 @@ import { FoodItem } from '../../models/FoodItem';
 @Component({
     selector: 'food-component',
     providers: [DataService],
-    template: require('./food.component.html')
+    templateUrl: 'food.component.html'
 })
 
 export class FoodComponent implements OnInit {
@@ -83,7 +83,7 @@ export class FoodComponent implements OnInit {
             //this.getAllFood();
         });
 
-        this._signalRService.foodchanged.subscribe((data) => {
+        this._signalRService.foodchanged.subscribe((data: any) => {
             this.getAllFood();
         });
     }

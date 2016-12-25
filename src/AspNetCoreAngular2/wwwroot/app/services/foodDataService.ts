@@ -27,6 +27,7 @@ export class DataService {
             .catch(this.handleError);
     }
 
+
     public GetSingleFood = (id: number): Observable<FoodItem> => {
         return this._http.get(this.actionUrl + id)
             .map((response: Response) => <FoodItem>response.json())
@@ -49,7 +50,7 @@ export class DataService {
 
     public DeleteFood = (id: number): Observable<Response> => {
         return this._http.delete(this.actionUrl + id)
-            .catch(this.handleError);;
+            .catch(this.handleError);
     }
 
     private handleError(error: Response) {

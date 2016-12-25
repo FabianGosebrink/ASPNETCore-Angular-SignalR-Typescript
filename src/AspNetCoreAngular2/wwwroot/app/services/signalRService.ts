@@ -2,14 +2,14 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { CONFIGURATION } from '../shared/app.constants';
 import { ChatMessage } from '../models/ChatMessage';
 
-declare var $;
+declare var $: any;
 
 @Injectable()
 export class SignalRService {
 
-    private proxy;
+    private proxy: any;
     private proxyName: string = 'coolmessages';
-    private connection;
+    private connection: any;
 
     public foodchanged: EventEmitter<any>;
     public messageReceived: EventEmitter<ChatMessage>;
@@ -37,26 +37,26 @@ export class SignalRService {
     }
 
     private startConnection(): void {
-        this.connection.start().done((data) => {
+        this.connection.start().done((data: any) => {
             console.log('Now connected ' + data.transport.name + ', connection ID= ' + data.id);
             this.connectionEstablished.emit(true);
             this.connectionExists = true;
-        }).fail((error) => {
+        }).fail((error: any) => {
             console.log('Could not connect ' + error);
             this.connectionEstablished.emit(false);
         });
     }
 
     private registerOnServerEvents(): void {
-        this.proxy.on('FoodAdded', (data) => {
+        this.proxy.on('FoodAdded', (data: any) => {
             this.foodchanged.emit(data);
         });
 
-        this.proxy.on('FoodDeleted', (data) => {
+        this.proxy.on('FoodDeleted', (data: any) => {
             this.foodchanged.emit('this could be data');
         });
 
-        this.proxy.on('FoodUpdated', (data) => {
+        this.proxy.on('FoodUpdated', (data: any) => {
             this.foodchanged.emit('this could be data');
         });
 

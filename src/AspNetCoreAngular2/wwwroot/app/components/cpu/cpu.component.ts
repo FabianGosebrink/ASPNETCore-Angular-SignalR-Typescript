@@ -3,7 +3,7 @@ import { SignalRService } from '../../services/signalRService';
 
 @Component({
     selector: 'cpu-component',
-    template: require('./cpu.component.html')
+    templateUrl: 'cpu.component.html'
 })
 
 export class CpuComponent implements OnInit {
