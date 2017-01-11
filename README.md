@@ -6,7 +6,7 @@
 
 ### <a href="https://twitter.com/FabianGosebrink" target="_blank" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @FabianGosebrink</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-### [Offering.solutions](http://blog.offering.solutions "blogLink")
+### [blog.offering.solutions](http://blog.offering.solutions "blogLink")
 ### [fabian-gosebrink.com](http://fabian-gosebrink.com "homepage")
 
 
