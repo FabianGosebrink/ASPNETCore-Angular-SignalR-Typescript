@@ -32,7 +32,7 @@ http://localhost:5000
 
 To see the page then. SignalR is not working there because of CORS-Issues with signalR. Just load the application in Visual Studio and press the Play Button.
 
-![building and using process](_gitAssets/build.gif "npm start and build")
+![building and using process](.github/build.gif "npm start and build")
 
 If you want to get production builds you can type
 
@@ -57,10 +57,10 @@ dotnet run
 to start the ASP.NET Server or just press the Play-Button in Visual Studio.
 
 This is the output after starting the dnx web server
-![alt text](_gitAssets/commandLineWebServer.png "dnx web server")
+![alt text](.github/commandLineWebServer.png "dnx web server")
 
 After this you can browse to the site
-![alt text](_gitAssets/screenshot1.jpg "dnx web server")
+![alt text](.github/screenshot1.jpg "dnx web server")
 
 With 
 
@@ -68,15 +68,15 @@ With
 gulp
 ```
 you can list all tasks
-![alt text](_gitAssets/gulp-tasks.png "dnx web server")
+![alt text](.github/gulp-tasks.png "dnx web server")
 
-![alt text](_gitAssets/dist-folder.png "dnx web server")
+![alt text](.github/dist-folder.png "dnx web server")
 
 Mobile
-![alt text](_gitAssets/xplatform1.jpg "dnx web server")
+![alt text](.github/xplatform1.jpg "dnx web server")
 
 Win 8.1
-![alt text](_gitAssets/xplatform2_win81.jpg "dnx web server")
+![alt text](.github/xplatform2_win81.jpg "dnx web server")
 
 Desktop
-![alt text](_gitAssets/xplatform3.jpg "dnx web server")
+![alt text](.github/xplatform3.jpg "dnx web server")
