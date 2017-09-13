@@ -45,20 +45,6 @@ For web and desktop you can type
 ```javascript 
 npm run build-all
 ```
+and you will find everything in the `.dist`-folder
+![dist](.github/dist-folder.png "dist")
 
-and you will find everything in the `.dist`-folder folder
-
-
-If you want to get production builds you can type
-
-```javascript
-npm run build-production
-```
-
-After this you can type 
-
-```csharp
-dotnet run
-```
-
-to start the ASP.NET Server or just press the Play-Button in Visual Studio.
