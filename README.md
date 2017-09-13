@@ -46,7 +46,7 @@ npm run build-all
 
 and you will find everything in the `.dist`-folder folder
 
-![building and using process](.github/build.gif "npm start and build")
+![signalr](.github/signalr.gif "signalr")
 
 If you want to get production builds you can type
 
