@@ -8,7 +8,6 @@ using ASPNETCoreAngular2Demo.ViewModels;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
-using Microsoft.AspNetCore.SignalR.Infrastructure;
 
 namespace ASPNETCoreAngular2Demo.Controller
 {
@@ -16,12 +15,12 @@ namespace ASPNETCoreAngular2Demo.Controller
     public class FoodItemsController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly IFoodRepository _foodRepository;
-        private readonly IHubContext _coolMessageHubContext;
+        private readonly IHubContext<CoolMessagesHub> _coolMessageHubContext;
 
-        public FoodItemsController(IFoodRepository foodRepository, IConnectionManager connectionManager, ITimerService timerService)
+        public FoodItemsController(IFoodRepository foodRepository, ITimerService timerService, IHubContext<CoolMessagesHub> hubContext)
         {
             _foodRepository = foodRepository;
-            _coolMessageHubContext = connectionManager.GetHubContext<CoolMessagesHub>();
+            _coolMessageHubContext = hubContext;
             timerService.TimerElapsed += _timerService_TimerElapsed;
         }
 
@@ -29,7 +28,7 @@ namespace ASPNETCoreAngular2Demo.Controller
         public IActionResult GetAllFoods()
         {
             var foods = _foodRepository.GetAll();
-            return Ok(foods.Select(x => Mapper.Map<FoodItemViewModel>(x)));
+            return Ok(foods.Select(x => Mapper.Map<FoodItemDto>(x)));
         }
 
         [HttpGet]
@@ -43,11 +42,11 @@ namespace ASPNETCoreAngular2Demo.Controller
                 return NotFound();
             }
 
-            return Ok(Mapper.Map<FoodItemViewModel>(foodItem));
+            return Ok(Mapper.Map<FoodItemDto>(foodItem));
         }
 
         [HttpPost]
-        public IActionResult AddFoodToList([FromBody] FoodItemViewModel viewModel)
+        public IActionResult AddFoodToList([FromBody] FoodItemDto viewModel)
         {
 
             if (viewModel == null)
@@ -64,18 +63,18 @@ namespace ASPNETCoreAngular2Demo.Controller
             item.Created = DateTime.Now;
             FoodItem newFoodItem = _foodRepository.Add(item);
 
-            _coolMessageHubContext.Clients.All.FoodAdded(newFoodItem);
+            _coolMessageHubContext.Clients.All.InvokeAsync("FoodAdded",newFoodItem);
 
             return CreatedAtRoute(
                 "GetSingleFood",
                 new { foodItemId = newFoodItem.Id },
-                Mapper.Map<FoodItemViewModel>(newFoodItem));
+                Mapper.Map<FoodItemDto>(newFoodItem));
 
         }
 
         [HttpPut]
         [Route("{foodItemId:int}")]
-        public IActionResult UpdateFoodInList(int foodItemId, [FromBody] FoodItemViewModel viewModel)
+        public IActionResult UpdateFoodInList(int foodItemId, [FromBody] FoodItemDto viewModel)
         {
             if (viewModel == null)
             {
@@ -98,8 +97,8 @@ namespace ASPNETCoreAngular2Demo.Controller
             singleById.ItemName = viewModel.ItemName;
 
             FoodItem newFoodItem = _foodRepository.Update(singleById);
-            _coolMessageHubContext.Clients.All.FoodUpdated(newFoodItem);
-            return Ok(Mapper.Map<FoodItemViewModel>(newFoodItem));
+            _coolMessageHubContext.Clients.All.InvokeAsync("FoodUpdated", newFoodItem);
+            return Ok(Mapper.Map<FoodItemDto>(newFoodItem));
         }
 
         [HttpDelete]
@@ -115,14 +114,15 @@ namespace ASPNETCoreAngular2Demo.Controller
             }
 
             _foodRepository.Delete(foodItemId);
-            _coolMessageHubContext.Clients.All.FoodDeleted();
+
+            _coolMessageHubContext.Clients.All.InvokeAsync("FoodDeleted");
             return new NoContentResult();
         }
 
         private void _timerService_TimerElapsed(object sender, EventArgs e)
         {
             TimerEventArgs eventsArgs = e as TimerEventArgs;
-            _coolMessageHubContext.Clients.All.newCpuValue(eventsArgs.Value);
+            _coolMessageHubContext.Clients.All.InvokeAsync("newCpuValue", eventsArgs.Value);
         }
 
     }

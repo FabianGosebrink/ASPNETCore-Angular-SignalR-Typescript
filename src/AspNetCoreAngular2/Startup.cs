@@ -1,4 +1,5 @@
-﻿using ASPNETCoreAngular2Demo.Models;
+﻿using ASPNETCoreAngular2Demo.Hubs;
+using ASPNETCoreAngular2Demo.Models;
 using ASPNETCoreAngular2Demo.Repositories;
 using ASPNETCoreAngular2Demo.Services;
 using ASPNETCoreAngular2Demo.ViewModels;
@@ -13,20 +14,12 @@ namespace ASPNETCoreAngular2Demo
 {
     public class Startup
     {
-        public IConfigurationRoot Configuration { get; }
-
-
-        public Startup(IHostingEnvironment env)
+        public Startup(IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
-
-            builder.AddEnvironmentVariables();
-            Configuration = builder.Build();
+            Configuration = configuration;
         }
 
+        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
@@ -39,10 +32,10 @@ namespace ASPNETCoreAngular2Demo
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
-
-            app.UseWebSockets();
-            app.UseSignalR("/signalr");
-
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<CoolMessagesHub>("coolmessages");
+            });
             app.UseMvc();
         }
 
@@ -57,14 +50,11 @@ namespace ASPNETCoreAngular2Demo
             services.AddSingleton<ITimerService, TimerService>();
             services.Configure<TimerServiceConfiguration>(Configuration.GetSection("TimeService"));
 
-            services.AddSignalR(options =>
-            {
-                options.Hubs.EnableDetailedErrors = true;
-            });
+            services.AddSignalR();
 
             AutoMapper.Mapper.Initialize(mapper =>
             {
-                mapper.CreateMap<FoodItem, FoodItemViewModel>().ReverseMap();
+                mapper.CreateMap<FoodItem, FoodItemDto>().ReverseMap();
             });
 
             services.AddMvc();
