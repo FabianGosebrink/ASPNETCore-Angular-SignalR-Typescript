@@ -10,6 +10,8 @@
 ### [fabian-gosebrink.com](http://fabian-gosebrink.com "homepage")
 
 
+![signalr](.github/signalr.gif "signalr")
+
 ## Code
 
 Just clone this repo and run 
@@ -46,7 +48,6 @@ npm run build-all
 
 and you will find everything in the `.dist`-folder folder
 
-![signalr](.github/signalr.gif "signalr")
 
 If you want to get production builds you can type
 
