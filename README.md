@@ -23,9 +23,28 @@ Browse to
 http://localhost:8080
 ```
 
-To see the page then. 
+to see the page then. 
 
 Or just load the application in Visual Studio and press the Play Button.
+
+For a build in the `.dist`-folder you just have to type:
+
+```javascript 
+npm run build-web
+```
+
+If you want to have the electron solution too you can type 
+
+```javascript 
+npm run build-desktop
+```
+
+For web and desktop you can type
+```javascript 
+npm run build-all
+```
+
+and you will find everything in the `.dist`-folder folder
 
 ![building and using process](.github/build.gif "npm start and build")
 
