@@ -95,11 +95,7 @@ module.exports = {
             filename: 'index.html',
             inject: 'body',
             template: 'angularApp/index.html'
-        }),
-
-        new CopyWebpackPlugin([
-            { from: './angularApp/images/*.*', to: 'assets/', flatten: true }
-        ])
+        })
     ]
 };
 
