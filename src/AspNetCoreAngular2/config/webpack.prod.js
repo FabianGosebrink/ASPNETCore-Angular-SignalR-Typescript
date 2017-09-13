@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ngToolsWebpack = require('@ngtools/webpack');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const helpers = require('./webpack.helpers');
 
@@ -23,9 +24,9 @@ module.exports = {
 
     output: {
         path: ROOT + '/wwwroot/',
-        filename: 'dist/[name].[hash].bundle.js',
-        chunkFilename: 'dist/[id].[hash].chunk.js',
-        publicPath: '/'
+        filename: '[name].[hash].bundle.js',
+        chunkFilename: '[id].[hash].chunk.js',
+        publicPath: ''
     },
 
     resolve: {
@@ -60,23 +61,6 @@ module.exports = {
                 ]
             },
             {
-                test: /\.scss$/,
-                include: path.join(ROOT, 'angularApp/styles'),
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'sass-loader'
-                ]
-            },
-            {
-                test: /\.scss$/,
-                exclude: path.join(ROOT, 'angularApp/styles'),
-                use: [
-                    'raw-loader',
-                    'sass-loader'
-                ]
-            },
-            {
                 test: /\.html$/,
                 use: 'raw-loader'
             }
@@ -91,20 +75,16 @@ module.exports = {
         }),
         new CleanWebpackPlugin(
             [
-                './wwwroot/dist',
-                './wwwroot/assets'
+                './wwwroot/'
             ],
             { root: ROOT }
         ),
         new webpack.NoEmitOnErrorsPlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            },
-            output: {
-                comments: false
-            },
-            sourceMap: false
+        new UglifyJSPlugin({
+            parallel: {
+                cache: true,
+                workers: 2
+            }
         }),
         new webpack.optimize.CommonsChunkPlugin(
             {

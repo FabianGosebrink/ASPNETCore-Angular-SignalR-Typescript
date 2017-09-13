@@ -6,5 +6,5 @@ var appRoutes = [
     { path: 'about', component: AboutComponent },
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 ];
-export var routing = RouterModule.forRoot(appRoutes);
+export var routing = RouterModule.forRoot(appRoutes, { useHash: true });
 //# sourceMappingURL=app.routes.js.map

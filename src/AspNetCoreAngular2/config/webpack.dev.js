@@ -72,23 +72,6 @@ module.exports = {
                 ]
             },
             {
-                test: /\.scss$/,
-                include: path.join(ROOT, 'angularApp/styles'),
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'sass-loader'
-                ]
-            },
-            {
-                test: /\.scss$/,
-                exclude: path.join(ROOT, 'angularApp/styles'),
-                use: [
-                    'raw-loader',
-                    'sass-loader'
-                ]
-            },
-            {
                 test: /\.html$/,
                 use: 'raw-loader'
             }

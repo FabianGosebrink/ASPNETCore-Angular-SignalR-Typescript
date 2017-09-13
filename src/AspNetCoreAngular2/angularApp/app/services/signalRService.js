@@ -37,12 +37,21 @@ var SignalRService = (function () {
     };
     SignalRService.prototype.registerOnServerEvents = function () {
         var _this = this;
+        this._hubConnection.on('FoodAdded', function (data) {
+            _this.foodchanged.emit(data);
+        });
+        this._hubConnection.on('FoodDeleted', function (data) {
+            _this.foodchanged.emit('this could be data');
+        });
+        this._hubConnection.on('FoodUpdated', function (data) {
+            _this.foodchanged.emit('this could be data');
+        });
         this._hubConnection.on('Send', function (data) {
             var recieved = "Recieved: " + data;
             console.log(recieved);
             _this.messageReceived.emit(data);
         });
-        this.proxy.on('newCpuValue', function (data) {
+        this._hubConnection.on('newCpuValue', function (data) {
             _this.newCpuValue.emit(data);
         });
     };
