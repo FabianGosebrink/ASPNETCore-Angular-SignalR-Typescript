@@ -2,14 +2,6 @@
 
 ## With this repository we are running an npm, ASP.NET Core, SignalR and Angular with Typescript Project
 
-## Social
-
-### <a href="https://twitter.com/FabianGosebrink" target="_blank">Follow @FabianGosebrink</a>
-
-### [offering.solutions](https://offering.solutions "blogLink")
-### [fabian-gosebrink.com](http://fabian-gosebrink.com "homepage")
-
-
 ![signalr](.github/signalr.gif "signalr")
 
 ## Code
@@ -46,5 +38,6 @@ For web and desktop you can type
 npm run build-all
 ```
 and you will find everything in the `.dist`-folder
+
 ![dist](.github/dist-folder.png "dist")
 
