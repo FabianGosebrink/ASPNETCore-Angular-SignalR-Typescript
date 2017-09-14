@@ -84,8 +84,8 @@ FoodComponent = __decorate([
         templateUrl: 'food.component.html'
     }),
     __metadata("design:paramtypes", [DataService,
-        SignalRService,
-        NgZone])
+        SignalRService, typeof (_a = typeof NgZone !== "undefined" && NgZone) === "function" && _a || Object])
 ], FoodComponent);
 export { FoodComponent };
+var _a;
 //# sourceMappingURL=food.component.js.map

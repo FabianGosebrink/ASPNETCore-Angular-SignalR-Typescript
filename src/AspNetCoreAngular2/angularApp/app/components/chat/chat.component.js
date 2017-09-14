@@ -44,7 +44,8 @@ ChatComponent = __decorate([
         selector: 'app-chat-component',
         templateUrl: 'chat.component.html'
     }),
-    __metadata("design:paramtypes", [SignalRService, NgZone])
+    __metadata("design:paramtypes", [SignalRService, typeof (_a = typeof NgZone !== "undefined" && NgZone) === "function" && _a || Object])
 ], ChatComponent);
 export { ChatComponent };
+var _a;
 //# sourceMappingURL=chat.component.js.map
