@@ -14,9 +14,7 @@
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
     <PackageReference Include="AutoMapper" Version="6.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.0.0-alpha1-26985" />
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Core" Version="1.0.0-alpha1-26985" />
-    <PackageReference Include="Microsoft.AspNetCore.Sockets.Http" Version="1.0.0-alpha1-26985" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.0.0-alpha1-final" />
   </ItemGroup>
 
   <ItemGroup>
