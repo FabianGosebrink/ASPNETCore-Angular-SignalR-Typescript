@@ -32,8 +32,7 @@ CpuComponent = __decorate([
         selector: 'app-cpu-component',
         templateUrl: 'cpu.component.html'
     }),
-    __metadata("design:paramtypes", [SignalRService, typeof (_a = typeof NgZone !== "undefined" && NgZone) === "function" && _a || Object])
+    __metadata("design:paramtypes", [SignalRService, NgZone])
 ], CpuComponent);
 export { CpuComponent };
-var _a;
 //# sourceMappingURL=cpu.component.js.map
