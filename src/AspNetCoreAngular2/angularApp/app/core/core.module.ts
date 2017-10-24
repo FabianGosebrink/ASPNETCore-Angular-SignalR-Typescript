@@ -1,11 +1,11 @@
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
 
-import { FoodDataService } from './services/food-data.service';
+import { FoodDataService, MyFirstInterceptor } from './services/food-data.service';
 import { SignalRService } from './services/signalR.service';
 
 @NgModule({
-    imports: [HttpModule],
+    imports: [HttpClientModule],
     exports: [],
     declarations: [],
     providers: [],
@@ -17,7 +17,12 @@ export class CoreModule {
             ngModule: CoreModule,
             providers: [
                 FoodDataService,
-                SignalRService
+                SignalRService,
+                {
+                    provide: HTTP_INTERCEPTORS,
+                    useClass: MyFirstInterceptor,
+                    multi: true,
+                }
             ]
         };
     }

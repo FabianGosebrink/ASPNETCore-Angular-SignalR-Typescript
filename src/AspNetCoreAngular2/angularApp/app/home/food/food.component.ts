@@ -31,7 +31,7 @@ export class FoodComponent implements OnInit {
     saveFood() {
         if (this.currentFoodItem.id) {
             this._dataService
-                .Update(this.currentFoodItem.id, this.currentFoodItem)
+                .updateFood(this.currentFoodItem.id, this.currentFoodItem)
                 .subscribe(data => {
                     this.currentFoodItem = new FoodItem();
                 }, error => {
@@ -40,7 +40,7 @@ export class FoodComponent implements OnInit {
                 () => console.log('Update complete'));
         } else {
             this._dataService
-                .AddFood(this.currentFoodItem.itemName)
+                .addFood(this.currentFoodItem.itemName)
                 .subscribe(data => {
                     this.currentFoodItem = new FoodItem();
                 }, error => {
@@ -50,8 +50,8 @@ export class FoodComponent implements OnInit {
         }
     }
 
-    public deleteFoodItem(foodItem: FoodItem) {
-        this._dataService.DeleteFood(foodItem.id)
+    deleteFoodItem(foodItem: FoodItem) {
+        this._dataService.deleteFood(foodItem.id)
             .subscribe(
             response => {
                 // this._signalRService.FoodDeleted();
@@ -62,14 +62,14 @@ export class FoodComponent implements OnInit {
             });
     }
 
-    public setFoodItemToEdit(foodItem: FoodItem) {
+    setFoodItemToEdit(foodItem: FoodItem) {
         this.currentFoodItem = foodItem;
     }
 
     private getAllFood(): void {
         this._ngZone.run(() => {
             this._dataService
-                .GetAllFood()
+                .getAllFood()
                 .subscribe(
                 data => {
                     this.foodItems = data;
@@ -83,7 +83,6 @@ export class FoodComponent implements OnInit {
     private subscribeToEvents(): void {
         this._signalRService.connectionEstablished.subscribe(() => {
             this.canAddFood = true;
-            // this.getAllFood();
         });
 
         this._signalRService.foodchanged.subscribe((data: any) => {
