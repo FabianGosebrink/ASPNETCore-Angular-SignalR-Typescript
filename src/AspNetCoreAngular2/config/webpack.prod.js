@@ -1,15 +1,11 @@
 const path = require('path');
-
 const webpack = require('webpack');
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ngToolsWebpack = require('@ngtools/webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-
 const helpers = require('./webpack.helpers');
-
 const ROOT = path.resolve(__dirname, '..');
 
 console.log('@@@@@@@@@ USING PRODUCTION @@@@@@@@@@@@@@@');
@@ -31,12 +27,6 @@ module.exports = {
 
     resolve: {
         extensions: ['.ts', '.js', '.json']
-    },
-
-    devServer: {
-        historyApiFallback: true,
-        stats: 'minimal',
-        outputPath: path.join(ROOT, 'wwwroot/')
     },
 
     module: {
@@ -79,12 +69,9 @@ module.exports = {
             ],
             { root: ROOT }
         ),
-        new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.optimize.ModuleConcatenationPlugin(),
         new UglifyJSPlugin({
-            parallel: {
-                cache: true,
-                workers: 2
-            }
+            parallel: 2
         }),
         new webpack.optimize.CommonsChunkPlugin(
             {

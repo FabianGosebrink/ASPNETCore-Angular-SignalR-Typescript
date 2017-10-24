@@ -5,17 +5,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { Component } from '@angular/core';
-import './app.component.css';
-var AppComponent = (function () {
-    function AppComponent() {
+var AboutComponent = (function () {
+    function AboutComponent() {
     }
-    return AppComponent;
+    return AboutComponent;
 }());
-AppComponent = __decorate([
+AboutComponent = __decorate([
     Component({
-        selector: 'app-main',
-        templateUrl: './app.component.html'
+        selector: 'app-about',
+        templateUrl: './about.component.html'
     })
-], AppComponent);
-export { AppComponent };
-//# sourceMappingURL=app.component.js.map
+], AboutComponent);
+export { AboutComponent };
+//# sourceMappingURL=about.component.js.map

@@ -1,38 +1,24 @@
-import { DataService } from './services/foodDataService';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
-import { routing } from './app.routes';
-import { HttpModule, JsonpModule } from '@angular/http';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { AboutComponent } from './components/about/about.component';
-import { FoodComponent } from './components/food/food.component';
-import { ChatComponent } from './components/chat/chat.component';
-import { CpuComponent } from './components/cpu/cpu.component';
-import { SignalRService } from './services/signalRService';
 import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AboutModule } from './about/about.module';
+import { AppComponent } from './app.component';
+import { appRouting } from './app.routing';
+import { CoreModule } from './core/core.module';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
     imports: [
         BrowserModule,
-        routing,
-        HttpModule,
-        JsonpModule,
+        CoreModule.forRoot(),
+        HomeModule,
+        appRouting,
         FormsModule
     ],
 
     declarations: [
-        AppComponent,
-        DashboardComponent,
-        AboutComponent,
-        FoodComponent,
-        ChatComponent,
-        CpuComponent
-    ],
-
-    providers: [
-        SignalRService,
-        DataService
+        AppComponent
     ],
 
     bootstrap: [AppComponent]

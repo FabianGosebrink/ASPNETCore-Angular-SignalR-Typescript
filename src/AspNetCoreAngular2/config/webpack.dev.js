@@ -83,8 +83,7 @@ module.exports = {
 
         new CleanWebpackPlugin(
             [
-                './wwwroot/dist',
-                './wwwroot/assets'
+                './wwwroot/*',
             ],
             { root: ROOT }
         ),
