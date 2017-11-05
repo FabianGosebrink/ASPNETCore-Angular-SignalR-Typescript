@@ -6,6 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ngToolsWebpack = require('@ngtools/webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const helpers = require('./webpack.helpers');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const ROOT = path.resolve(__dirname, '..');
 
 console.log('@@@@@@@@@ USING PRODUCTION @@@@@@@@@@@@@@@');
@@ -32,7 +33,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.ts$/,
+                test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
                 use: '@ngtools/webpack'
             },
             {
@@ -59,8 +60,10 @@ module.exports = {
     },
 
     plugins: [
-        // AoT plugin.
-        new ngToolsWebpack.AotPlugin({
+        new BundleAnalyzerPlugin({
+           analyzerMode: 'static'
+        }),
+        new ngToolsWebpack.AngularCompilerPlugin({
             tsConfigPath: './tsconfig-aot.json'
         }),
         new CleanWebpackPlugin(

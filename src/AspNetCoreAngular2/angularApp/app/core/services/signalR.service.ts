@@ -1,7 +1,8 @@
-import { CONFIGURATION } from '../../shared/app.constants';
-import { ChatMessage } from '../../models/chatMessage.model';
 import { EventEmitter, Injectable } from '@angular/core';
 import { HubConnection } from '@aspnet/signalr-client';
+
+import { ChatMessage } from '../../models/chatMessage.model';
+import { CONFIGURATION } from '../../shared/app.constants';
 
 @Injectable()
 export class SignalRService {
@@ -54,8 +55,6 @@ export class SignalRService {
         });
 
         this._hubConnection.on('Send', (data: any) => {
-            const recieved = `Recieved: ${data}`;
-            console.log(recieved);
             this.messageReceived.emit(data);
         });
 

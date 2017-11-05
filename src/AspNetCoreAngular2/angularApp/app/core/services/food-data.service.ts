@@ -1,10 +1,8 @@
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
-
 import { HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { catchError } from 'rxjs/operators';
 
 import { FoodItem } from '../../models/foodItem.model';
 import { CONFIGURATION } from '../../shared/app.constants';
@@ -24,30 +22,30 @@ export class FoodDataService {
 
     public getAllFood = (): Observable<FoodItem[]> => {
         return this._http.get<FoodItem[]>(this.actionUrl)
-            .catch(this.handleError);
+            .pipe(catchError(this.handleError));
     }
 
 
     public getSingleFood = (id: number): Observable<FoodItem> => {
         return this._http.get<FoodItem[]>(this.actionUrl + id)
-            .catch(this.handleError);
+        .pipe(catchError(this.handleError));
     }
 
     public addFood = (foodName: string): Observable<FoodItem> => {
         const toAdd: string = JSON.stringify({ ItemName: foodName });
 
         return this._http.post(this.actionUrl, toAdd)
-            .catch(this.handleError);
+        .pipe(catchError(this.handleError));
     }
 
     public updateFood = (id: number, foodToUpdate: FoodItem): Observable<FoodItem> => {
         return this._http.put<FoodItem>(this.actionUrl + id, JSON.stringify(foodToUpdate))
-            .catch(this.handleError);
+        .pipe(catchError(this.handleError));
     }
 
     public deleteFood = (id: number): Observable<Object> => {
         return this._http.delete(this.actionUrl + id)
-            .catch(this.handleError);
+        .pipe(catchError(this.handleError));
     }
 
     private handleError(error: Response) {
