@@ -47,7 +47,7 @@ namespace ASPNETCoreAngular2Demo
             services.AddOptions();
 
             services.AddSingleton<IFoodRepository, FoodRepository>();
-            services.AddScoped<ITimerService, TimerService>();
+            services.AddSingleton<ITimerService, TimerService>();
             services.Configure<TimerServiceConfiguration>(Configuration.GetSection("TimeService"));
 
             services.AddSignalR();
