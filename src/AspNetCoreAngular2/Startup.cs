@@ -1,4 +1,5 @@
-﻿using ASPNETCoreAngular2Demo.Hubs;
+﻿using AspNetCoreAngular2.Services;
+using ASPNETCoreAngular2Demo.Hubs;
 using ASPNETCoreAngular2Demo.Models;
 using ASPNETCoreAngular2Demo.Repositories;
 using ASPNETCoreAngular2Demo.Services;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace ASPNETCoreAngular2Demo
@@ -47,8 +49,8 @@ namespace ASPNETCoreAngular2Demo
             services.AddOptions();
 
             services.AddSingleton<IFoodRepository, FoodRepository>();
-            services.AddSingleton<ITimerService, TimerService>();
             services.Configure<TimerServiceConfiguration>(Configuration.GetSection("TimeService"));
+            services.AddSingleton<IHostedService, SchedulerHostedService>();
 
             services.AddSignalR();
 

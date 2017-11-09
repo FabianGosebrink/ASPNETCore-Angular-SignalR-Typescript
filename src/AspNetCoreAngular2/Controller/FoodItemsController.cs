@@ -1,27 +1,25 @@
-﻿using System;
-using System.Linq;
-using ASPNETCoreAngular2Demo.Hubs;
+﻿using ASPNETCoreAngular2Demo.Hubs;
 using ASPNETCoreAngular2Demo.Models;
 using ASPNETCoreAngular2Demo.Repositories;
-using ASPNETCoreAngular2Demo.Services;
 using ASPNETCoreAngular2Demo.ViewModels;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
+using System;
+using System.Linq;
 
 namespace ASPNETCoreAngular2Demo.Controller
 {
-    [Route("api/[controller]")]
+  [Route("api/[controller]")]
     public class FoodItemsController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly IFoodRepository _foodRepository;
         private readonly IHubContext<CoolMessagesHub> _coolMessageHubContext;
 
-        public FoodItemsController(IFoodRepository foodRepository, ITimerService timerService, IHubContext<CoolMessagesHub> hubContext)
+        public FoodItemsController(IFoodRepository foodRepository, IHubContext<CoolMessagesHub> hubContext)
         {
             _foodRepository = foodRepository;
             _coolMessageHubContext = hubContext;
-            timerService.TimerElapsed += _timerService_TimerElapsed;
         }
 
         [HttpGet]
@@ -118,12 +116,5 @@ namespace ASPNETCoreAngular2Demo.Controller
             _coolMessageHubContext.Clients.All.InvokeAsync("FoodDeleted");
             return new NoContentResult();
         }
-
-        private void _timerService_TimerElapsed(object sender, EventArgs e)
-        {
-            TimerEventArgs eventsArgs = e as TimerEventArgs;
-            _coolMessageHubContext.Clients.All.InvokeAsync("newCpuValue", eventsArgs.Value);
-        }
-
     }
 }
