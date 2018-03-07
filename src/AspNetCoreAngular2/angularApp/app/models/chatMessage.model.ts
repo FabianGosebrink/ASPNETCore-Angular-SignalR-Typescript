@@ -1,8 +1,7 @@
 export class ChatMessage {
+  public sent: Date;
 
-    public sent: Date;
-
-    constructor(public message: string, date: string) {
-        this.sent = new Date(date);
-    }
+  constructor(public message: string = '', date: string = '') {
+    this.sent = new Date(date);
+  }
 }

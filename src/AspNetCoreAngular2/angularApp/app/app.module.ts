@@ -9,19 +9,16 @@ import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        CoreModule.forRoot(),
-        HomeModule,
-        appRouting,
-        FormsModule
-    ],
+  imports: [
+    BrowserModule,
+    CoreModule.forRoot(),
+    HomeModule,
+    appRouting,
+    FormsModule
+  ],
 
-    declarations: [
-        AppComponent
-    ],
+  declarations: [AppComponent],
 
-    bootstrap: [AppComponent]
+  bootstrap: [AppComponent]
 })
-
-export class AppModule { }
+export class AppModule {}

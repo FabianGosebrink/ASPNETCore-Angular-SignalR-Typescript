@@ -2,9 +2,7 @@
 import './app.component.css';
 
 @Component({
-    selector: 'app-main',
-    templateUrl: './app.component.html'
+  selector: 'app-main',
+  templateUrl: './app.component.html'
 })
-
-export class AppComponent {
-}
+export class AppComponent {}

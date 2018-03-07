@@ -7,8 +7,7 @@
 <form (ngSubmit)="sendMessage()">
     <div class="form-group">
         <label for="exampleInputEmail1">Client invoke</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Message" 
-        [(ngModel)]="currentMessage.message"
+        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Message" [(ngModel)]="currentMessage.message"
             name="message">
     </div>
     <button type="submit" class="btn btn-default" [disabled]="!canSendMessage">Send</button>

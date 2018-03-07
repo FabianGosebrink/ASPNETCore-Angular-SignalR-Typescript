@@ -7,18 +7,14 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule
-    ],
-    exports: [],
-    declarations: [
-        ChatComponent,
-        CpuComponent,
-        DashboardComponent,
-        FoodComponent
-    ],
-    providers: [],
+  imports: [CommonModule, FormsModule],
+  exports: [],
+  declarations: [
+    ChatComponent,
+    CpuComponent,
+    DashboardComponent,
+    FoodComponent
+  ],
+  providers: []
 })
-
-export class HomeModule { }
+export class HomeModule {}

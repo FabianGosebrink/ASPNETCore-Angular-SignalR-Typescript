@@ -1,6 +1,6 @@
 export let CONFIGURATION = {
-    baseUrls: {
-        server: 'http://localhost:5000/',
-        apiUrl: 'api/'
-    }
-}
+  baseUrls: {
+    server: 'http://localhost:5000/',
+    apiUrl: 'api/'
+  }
+};

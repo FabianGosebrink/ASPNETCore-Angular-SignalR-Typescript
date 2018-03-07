@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-dashboard',
-    templateUrl: './dashboard.component.html'
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html'
 })
-
 export class DashboardComponent {
+  message: string;
 
-    message: string;
-
-    constructor() {
-        this.message = 'Hello from HomeComponent constructor';
-    }
+  constructor() {
+    this.message = 'Hello from HomeComponent constructor';
+  }
 }
