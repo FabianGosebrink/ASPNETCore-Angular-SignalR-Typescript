@@ -36,7 +36,7 @@ namespace ASPNETCoreAngular2Demo
             app.UseStaticFiles();
             app.UseSignalR(routes =>
             {
-                routes.MapHub<CoolMessagesHub>("coolmessages");
+                routes.MapHub<CoolMessagesHub>("/coolmessages");
             });
             app.UseMvc();
         }

@@ -35,7 +35,7 @@ namespace AspNetCoreAngular2.Services
 
                 _logger.LogInformation($"Sending newCpuValue {randomValue}...");
 
-                await _coolMessageHubContext.Clients.All.InvokeAsync("newCpuValue", randomValue);
+                await _coolMessageHubContext.Clients.All.SendAsync("newCpuValue", randomValue);
                 
                 await Task.Delay(TimeSpan.FromMilliseconds(_options.Value.Period), cancellationToken);
             }

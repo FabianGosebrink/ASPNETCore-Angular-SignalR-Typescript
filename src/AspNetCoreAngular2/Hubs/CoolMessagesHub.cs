@@ -8,7 +8,7 @@ namespace ASPNETCoreAngular2Demo.Hubs
     {
         public Task SendMessage(ChatMessage chatMessage)
         {
-            return Clients.All.InvokeAsync("Send", chatMessage);
+            return Clients.All.SendAsync("Send", chatMessage);
         }
     }
 }

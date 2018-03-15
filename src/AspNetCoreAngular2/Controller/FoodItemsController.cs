@@ -61,7 +61,7 @@ namespace ASPNETCoreAngular2Demo.Controller
             item.Created = DateTime.Now;
             FoodItem newFoodItem = _foodRepository.Add(item);
 
-            _coolMessageHubContext.Clients.All.InvokeAsync("FoodAdded",newFoodItem);
+            _coolMessageHubContext.Clients.All.SendAsync("FoodAdded",newFoodItem);
 
             return CreatedAtRoute(
                 "GetSingleFood",
@@ -95,7 +95,7 @@ namespace ASPNETCoreAngular2Demo.Controller
             singleById.ItemName = viewModel.ItemName;
 
             FoodItem newFoodItem = _foodRepository.Update(singleById);
-            _coolMessageHubContext.Clients.All.InvokeAsync("FoodUpdated", newFoodItem);
+            _coolMessageHubContext.Clients.All.SendAsync("FoodUpdated", newFoodItem);
             return Ok(Mapper.Map<FoodItemDto>(newFoodItem));
         }
 
@@ -113,7 +113,7 @@ namespace ASPNETCoreAngular2Demo.Controller
 
             _foodRepository.Delete(foodItemId);
 
-            _coolMessageHubContext.Clients.All.InvokeAsync("FoodDeleted");
+            _coolMessageHubContext.Clients.All.SendAsync("FoodDeleted");
             return new NoContentResult();
         }
     }

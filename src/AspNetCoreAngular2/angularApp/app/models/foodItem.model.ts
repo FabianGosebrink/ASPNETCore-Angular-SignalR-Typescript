@@ -1,5 +1,5 @@
 export class FoodItem {
-  public id: number;
-  public itemName: string;
-  public created: Date;
+  public id = 0;
+  public itemName = '';
+  public created = new Date();
 }

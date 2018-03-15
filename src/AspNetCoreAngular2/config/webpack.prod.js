@@ -6,86 +6,77 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ngToolsWebpack = require('@ngtools/webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const helpers = require('./webpack.helpers');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin;
 const ROOT = path.resolve(__dirname, '..');
 
 console.log('@@@@@@@@@ USING PRODUCTION @@@@@@@@@@@@@@@');
 
 module.exports = {
+  mode: 'production',
+  entry: {
+    vendor: './angularApp/vendor.ts',
+    polyfills: './angularApp/polyfills.ts',
+    app: './angularApp/main-aot.ts' // AoT compilation
+  },
 
-    entry: {
-        'vendor': './angularApp/vendor.ts',
-        'polyfills': './angularApp/polyfills.ts',
-        'app': './angularApp/main-aot.ts' // AoT compilation
-    },
+  output: {
+    path: ROOT + '/wwwroot/',
+    filename: '[name].[hash].bundle.js',
+    chunkFilename: '[id].[hash].chunk.js',
+    publicPath: ''
+  },
 
-    output: {
-        path: ROOT + '/wwwroot/',
-        filename: '[name].[hash].bundle.js',
-        chunkFilename: '[id].[hash].chunk.js',
-        publicPath: ''
-    },
+  resolve: {
+    extensions: ['.ts', '.js', '.json']
+  },
 
-    resolve: {
-        extensions: ['.ts', '.js', '.json']
-    },
+  module: {
+    rules: [
+      {
+        test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
+        use: '@ngtools/webpack'
+      },
+      {
+        test: /\.(png|jpg|gif|woff|woff2|ttf|svg|eot)$/,
+        use: 'file-loader?name=assets/[name]-[hash:6].[ext]'
+      },
+      {
+        test: /favicon.ico$/,
+        use: 'file-loader?name=/[name].[ext]'
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.html$/,
+        use: 'raw-loader'
+      }
+    ],
+    exprContextCritical: false
+  },
 
-    module: {
-        rules: [
-            {
-                test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
-                use: '@ngtools/webpack'
-            },
-            {
-                test: /\.(png|jpg|gif|woff|woff2|ttf|svg|eot)$/,
-                use: 'file-loader?name=assets/[name]-[hash:6].[ext]'
-            },
-            {
-                test: /favicon.ico$/,
-                use: 'file-loader?name=/[name].[ext]'
-            },
-            {
-                test: /\.css$/,
-                use: [
-                    'style-loader',
-                    'css-loader'
-                ]
-            },
-            {
-                test: /\.html$/,
-                use: 'raw-loader'
-            }
-        ],
-        exprContextCritical: false
-    },
+  plugins: [
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static'
+    }),
+    new ngToolsWebpack.AngularCompilerPlugin({
+      tsConfigPath: './tsconfig-aot.json'
+    }),
+    new CleanWebpackPlugin(['./wwwroot/'], { root: ROOT }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
+    // new UglifyJSPlugin({
+    //   parallel: 2
+    // }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: ['vendor', 'polyfills']
+    // }),
 
-    plugins: [
-        new BundleAnalyzerPlugin({
-           analyzerMode: 'static'
-        }),
-        new ngToolsWebpack.AngularCompilerPlugin({
-            tsConfigPath: './tsconfig-aot.json'
-        }),
-        new CleanWebpackPlugin(
-            [
-                './wwwroot/'
-            ],
-            { root: ROOT }
-        ),
-        new webpack.optimize.ModuleConcatenationPlugin(),
-        new UglifyJSPlugin({
-            parallel: 2
-        }),
-        new webpack.optimize.CommonsChunkPlugin(
-            {
-                name: ['vendor', 'polyfills']
-            }),
-
-        new HtmlWebpackPlugin({
-            filename: 'index.html',
-            inject: 'body',
-            template: 'angularApp/index.html'
-        })
-    ]
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      inject: 'body',
+      template: 'angularApp/index.html'
+    })
+  ]
 };
-

@@ -7,7 +7,7 @@ import { SignalRService } from '../../core/services/signalR.service';
   templateUrl: 'cpu.component.html'
 })
 export class CpuComponent implements OnInit {
-  cpuValue: number;
+  cpuValue = 0;
 
   constructor(
     private _signalRService: SignalRService,

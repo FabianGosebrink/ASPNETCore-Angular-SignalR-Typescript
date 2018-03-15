@@ -18,3 +18,4 @@ src/AspNetCoreAngular2/.temp/
 /src/AspNetCoreAngular2/angularApp/**/*.js.map
 /src/AspNetCoreAngular2/angularApp/**/*.js
 /src/AspNetCoreAngular2/wwwroot/*
+/src/AspNetCoreAngular2/dist

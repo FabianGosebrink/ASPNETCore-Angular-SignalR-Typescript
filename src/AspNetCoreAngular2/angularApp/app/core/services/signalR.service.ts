@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { HubConnection } from '@aspnet/signalr-client';
+import { HubConnection } from '@aspnet/signalr';
 
 import { ChatMessage } from '../../models/chatMessage.model';
 import { CONFIGURATION } from '../../shared/app.constants';

@@ -16,7 +16,7 @@ import { CONFIGURATION } from '../../shared/app.constants';
 @Injectable()
 export class FoodDataService {
   private actionUrl: string;
-  private headers: Headers;
+  private headers = new Headers();
 
   constructor(private _http: HttpClient) {
     this.actionUrl =
@@ -25,40 +25,37 @@ export class FoodDataService {
       'foodItems/';
   }
 
-  public getAllFood = (): Observable<FoodItem[]> => {
+  public getAllFood(): Observable<FoodItem[]> {
     return this._http
       .get<FoodItem[]>(this.actionUrl)
       .pipe(catchError(this.handleError));
-  };
+  }
 
-  public getSingleFood = (id: number): Observable<FoodItem> => {
+  public getSingleFood(id: number): Observable<FoodItem> {
     return this._http
       .get<FoodItem[]>(this.actionUrl + id)
       .pipe(catchError(this.handleError));
-  };
+  }
 
-  public addFood = (foodName: string): Observable<FoodItem> => {
+  public addFood(foodName: string): Observable<FoodItem> {
     const toAdd: string = JSON.stringify({ ItemName: foodName });
 
     return this._http
       .post(this.actionUrl, toAdd)
       .pipe(catchError(this.handleError));
-  };
+  }
 
-  public updateFood = (
-    id: number,
-    foodToUpdate: FoodItem
-  ): Observable<FoodItem> => {
+  public updateFood(id: number, foodToUpdate: FoodItem): Observable<FoodItem> {
     return this._http
       .put<FoodItem>(this.actionUrl + id, JSON.stringify(foodToUpdate))
       .pipe(catchError(this.handleError));
-  };
+  }
 
-  public deleteFood = (id: number): Observable<Object> => {
+  public deleteFood(id: number): Observable<Object> {
     return this._http
       .delete(this.actionUrl + id)
       .pipe(catchError(this.handleError));
-  };
+  }
 
   private handleError(error: Response) {
     console.error(error);
