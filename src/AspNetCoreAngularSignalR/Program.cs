@@ -1,9 +1,8 @@
-﻿using System.IO;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore;
 using Microsoft.Extensions.Configuration;
 
-namespace ASPNETCoreAngular2Demo
+namespace AspNetCoreAngularSignalR
 {
     public class Program
     {

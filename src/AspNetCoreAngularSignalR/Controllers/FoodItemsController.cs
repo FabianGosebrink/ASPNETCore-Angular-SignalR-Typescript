@@ -1,17 +1,17 @@
-﻿using ASPNETCoreAngular2Demo.Hubs;
-using ASPNETCoreAngular2Demo.Models;
-using ASPNETCoreAngular2Demo.Repositories;
-using ASPNETCoreAngular2Demo.ViewModels;
+﻿using System;
+using System.Linq;
+using AspNetCoreAngularSignalR.Dtos;
+using AspNetCoreAngularSignalR.Hubs;
+using AspNetCoreAngularSignalR.Models;
+using AspNetCoreAngularSignalR.Repositories;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
-using System;
-using System.Linq;
 
-namespace ASPNETCoreAngular2Demo.Controller
+namespace AspNetCoreAngularSignalR.Controllers
 {
   [Route("api/[controller]")]
-    public class FoodItemsController : Microsoft.AspNetCore.Mvc.Controller
+    public class FoodItemsController : Controller
     {
         private readonly IFoodRepository _foodRepository;
         private readonly IHubContext<CoolMessagesHub> _coolMessageHubContext;
@@ -46,7 +46,6 @@ namespace ASPNETCoreAngular2Demo.Controller
         [HttpPost]
         public IActionResult AddFoodToList([FromBody] FoodItemDto viewModel)
         {
-
             if (viewModel == null)
             {
                 return BadRequest();
@@ -114,7 +113,7 @@ namespace ASPNETCoreAngular2Demo.Controller
             _foodRepository.Delete(foodItemId);
 
             _coolMessageHubContext.Clients.All.SendAsync("FoodDeleted");
-            return new NoContentResult();
+            return NoContent();
         }
     }
 }

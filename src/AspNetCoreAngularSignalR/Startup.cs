@@ -1,18 +1,15 @@
-﻿using AspNetCoreAngular2.Services;
-using ASPNETCoreAngular2Demo.Hubs;
-using ASPNETCoreAngular2Demo.Models;
-using ASPNETCoreAngular2Demo.Repositories;
-using ASPNETCoreAngular2Demo.Services;
-using ASPNETCoreAngular2Demo.ViewModels;
+﻿using AspNetCoreAngularSignalR.Dtos;
+using AspNetCoreAngularSignalR.Hubs;
+using AspNetCoreAngularSignalR.Models;
+using AspNetCoreAngularSignalR.Repositories;
+using AspNetCoreAngularSignalR.Services;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Cors.Infrastructure;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace ASPNETCoreAngular2Demo
+namespace AspNetCoreAngularSignalR
 {
     public class Startup
     {

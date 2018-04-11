@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ASPNETCoreAngular2Demo.ViewModels
+namespace AspNetCoreAngularSignalR.Dtos
 {
     public class FoodItemDto
     {

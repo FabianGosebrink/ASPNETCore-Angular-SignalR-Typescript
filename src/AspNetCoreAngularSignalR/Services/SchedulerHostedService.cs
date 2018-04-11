@@ -1,13 +1,12 @@
-﻿using ASPNETCoreAngular2Demo.Hubs;
-using ASPNETCoreAngular2Demo.Services;
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using AspNetCoreAngularSignalR.Hubs;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace AspNetCoreAngular2.Services
+namespace AspNetCoreAngularSignalR.Services
 {
     public class SchedulerHostedService : HostedServiceBase
     {

@@ -1,4 +1,4 @@
-﻿namespace ASPNETCoreAngular2Demo.Services
+﻿namespace AspNetCoreAngularSignalR.Services
 {
     public class TimerServiceConfiguration
     {

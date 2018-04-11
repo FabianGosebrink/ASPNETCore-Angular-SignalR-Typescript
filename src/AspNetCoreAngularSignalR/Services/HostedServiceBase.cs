@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.Hosting;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Hosting;
 
-namespace AspNetCoreAngular2.Services
+namespace AspNetCoreAngularSignalR.Services
 {
     public abstract class HostedServiceBase : IHostedService
     {

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ASPNETCoreAngular2Demo.Models;
+using AspNetCoreAngularSignalR.Models;
 
-namespace ASPNETCoreAngular2Demo.Repositories
+namespace AspNetCoreAngularSignalR.Repositories
 {
     public class FoodRepository : IFoodRepository
     {

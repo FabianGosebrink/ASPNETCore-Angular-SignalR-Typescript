@@ -1,8 +1,8 @@
-﻿using ASPNETCoreAngular2Demo.Models;
+﻿using System.Threading.Tasks;
+using AspNetCoreAngularSignalR.Models;
 using Microsoft.AspNetCore.SignalR;
-using System.Threading.Tasks;
 
-namespace ASPNETCoreAngular2Demo.Hubs
+namespace AspNetCoreAngularSignalR.Hubs
 {
     public class CoolMessagesHub : Hub
     {
