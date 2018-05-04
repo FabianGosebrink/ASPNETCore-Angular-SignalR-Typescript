@@ -1,6 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { HubConnection } from '@aspnet/signalr';
-
 import { ChatMessage } from '../../models/chatMessage.model';
 import { CONFIGURATION } from '../../shared/app.constants';
 
@@ -10,7 +9,6 @@ export class SignalRService {
   messageReceived = new EventEmitter<ChatMessage>();
   newCpuValue = new EventEmitter<Number>();
   connectionEstablished = new EventEmitter<Boolean>();
-  connectionExists = false;
 
   private _hubConnection: HubConnection;
 

@@ -1,5 +1,4 @@
 import { Component, NgZone } from '@angular/core';
-
 import { SignalRService } from '../../core/services/signalR.service';
 import { ChatMessage } from '../../models/chatMessage.model';
 
@@ -10,14 +9,13 @@ import { ChatMessage } from '../../models/chatMessage.model';
 export class ChatComponent {
   currentMessage: ChatMessage;
   allMessages: ChatMessage[];
-  canSendMessage: Boolean;
+  canSendMessage: boolean;
 
   constructor(
     private _signalRService: SignalRService,
     private _ngZone: NgZone
   ) {
     this.subscribeToEvents();
-    this.canSendMessage = _signalRService.connectionExists;
     this.currentMessage = new ChatMessage();
     this.allMessages = [];
   }

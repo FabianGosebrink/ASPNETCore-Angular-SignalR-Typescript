@@ -1,5 +1,4 @@
 import { Component, NgZone, OnInit } from '@angular/core';
-
 import { FoodDataService } from '../../core/services/food-data.service';
 import { SignalRService } from '../../core/services/signalR.service';
 import { FoodItem } from '../../models/foodItem.model';
@@ -11,14 +10,13 @@ import { FoodItem } from '../../models/foodItem.model';
 export class FoodComponent implements OnInit {
   foodItems: FoodItem[];
   currentFoodItem: FoodItem;
-  canAddFood: Boolean;
+  canAddFood: boolean;
 
   constructor(
     private _dataService: FoodDataService,
     private _signalRService: SignalRService,
     private _ngZone: NgZone
   ) {
-    this.canAddFood = _signalRService.connectionExists;
     this.currentFoodItem = new FoodItem();
     this.foodItems = [];
   }

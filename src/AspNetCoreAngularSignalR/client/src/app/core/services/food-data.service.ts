@@ -7,9 +7,8 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Headers, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-
 import { FoodItem } from '../../models/foodItem.model';
 import { CONFIGURATION } from '../../shared/app.constants';
 
@@ -33,7 +32,7 @@ export class FoodDataService {
 
   public getSingleFood(id: number): Observable<FoodItem> {
     return this._http
-      .get<FoodItem[]>(this.actionUrl + id)
+      .get<FoodItem>(this.actionUrl + id)
       .pipe(catchError(this.handleError));
   }
 
@@ -41,7 +40,7 @@ export class FoodDataService {
     const toAdd: string = JSON.stringify({ ItemName: foodName });
 
     return this._http
-      .post(this.actionUrl, toAdd)
+      .post<FoodItem>(this.actionUrl, toAdd)
       .pipe(catchError(this.handleError));
   }
 

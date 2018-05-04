@@ -27,7 +27,7 @@ namespace AspNetCoreAngularSignalR
             loggerFactory.AddDebug();
 
             app.UseCors(config =>
-                 config.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+                 config.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
 
             app.UseDefaultFiles();
             app.UseStaticFiles();

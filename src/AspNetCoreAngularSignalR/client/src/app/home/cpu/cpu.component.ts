@@ -1,5 +1,4 @@
 import { Component, NgZone, OnInit } from '@angular/core';
-
 import { SignalRService } from '../../core/services/signalR.service';
 
 @Component({

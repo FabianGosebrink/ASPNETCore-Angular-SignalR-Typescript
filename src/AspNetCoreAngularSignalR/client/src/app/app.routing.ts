@@ -1,5 +1,4 @@
 import { RouterModule, Routes } from '@angular/router';
-
 import { DashboardComponent } from './home/dashboard/dashboard.component';
 
 const appRoutes: Routes = [
