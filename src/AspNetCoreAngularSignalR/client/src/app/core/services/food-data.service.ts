@@ -7,7 +7,7 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Headers, Response } from '@angular/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { FoodItem } from '../../models/foodItem.model';
 import { CONFIGURATION } from '../../shared/app.constants';
@@ -58,7 +58,7 @@ export class FoodDataService {
 
   private handleError(error: Response) {
     console.error(error);
-    return Observable.throw(error.json() || 'Server error');
+    return throwError(error.json() || 'Server error');
   }
 }
 
