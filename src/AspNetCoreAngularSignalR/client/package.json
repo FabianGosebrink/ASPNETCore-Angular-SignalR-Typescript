@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "concurrently \"ng serve -o\" \"cd .. && dotnet run\" ",
+    "start": "concurrently \"cd .. && dotnet run\" \"ng serve -o\" ",
     "build": "ng build --prod --output-path=../wwwroot/",
     "test": "ng test",
     "lint": "ng lint",
@@ -20,13 +20,13 @@
     "@angular/platform-browser": "^6.0.0",
     "@angular/platform-browser-dynamic": "^6.0.0",
     "@angular/router": "^6.0.0",
-    "core-js": "^2.5.4",
-    "rxjs": "^6.0.0",
-    "zone.js": "^0.8.26",
+    "@aspnet/signalr": "^1.0.0-rc1-update1",
     "bootstrap": "^3.3.7",
     "concurrently": "^3.5.1",
+    "core-js": "^2.5.4",
     "jquery": "^3.3.1",
-    "@aspnet/signalr": "^1.0.0-preview2-final"
+    "rxjs": "^6.0.0",
+    "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "@angular/compiler-cli": "^6.0.0",

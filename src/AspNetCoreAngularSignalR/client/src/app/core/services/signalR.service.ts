@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { HubConnection } from '@aspnet/signalr';
+import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 import { ChatMessage } from '../../models/chatMessage.model';
 import { CONFIGURATION } from '../../shared/app.constants';
 
@@ -10,31 +10,36 @@ export class SignalRService {
   newCpuValue = new EventEmitter<Number>();
   connectionEstablished = new EventEmitter<Boolean>();
 
+  private connectionIsEstablished = false;
   private _hubConnection: HubConnection;
 
   constructor() {
-    this._hubConnection = new HubConnection(
-      CONFIGURATION.baseUrls.server + 'coolmessages'
-    );
-
+    this.createConnection();
     this.registerOnServerEvents();
-
     this.startConnection();
   }
 
-  public sendChatMessage(message: ChatMessage) {
+  sendChatMessage(message: ChatMessage) {
     this._hubConnection.invoke('SendMessage', message);
+  }
+
+  private createConnection() {
+    this._hubConnection = new HubConnectionBuilder()
+      .withUrl(CONFIGURATION.baseUrls.server + 'coolmessages')
+      .build();
   }
 
   private startConnection(): void {
     this._hubConnection
       .start()
       .then(() => {
+        this.connectionIsEstablished = true;
         console.log('Hub connection started');
         this.connectionEstablished.emit(true);
       })
       .catch(err => {
-        console.log('Error while establishing connection');
+        console.log('Error while establishing connection, retrying...');
+        setTimeout(this.startConnection(), 5000);
       });
   }
 

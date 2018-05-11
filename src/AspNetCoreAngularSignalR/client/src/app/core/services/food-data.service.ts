@@ -57,8 +57,7 @@ export class FoodDataService {
   }
 
   private handleError(error: Response) {
-    console.error(error);
-    return throwError(error.json() || 'Server error');
+    return throwError(error || 'Server error');
   }
 }
 

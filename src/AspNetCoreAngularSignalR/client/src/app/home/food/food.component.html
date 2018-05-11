@@ -7,7 +7,7 @@
     <!-- /.panel-heading -->
     <div class="panel-body">
         <div class="list-group">
-            <a href="#" class="list-group-item" *ngFor="let foodItem of foodItems">
+            <a href="#" class="list-group-item" *ngFor="let foodItem of foodItems | async">
                 <i class="fa fa-cutlery"></i> {{foodItem.itemName}}
                 <span class="pull-right text-muted small">
                     <button class="btn btn-primary btn-xs" (click)="setFoodItemToEdit(foodItem)" [disabled]="!canAddFood" type="button">Edit</button>
@@ -19,7 +19,7 @@
         <form (ngSubmit)="saveFood()">
             <div class="form-group">
                 <label for="exampleInputEmail1">Server invoke</label>
-                <input type="text" [(ngModel)]="currentFoodItem.itemName" class="form-control" placeholder="add new food here"  name="itemName">
+                <input type="text" [(ngModel)]="currentFoodItem.itemName" class="form-control" placeholder="add new food here" name="itemName">
             </div>
             <input class="btn btn-success" type="submit" value="Save" [disabled]="!canAddFood">
         </form>
