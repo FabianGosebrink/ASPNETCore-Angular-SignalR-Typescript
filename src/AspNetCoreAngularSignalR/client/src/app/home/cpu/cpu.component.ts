@@ -8,18 +8,15 @@ import { SignalRService } from '../../core/services/signalR.service';
 export class CpuComponent implements OnInit {
   cpuValue = 0;
 
-  constructor(
-    private _signalRService: SignalRService,
-    private _ngZone: NgZone
-  ) {}
+  constructor(private signalRService: SignalRService, private ngZone: NgZone) {}
 
   ngOnInit() {
     this.subscribeToEvents();
   }
 
   private subscribeToEvents(): void {
-    this._signalRService.newCpuValue.subscribe((cpuValue: number) => {
-      this._ngZone.run(() => {
+    this.signalRService.newCpuValue.subscribe((cpuValue: number) => {
+      this.ngZone.run(() => {
         this.cpuValue = cpuValue;
       });
     });

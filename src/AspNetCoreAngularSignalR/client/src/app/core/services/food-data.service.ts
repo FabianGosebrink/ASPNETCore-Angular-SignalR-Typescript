@@ -6,7 +6,7 @@ import {
   HttpRequest
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Headers, Response } from '@angular/http';
+import { Response } from '@angular/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { FoodItem } from '../../models/foodItem.model';
@@ -15,7 +15,6 @@ import { CONFIGURATION } from '../../shared/app.constants';
 @Injectable()
 export class FoodDataService {
   private actionUrl: string;
-  private headers = new Headers();
 
   constructor(private _http: HttpClient) {
     this.actionUrl =

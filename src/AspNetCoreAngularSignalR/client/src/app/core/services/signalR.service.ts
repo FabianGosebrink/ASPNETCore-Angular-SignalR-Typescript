@@ -1,17 +1,16 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
+import { Subject } from 'rxjs';
 import { ChatMessage } from '../../models/chatMessage.model';
 import { CONFIGURATION } from '../../shared/app.constants';
 
 @Injectable()
 export class SignalRService {
-  foodchanged = new EventEmitter();
-  messageReceived = new EventEmitter<ChatMessage>();
-  newCpuValue = new EventEmitter<Number>();
-  connectionEstablished = new EventEmitter<Boolean>();
-
-  private connectionIsEstablished = false;
-  private _hubConnection: HubConnection;
+  foodchanged = new Subject();
+  messageReceived = new Subject<ChatMessage>();
+  newCpuValue = new Subject<Number>();
+  connectionEstablished = new Subject<Boolean>();
+  private hubConnection: HubConnection;
 
   constructor() {
     this.createConnection();
@@ -20,22 +19,21 @@ export class SignalRService {
   }
 
   sendChatMessage(message: ChatMessage) {
-    this._hubConnection.invoke('SendMessage', message);
+    this.hubConnection.invoke('SendMessage', message);
   }
 
   private createConnection() {
-    this._hubConnection = new HubConnectionBuilder()
+    this.hubConnection = new HubConnectionBuilder()
       .withUrl(CONFIGURATION.baseUrls.server + 'coolmessages')
       .build();
   }
 
   private startConnection(): void {
-    this._hubConnection
+    this.hubConnection
       .start()
       .then(() => {
-        this.connectionIsEstablished = true;
         console.log('Hub connection started');
-        this.connectionEstablished.emit(true);
+        this.connectionEstablished.next(true);
       })
       .catch(err => {
         console.log('Error while establishing connection, retrying...');
@@ -44,24 +42,24 @@ export class SignalRService {
   }
 
   private registerOnServerEvents(): void {
-    this._hubConnection.on('FoodAdded', (data: any) => {
-      this.foodchanged.emit(data);
+    this.hubConnection.on('FoodAdded', (data: any) => {
+      this.foodchanged.next(data);
     });
 
-    this._hubConnection.on('FoodDeleted', (data: any) => {
-      this.foodchanged.emit('this could be data');
+    this.hubConnection.on('FoodDeleted', (data: any) => {
+      this.foodchanged.next('this could be data');
     });
 
-    this._hubConnection.on('FoodUpdated', (data: any) => {
-      this.foodchanged.emit('this could be data');
+    this.hubConnection.on('FoodUpdated', (data: any) => {
+      this.foodchanged.next('this could be data');
     });
 
-    this._hubConnection.on('Send', (data: any) => {
-      this.messageReceived.emit(data);
+    this.hubConnection.on('Send', (data: any) => {
+      this.messageReceived.next(data);
     });
 
-    this._hubConnection.on('newCpuValue', (data: number) => {
-      this.newCpuValue.emit(data);
+    this.hubConnection.on('newCpuValue', (data: number) => {
+      this.newCpuValue.next(data);
     });
   }
 }
