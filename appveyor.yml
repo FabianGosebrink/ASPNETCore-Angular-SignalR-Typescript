@@ -1,0 +1,22 @@
+image: Visual Studio 2017
+environment:
+  nodejs_version: "6"
+install:
+  - ECHO %APPVEYOR_BUILD_WORKER_IMAGE%
+  - ps: Install-Product node $env:nodejs_version
+  - dotnet --version
+  - dotnet restore
+  - choco install googlechrome  --ignore-checksums
+build_script:
+  - dotnet build
+  - npm -g install npm@latest
+  - cd src\AspNetCoreAngular2
+  - npm install
+  - npm run build-production
+  - npm run build-dev
+before_build:
+  - appveyor-retry dotnet restore -v Minimal
+test_script:
+  - npm run test-ci
+  - cd C:\projects\angular2webpackvisualstudio\tests\AngularWebpackVisualStudio_Tests
+  - dotnet test

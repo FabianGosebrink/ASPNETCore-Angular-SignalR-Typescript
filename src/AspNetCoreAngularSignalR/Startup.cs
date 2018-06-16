@@ -4,6 +4,7 @@ using AspNetCoreAngularSignalR.Models;
 using AspNetCoreAngularSignalR.Repositories;
 using AspNetCoreAngularSignalR.Services;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,6 +32,7 @@ namespace AspNetCoreAngularSignalR
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
+            app.UseHttpsRedirection();
             app.UseSignalR(routes =>
             {
                 routes.MapHub<CoolMessagesHub>("/coolmessages");
@@ -56,7 +58,7 @@ namespace AspNetCoreAngularSignalR
                 mapper.CreateMap<FoodItem, FoodItemDto>().ReverseMap();
             });
 
-            services.AddMvc();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
     }
 }

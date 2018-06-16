@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using AspNetCoreAngularSignalR.Dtos;
 using AspNetCoreAngularSignalR.Hubs;
@@ -23,7 +24,7 @@ namespace AspNetCoreAngularSignalR.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllFoods()
+        public ActionResult<List<FoodItemDto>> GetAllFoods()
         {
             var foods = _foodRepository.GetAll();
             return Ok(foods.Select(x => Mapper.Map<FoodItemDto>(x)));
@@ -31,7 +32,7 @@ namespace AspNetCoreAngularSignalR.Controllers
 
         [HttpGet]
         [Route("{foodItemId:int}", Name = "GetSingleFood")]
-        public IActionResult GetSingleFood(int foodItemId)
+        public ActionResult<FoodItemDto> GetSingleFood(int foodItemId)
         {
             FoodItem foodItem = _foodRepository.GetSingle(foodItemId);
 
@@ -44,7 +45,7 @@ namespace AspNetCoreAngularSignalR.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddFoodToList([FromBody] FoodItemDto viewModel)
+        public ActionResult AddFoodToList([FromBody] FoodItemDto viewModel)
         {
             if (viewModel == null)
             {
@@ -66,12 +67,11 @@ namespace AspNetCoreAngularSignalR.Controllers
                 "GetSingleFood",
                 new { foodItemId = newFoodItem.Id },
                 Mapper.Map<FoodItemDto>(newFoodItem));
-
         }
 
         [HttpPut]
         [Route("{foodItemId:int}")]
-        public IActionResult UpdateFoodInList(int foodItemId, [FromBody] FoodItemDto viewModel)
+        public ActionResult<FoodItemDto> UpdateFoodInList(int foodItemId, [FromBody] FoodItemDto viewModel)
         {
             if (viewModel == null)
             {
@@ -100,7 +100,7 @@ namespace AspNetCoreAngularSignalR.Controllers
 
         [HttpDelete]
         [Route("{foodItemId:int}")]
-        public IActionResult DeleteFoodFromList(int foodItemId)
+        public ActionResult DeleteFoodFromList(int foodItemId)
         {
 
             FoodItem singleById = _foodRepository.GetSingle(foodItemId);
