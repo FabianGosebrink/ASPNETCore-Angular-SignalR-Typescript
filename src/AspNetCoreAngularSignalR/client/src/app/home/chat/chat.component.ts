@@ -7,33 +7,28 @@ import { ChatMessage } from '../../models/chatMessage.model';
   templateUrl: 'chat.component.html'
 })
 export class ChatComponent {
-  currentMessage: ChatMessage;
-  allMessages: ChatMessage[];
+  currentMessage: ChatMessage = new ChatMessage();
+  allMessages: ChatMessage[] = [];
   canSendMessage: boolean;
 
-  constructor(
-    private _signalRService: SignalRService,
-    private _ngZone: NgZone
-  ) {
+  constructor(private signalRService: SignalRService, private ngZone: NgZone) {
     this.subscribeToEvents();
-    this.currentMessage = new ChatMessage();
-    this.allMessages = [];
   }
 
   sendMessage() {
     if (this.canSendMessage) {
       this.currentMessage.sent = new Date();
-      this._signalRService.sendChatMessage(this.currentMessage);
+      this.signalRService.sendChatMessage(this.currentMessage);
     }
   }
 
   private subscribeToEvents(): void {
-    this._signalRService.connectionEstablished.subscribe(() => {
+    this.signalRService.connectionEstablished.subscribe(() => {
       this.canSendMessage = true;
     });
 
-    this._signalRService.messageReceived.subscribe((message: ChatMessage) => {
-      this._ngZone.run(() => {
+    this.signalRService.messageReceived.subscribe((message: ChatMessage) => {
+      this.ngZone.run(() => {
         this.currentMessage = new ChatMessage();
         this.allMessages.push(
           new ChatMessage(message.message, message.sent.toString())

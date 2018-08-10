@@ -16,7 +16,7 @@ import { CONFIGURATION } from '../../shared/app.constants';
 export class FoodDataService {
   private actionUrl: string;
 
-  constructor(private _http: HttpClient) {
+  constructor(private http: HttpClient) {
     this.actionUrl =
       CONFIGURATION.baseUrls.server +
       CONFIGURATION.baseUrls.apiUrl +
@@ -24,13 +24,13 @@ export class FoodDataService {
   }
 
   public getAllFood(): Observable<FoodItem[]> {
-    return this._http
+    return this.http
       .get<FoodItem[]>(this.actionUrl)
       .pipe(catchError(this.handleError));
   }
 
   public getSingleFood(id: number): Observable<FoodItem> {
-    return this._http
+    return this.http
       .get<FoodItem>(this.actionUrl + id)
       .pipe(catchError(this.handleError));
   }
@@ -38,19 +38,19 @@ export class FoodDataService {
   public addFood(foodName: string): Observable<FoodItem> {
     const toAdd: string = JSON.stringify({ ItemName: foodName });
 
-    return this._http
+    return this.http
       .post<FoodItem>(this.actionUrl, toAdd)
       .pipe(catchError(this.handleError));
   }
 
   public updateFood(id: number, foodToUpdate: FoodItem): Observable<FoodItem> {
-    return this._http
+    return this.http
       .put<FoodItem>(this.actionUrl + id, JSON.stringify(foodToUpdate))
       .pipe(catchError(this.handleError));
   }
 
   public deleteFood(id: number): Observable<Object> {
-    return this._http
+    return this.http
       .delete(this.actionUrl + id)
       .pipe(catchError(this.handleError));
   }
@@ -66,8 +66,6 @@ export class MyFirstInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    console.log(JSON.stringify(req));
-
     if (!req.headers.has('Content-Type')) {
       req = req.clone({
         headers: req.headers.set('Content-Type', 'application/json')
