@@ -4,6 +4,8 @@ import { Subject } from 'rxjs';
 import { ChatMessage } from '../../models/chatMessage.model';
 import { CONFIGURATION } from '../../shared/app.constants';
 
+const WAIT_UNTIL_ASPNETCORE_IS_READY_DELAY_IN_MS = 2000;
+
 @Injectable()
 export class SignalRService {
   foodchanged = new Subject();
@@ -28,17 +30,13 @@ export class SignalRService {
       .build();
   }
 
-  private startConnection(): void {
-    this.hubConnection
-      .start()
-      .then(() => {
+  private startConnection() {
+    setTimeout(() => {
+      this.hubConnection.start().then(() => {
         console.log('Hub connection started');
         this.connectionEstablished.next(true);
-      })
-      .catch(err => {
-        console.log('Error while establishing connection, retrying...');
-        setTimeout(this.startConnection(), 5000);
       });
+    }, WAIT_UNTIL_ASPNETCORE_IS_READY_DELAY_IN_MS);
   }
 
   private registerOnServerEvents(): void {
