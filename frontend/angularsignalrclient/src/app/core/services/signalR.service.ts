@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
 import { ChatMessage } from '@app/models/chatMessage.model';
-import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
+import {
+  HubConnection,
+  HubConnectionBuilder,
+  HubConnectionState
+} from '@aspnet/signalr';
 import { environment } from '@environments/environment';
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 
 const WAIT_UNTIL_ASPNETCORE_IS_READY_DELAY_IN_MS = 2000;
 
@@ -11,7 +15,7 @@ export class SignalRService {
   foodchanged$ = new Subject();
   messageReceived$ = new Subject<ChatMessage>();
   newCpuValue$ = new Subject<number>();
-  connectionEstablished$ = new Subject<boolean>();
+  connectionEstablished$ = new BehaviorSubject<boolean>(false);
 
   private hubConnection: HubConnection;
 
@@ -32,6 +36,10 @@ export class SignalRService {
   }
 
   private startConnection() {
+    if (this.hubConnection.state === HubConnectionState.Connected) {
+      return;
+    }
+
     setTimeout(() => {
       this.hubConnection.start().then(
         () => {

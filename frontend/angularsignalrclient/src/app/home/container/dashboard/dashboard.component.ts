@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private readonly signalRService: SignalRService,
-    private foodDataService: FoodDataService
+    private readonly foodDataService: FoodDataService
   ) {}
 
   ngOnInit() {
