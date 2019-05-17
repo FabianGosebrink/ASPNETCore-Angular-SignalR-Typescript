@@ -25,3 +25,5 @@ src/AspNetCoreAngular2/.temp/
 /src/AspNetCoreAngularSignalR/bin
 /src/AspNetCoreAngularSignalR/obj/
 /src/AspNetCoreAngularSignalR/wwwroot/
+/backend/ASPNETCore/bin
+/backend/ASPNETCore/obj

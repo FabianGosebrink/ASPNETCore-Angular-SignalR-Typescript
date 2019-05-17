@@ -1,0 +1,36 @@
+<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+  <div
+    class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden"
+  >
+    <div class="mx-auto wrapper">
+      <app-cpu
+        *ngIf="signalrConnectionEstablished$ | async; else loading"
+        [cpuValue]="cpuValue$ | async"
+      ></app-cpu>
+    </div>
+  </div>
+
+  <div
+    class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden"
+  >
+    <div class="mx-auto wrapper">
+      <app-food
+        [foodItems]="foodItems$ | async"
+        [connectionEstablished]="signalrConnectionEstablished$ | async"
+        (foodSaved)="saveFood($event)"
+      ></app-food>
+    </div>
+  </div>
+
+  <div
+    class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden"
+  >
+    <div class="mx-auto wrapper">
+      <app-chat
+        *ngIf="signalrConnectionEstablished$ | async; else loading"
+      ></app-chat>
+    </div>
+  </div>
+</div>
+
+<<ng-template #loading>Loading...</ng-template>
