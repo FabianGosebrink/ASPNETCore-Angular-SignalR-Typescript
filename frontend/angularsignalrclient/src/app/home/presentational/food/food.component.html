@@ -22,15 +22,15 @@
 <div>
   <ul class="list-group">
     <li *ngFor="let item of foodItems" class="list-group-item">
-      <i class="fa fa-cutlery"></i>{{ item.itemName }}
-      <span class="pull-right text-muted small">
+      <i class="fas fa-utensils-alt"></i>{{ item.itemName }}
+      <span class="pull-right text-muted">
         <button
           class="btn btn-primary btn-sm"
           (click)="setFoodItemToEdit(item)"
           [disabled]="!connectionEstablished"
           type="button"
         >
-          Edit
+          <i class="fas fa-edit"></i>
         </button>
         <button
           class="btn btn-danger btn-sm"
@@ -38,7 +38,7 @@
           [disabled]="!connectionEstablished"
           type="button"
         >
-          Delete
+          <i class="fas fa-trash-alt"></i>
         </button>
       </span>
     </li>

@@ -12,6 +12,7 @@ export class FoodComponent {
   @Input() connectionEstablished = false;
 
   @Output() foodSaved = new EventEmitter();
+  @Output() foodDeleted = new EventEmitter();
 
   form: FormGroup;
 
@@ -28,6 +29,11 @@ export class FoodComponent {
   }
 
   setFoodItemToEdit(foodItem: FoodItem) {
-    this.form.patchValue({ foodName: foodItem.itemName, id: foodItem.id });
+    const { itemName, id } = foodItem;
+    this.form.patchValue({ itemName, id });
+  }
+
+  deleteFoodItem(foodItem: FoodItem) {
+    this.foodDeleted.emit(foodItem);
   }
 }

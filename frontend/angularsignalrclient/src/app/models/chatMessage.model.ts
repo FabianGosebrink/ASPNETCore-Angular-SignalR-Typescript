@@ -1,7 +1,7 @@
 export class ChatMessage {
-  public sent: Date;
+  public sent: string;
 
-  constructor(public message: string = '', date: string = '') {
-    this.sent = new Date(date);
+  constructor(public message: string = '') {
+    this.sent = new Date().toISOString();
   }
 }

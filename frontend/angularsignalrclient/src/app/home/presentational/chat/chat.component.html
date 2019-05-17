@@ -1,3 +1,21 @@
-<p>
-  chat works!
-</p>
+<form class="form-inline" (ngSubmit)="send()" [formGroup]="form">
+  <div class="form-group mx-sm-6">
+    <input
+      type="text"
+      class="form-control mb-2"
+      placeholder="Type message"
+      formControlName="chatmessage"
+    />
+  </div>
+  <button
+    type="submit"
+    [disabled]="form.invalid || !connectionEstablished"
+    class="btn btn-primary mb-2"
+  >
+    Send
+  </button>
+</form>
+
+<textarea class="form-control" rows="10" id="comment" readonly>{{
+  chatmessages
+}}</textarea>
