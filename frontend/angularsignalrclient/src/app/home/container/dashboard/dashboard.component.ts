@@ -27,11 +27,9 @@ export class DashboardComponent implements OnInit {
     this.signalrConnectionEstablished$ = this.signalRService.connectionEstablished$;
     this.signalRService.foodchanged$.subscribe(() => this.getFoodData());
 
-    this.signalRService.messageReceived$
-      .pipe(tap(console.log))
-      .subscribe(message => {
-        this.chatmessages = [...this.chatmessages, message];
-      });
+    this.signalRService.messageReceived$.subscribe(message => {
+      this.chatmessages = [...this.chatmessages, message];
+    });
 
     this.getFoodData();
   }
