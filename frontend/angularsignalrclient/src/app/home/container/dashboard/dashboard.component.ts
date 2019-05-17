@@ -4,7 +4,7 @@ import { SignalRService } from '@app/core/services/signalR.service';
 import { FoodItem } from '@app/models/foodItem.model';
 import { Observable, forkJoin } from 'rxjs';
 import { ChatMessage } from '@app/models/chatMessage.model';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashboard',
@@ -25,21 +25,14 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.cpuValue$ = this.signalRService.newCpuValue$;
     this.signalrConnectionEstablished$ = this.signalRService.connectionEstablished$;
-
     this.signalRService.foodchanged$.subscribe(() => this.getFoodData());
 
     this.signalRService.messageReceived$
-      .pipe(
-        map(
-          message =>
-            `${new Date(message.sent).toLocaleDateString('en-US')} - ${
-              message.message
-            } \r\n`
-        )
-      )
-      .subscribe(
-        message => (this.chatmessages = [...this.chatmessages, message])
-      );
+      .pipe(tap(console.log))
+      .subscribe(message => {
+        this.chatmessages = [...this.chatmessages, message];
+      });
+
     this.getFoodData();
   }
 

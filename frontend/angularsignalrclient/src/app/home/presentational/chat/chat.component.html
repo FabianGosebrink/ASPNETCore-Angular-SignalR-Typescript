@@ -16,6 +16,8 @@
   </button>
 </form>
 
-<textarea class="form-control" rows="10" id="comment" readonly>{{
-  chatmessages
-}}</textarea>
+<ul class="list-group list-group-flush" *ngFor="let message of chatmessages">
+  <li class="list-group-item">
+    {{ message.sent | date: 'medium' }}: {{ message.message }}
+  </li>
+</ul>
