@@ -25,7 +25,7 @@
       <i class="fas fa-utensils-alt"></i>{{ item.itemName }}
       <span class="pull-right text-muted">
         <button
-          class="btn btn-primary btn-sm"
+          class="btn btn-primary btn-sm ml-1"
           (click)="setFoodItemToEdit(item)"
           [disabled]="!connectionEstablished"
           type="button"
@@ -33,7 +33,7 @@
           <i class="fas fa-edit"></i>
         </button>
         <button
-          class="btn btn-danger btn-sm"
+          class="btn btn-danger btn-sm ml-1"
           (click)="deleteFoodItem(item)"
           [disabled]="!connectionEstablished"
           type="button"
