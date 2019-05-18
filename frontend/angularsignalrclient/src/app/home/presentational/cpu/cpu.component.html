@@ -1,2 +1,14 @@
 <h2>CPU Value</h2>
-<h1>{{ cpuValue }}</h1>
+
+<ngx-charts-gauge
+  [view]="[400, 400]"
+  [results]="data"
+  [min]="0"
+  [max]="100"
+  [angleSpan]="240"
+  [startAngle]="-120"
+  [units]="'percent'"
+  [bigSegments]="10"
+  [smallSegments]="5"
+>
+</ngx-charts-gauge>

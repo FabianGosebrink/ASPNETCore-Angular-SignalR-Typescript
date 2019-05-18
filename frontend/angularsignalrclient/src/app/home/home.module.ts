@@ -5,13 +5,16 @@ import { RouterModule } from '@angular/router';
 import { allContainerComponents } from './container';
 import { homeRoutes } from './home.routing';
 import { allPresentationalComponents } from './presentational';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [...allPresentationalComponents, ...allContainerComponents],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule.forChild(homeRoutes)
+    RouterModule.forChild(homeRoutes),
+    NgxChartsModule
   ]
 })
 export class HomeModule {}
