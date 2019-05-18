@@ -1,0 +1,23 @@
+<form class="form-inline" (ngSubmit)="send()" [formGroup]="form">
+  <div class="form-group mx-sm-6">
+    <input
+      type="text"
+      class="form-control mb-2"
+      placeholder="Type message"
+      formControlName="chatmessage"
+    />
+  </div>
+  <button
+    type="submit"
+    [disabled]="form.invalid || !connectionEstablished"
+    class="btn btn-primary mb-2"
+  >
+    Send
+  </button>
+</form>
+
+<ul class="list-group list-group-flush" *ngFor="let message of chatmessages">
+  <li class="list-group-item">
+    {{ message.sent | date: 'medium' }}: {{ message.message }}
+  </li>
+</ul>

@@ -1,0 +1,46 @@
+<h2>FoodList</h2>
+
+<form class="form-inline" (ngSubmit)="saveFood()" [formGroup]="form">
+  <div class="form-group mx-sm-6">
+    <input type="hidden" formControlName="id" />
+    <input
+      type="text"
+      class="form-control mb-2"
+      placeholder="Add food"
+      formControlName="itemName"
+    />
+  </div>
+  <button
+    type="submit"
+    [disabled]="form.invalid || !connectionEstablished"
+    class="btn btn-primary mb-2"
+  >
+    Save
+  </button>
+</form>
+
+<div>
+  <ul class="list-group">
+    <li *ngFor="let item of foodItems" class="list-group-item">
+      <i class="fas fa-utensils-alt"></i>{{ item.itemName }}
+      <span class="pull-right text-muted">
+        <button
+          class="btn btn-primary btn-sm ml-1"
+          (click)="setFoodItemToEdit(item)"
+          [disabled]="!connectionEstablished"
+          type="button"
+        >
+          <i class="fas fa-edit"></i>
+        </button>
+        <button
+          class="btn btn-danger btn-sm ml-1"
+          (click)="deleteFoodItem(item)"
+          [disabled]="!connectionEstablished"
+          type="button"
+        >
+          <i class="fas fa-trash-alt"></i>
+        </button>
+      </span>
+    </li>
+  </ul>
+</div>
