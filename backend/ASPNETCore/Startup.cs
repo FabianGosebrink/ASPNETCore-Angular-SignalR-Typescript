@@ -35,7 +35,7 @@ namespace ASPNETCore
                 options.AddPolicy(CorsPolicy,
                     builder =>
                     {
-                        builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200").AllowCredentials();
+                        builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials();
                     });
             });
 
