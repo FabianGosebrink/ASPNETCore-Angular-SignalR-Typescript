@@ -55,7 +55,8 @@ namespace ASPNETCore
         public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env)
         {
             app.UseCors(CorsPolicy);
-
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

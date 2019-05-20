@@ -9,11 +9,11 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-desktop": "npm run cleanup-desktop && npm run build -- --base-href ./ && npm run desktop-copy-files && npm run pack-desktop",
+    "build-desktop": "npm run cleanup-desktop && npm run build-prod -- --base-href ./ && npm run desktop-copy-files && npm run pack-desktop",
     "desktop-copy-files": "npm run desktop-copy-app-files && npm run desktop-copy-desktop-files ",
     "desktop-copy-app-files": "copyfiles ./dist/angularsignalrclient/**/*.* ./.temp/desktop -f",
     "desktop-copy-desktop-files": "copyfiles ../assets/desktop/**/*.* ./.temp/desktop -f",
-    "pack-desktop": "electron-packager .temp/desktop/ --electronVersion=4.0.4 --icon=\".temp/desktop/icon\" --platform=win32,linux --out=./dist/desktop/",
+    "pack-desktop": "electron-packager .temp/desktop/ --electronVersion=5.0.0 --icon=\".temp/desktop/icon\" --platform=win32,linux --out=./dist/desktop/",
     "cleanup-desktop": "npm run delete-temp-folder && npm run delete-dist-desktop-folder",
     "delete-temp-folder": "rimraf .temp/desktop",
     "delete-dist-desktop-folder": "rimraf dist/desktop"
