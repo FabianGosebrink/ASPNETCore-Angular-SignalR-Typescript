@@ -3,7 +3,8 @@ import { ChatMessage } from '@app/models/chatMessage.model';
 import {
   HubConnection,
   HubConnectionBuilder,
-  HubConnectionState
+  HubConnectionState,
+  LogLevel
 } from '@aspnet/signalr';
 import { environment } from '@environments/environment';
 import { Subject, BehaviorSubject } from 'rxjs';
@@ -32,6 +33,7 @@ export class SignalRService {
   private createConnection() {
     this.hubConnection = new HubConnectionBuilder()
       .withUrl(environment.baseUrls.server + 'coolmessages')
+      .configureLogging(LogLevel.Information)
       .build();
   }
 
