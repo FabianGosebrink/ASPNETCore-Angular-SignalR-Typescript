@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace AspNetCoreAngularSignalR.Controllers
 {
-  [Route("api/[controller]")]
+    [Route("api/[controller]")]
     public class FoodItemsController : Controller
     {
         private readonly IFoodRepository _foodRepository;
