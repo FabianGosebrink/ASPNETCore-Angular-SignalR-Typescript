@@ -14,6 +14,14 @@
 Just clone this repo and run
 
 ```javascript
+npm install
+```
+
+in the `\frontend\angularsignalrclient` folder.
+
+## Usage
+
+```javascript
 npm start
 ```
 
@@ -26,8 +34,6 @@ dotnet watch run
 ```
 
 in the `backend\ASPNETCore` folder.
-
-## Usage
 
 ```javascript
 http://localhost:4200
