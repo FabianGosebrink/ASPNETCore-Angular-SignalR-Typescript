@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   baseUrls: {
-    server: 'https://aspnetcore20190520055459.azurewebsites.net/',
+    server: 'https://localhost:5001/',
     apiUrl: 'api/'
   }
 };

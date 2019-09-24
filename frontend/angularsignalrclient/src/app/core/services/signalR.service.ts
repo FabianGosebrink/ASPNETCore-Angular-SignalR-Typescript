@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { ChatMessage } from '@app/models/chatMessage.model';
+import { environment } from '@environments/environment';
 import {
   HubConnection,
   HubConnectionBuilder,
   HubConnectionState,
   LogLevel
-} from '@aspnet/signalr';
-import { environment } from '@environments/environment';
-import { Subject, BehaviorSubject } from 'rxjs';
+} from '@microsoft/signalr';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 const WAIT_UNTIL_ASPNETCORE_IS_READY_DELAY_IN_MS = 2000;
 

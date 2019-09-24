@@ -3,3 +3,6 @@
 /backend/ASPNETCore/bin/
 /frontend/angularsignalrclient/.temp
 backend/ASPNETCore/Properties/PublishProfiles/
+/backend/ASPNETCore/.vs
+/backend/ASPNETCore/ASPNETCore.Web/bin
+/backend/ASPNETCore/ASPNETCore.Web/obj
