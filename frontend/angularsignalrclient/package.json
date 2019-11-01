@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "start": "ng serve",
     "build": "ng build",
     "build-prod": "ng build --prod --output-path=dist/web",
