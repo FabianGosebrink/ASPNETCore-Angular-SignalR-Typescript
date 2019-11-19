@@ -9,7 +9,7 @@ export class CpuComponent implements OnChanges {
   @Input() cpuValue: number;
 
   view: any[] = [400, 400];
-  data = [];
+  data;
 
   colorScheme = {
     domain: ['#5AA454']
@@ -22,11 +22,9 @@ export class CpuComponent implements OnChanges {
   }
 
   renderChart(cpuValue: number) {
-    this.data = [
-      {
-        name: 'CPU',
-        value: cpuValue || 0
-      }
-    ];
+    this.data = {
+      name: 'CPU',
+      value: cpuValue || 0
+    };
   }
 }

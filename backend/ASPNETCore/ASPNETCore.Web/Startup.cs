@@ -1,3 +1,4 @@
+using System.Text.Json;
 using ASPNETCore.Extensions;
 using ASPNETCore.Repositories;
 using AspNetCoreAngularSignalR.Hubs;
@@ -48,7 +49,7 @@ namespace ASPNETCore.Web
             services
                 .AddSignalR()
                 .AddJsonProtocol(cfg => cfg.PayloadSerializerOptions =
-                new System.Text.Json.JsonSerializerOptions()
+                new JsonSerializerOptions()
                 {
                     WriteIndented = true
                 });
