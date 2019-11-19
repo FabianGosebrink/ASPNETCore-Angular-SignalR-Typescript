@@ -21,11 +21,6 @@
   },
   "private": true,
   "dependencies": {
-    "@microsoft/signalr": "3.0.0",
-    "@swimlane/ngx-charts": "^11.1.0",
-    "bootstrap": "^4.3.1",
-    "electron-packager": "^13.1.1",
-    "jquery": "^3.4.1",
     "@angular/animations": "~9.0.0-rc.0",
     "@angular/common": "~9.0.0-rc.0",
     "@angular/compiler": "~9.0.0-rc.0",
@@ -34,6 +29,11 @@
     "@angular/platform-browser": "~9.0.0-rc.0",
     "@angular/platform-browser-dynamic": "~9.0.0-rc.0",
     "@angular/router": "~9.0.0-rc.0",
+    "@microsoft/signalr": "3.0.0",
+    "@swimlane/ngx-charts": "12.0.1",
+    "bootstrap": "^4.3.1",
+    "electron-packager": "^13.1.1",
+    "jquery": "^3.4.1",
     "rxjs": "~6.5.3",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
