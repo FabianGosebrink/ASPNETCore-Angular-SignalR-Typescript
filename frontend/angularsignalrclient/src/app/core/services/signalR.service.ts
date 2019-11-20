@@ -9,8 +9,6 @@ import {
 } from '@microsoft/signalr';
 import { BehaviorSubject, Subject } from 'rxjs';
 
-const WAIT_UNTIL_ASPNETCORE_IS_READY_DELAY_IN_MS = 2000;
-
 @Injectable({ providedIn: 'root' })
 export class SignalRService {
   foodchanged$ = new Subject();
@@ -33,6 +31,7 @@ export class SignalRService {
   private createConnection() {
     this.hubConnection = new HubConnectionBuilder()
       .withUrl(environment.baseUrls.server + 'coolmessages')
+      .withAutomaticReconnect()
       .configureLogging(LogLevel.Information)
       .build();
   }
@@ -42,15 +41,13 @@ export class SignalRService {
       return;
     }
 
-    setTimeout(() => {
-      this.hubConnection.start().then(
-        () => {
-          console.log('Hub connection started');
-          this.connectionEstablished$.next(true);
-        },
-        error => console.error(error)
-      );
-    }, WAIT_UNTIL_ASPNETCORE_IS_READY_DELAY_IN_MS);
+    this.hubConnection.start().then(
+      () => {
+        console.log('Hub connection started');
+        this.connectionEstablished$.next(true);
+      },
+      error => console.error(error)
+    );
   }
 
   private registerOnServerEvents(): void {
@@ -67,6 +64,7 @@ export class SignalRService {
     });
 
     this.hubConnection.on('Send', (data: any) => {
+      console.log('data', data);
       this.messageReceived$.next(data);
     });
 

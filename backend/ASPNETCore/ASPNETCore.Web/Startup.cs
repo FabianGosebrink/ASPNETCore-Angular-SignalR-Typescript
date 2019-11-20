@@ -46,18 +46,16 @@ namespace ASPNETCore.Web
             services.Configure<TimerServiceConfiguration>(Configuration.GetSection("TimeService"));
             services.AddSingleton<IHostedService, SchedulerHostedService>();
 
-            services
-                .AddSignalR()
-                .AddJsonProtocol(cfg => cfg.PayloadSerializerOptions =
-                new JsonSerializerOptions()
-                {
-                    WriteIndented = true
+            services.AddSignalR()
+                .AddJsonProtocol(options => {
+                    options.PayloadSerializerOptions.PropertyNamingPolicy = null;
                 });
 
             services.AddMappingProfiles();
 
             services.AddDbContext<FoodDbContext>(opt => opt.UseInMemoryDatabase("FoodDb"));
-            services.AddControllers().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddControllers()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
