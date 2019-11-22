@@ -22,9 +22,9 @@ export class CpuComponent implements OnChanges {
   }
 
   renderChart(cpuValue: number) {
-    this.data = {
+    this.data = [{
       name: 'CPU',
       value: cpuValue || 0
-    };
+    }];
   }
 }
