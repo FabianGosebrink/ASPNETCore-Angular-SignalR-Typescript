@@ -18,6 +18,6 @@
 
 <ul class="list-group list-group-flush" *ngFor="let message of chatmessages">
   <li class="list-group-item">
-    {{ message.Sent | date: 'medium' }}: {{ message.Message }}
+    {{ message.sent | date: 'medium' }}: {{ message.message }}
   </li>
 </ul>

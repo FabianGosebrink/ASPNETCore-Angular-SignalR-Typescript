@@ -47,8 +47,9 @@ namespace ASPNETCore.Web
             services.AddSingleton<IHostedService, SchedulerHostedService>();
 
             services.AddSignalR()
-                .AddJsonProtocol(options => {
-                    options.PayloadSerializerOptions.PropertyNamingPolicy = null;
+                .AddJsonProtocol(options =>
+                {
+                    options.PayloadSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
                 });
 
             services.AddMappingProfiles();
