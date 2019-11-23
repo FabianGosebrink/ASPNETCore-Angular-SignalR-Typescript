@@ -37,7 +37,7 @@ namespace ASPNETCore.Web
                         builder
                             .AllowAnyHeader()
                             .AllowAnyMethod()
-                            .WithOrigins("http://localhost:4200")
+                            .WithOrigins("http://localhost:3000", "http://localhost:4200")
                             .AllowCredentials();
                     });
             });
