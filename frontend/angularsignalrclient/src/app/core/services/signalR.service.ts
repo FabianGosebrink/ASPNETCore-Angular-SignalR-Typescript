@@ -43,7 +43,7 @@ export class SignalRService {
 
     this.hubConnection.start().then(
       () => {
-        console.log('Hub connection started');
+        console.log('Hub connection started!');
         this.connectionEstablished$.next(true);
       },
       error => console.error(error)
