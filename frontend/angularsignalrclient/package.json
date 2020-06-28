@@ -29,7 +29,7 @@
     "@angular/platform-browser-dynamic": "~9.0.0",
     "@angular/router": "~9.0.0",
     "@microsoft/signalr": "3.0.0",
-    "@swimlane/ngx-charts": "12.1.0",
+    "@swimlane/ngx-charts": "14.0.0",
     "bootstrap": "^4.3.1",
     "electron-packager": "^13.1.1",
     "jquery": "^3.4.1",
