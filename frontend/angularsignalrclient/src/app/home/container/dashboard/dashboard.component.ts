@@ -9,7 +9,7 @@ import { map, tap } from 'rxjs/operators';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
   cpuValue$: Observable<number>;
@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
     this.signalrConnectionEstablished$ = this.signalRService.connectionEstablished$;
     this.signalRService.foodchanged$.subscribe(() => this.getFoodData());
 
-    this.signalRService.messageReceived$.subscribe(message => {
+    this.signalRService.messageReceived$.subscribe((message) => {
       this.chatmessages = [...this.chatmessages, message];
     });
 
@@ -36,11 +36,13 @@ export class DashboardComponent implements OnInit {
 
   saveFood(item: FoodItem) {
     if (item.id) {
-      this.foodDataService.updateFood(item).subscribe(() => this.getFoodData());
+      this.foodDataService
+        .updateFood(item)
+        .subscribe(() => console.log('food updated'));
     } else {
       this.foodDataService
         .addFood(item.itemName)
-        .subscribe(() => this.getFoodData());
+        .subscribe(() => console.log('food added'));
     }
   }
 
@@ -51,7 +53,7 @@ export class DashboardComponent implements OnInit {
 
     this.foodDataService
       .deleteFood(item.id)
-      .subscribe(() => this.getFoodData());
+      .subscribe(() => console.log('food deleted'));
   }
 
   sendChat(message: ChatMessage) {
