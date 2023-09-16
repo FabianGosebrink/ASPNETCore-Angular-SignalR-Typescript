@@ -15,11 +15,11 @@ export class FoodComponent {
   @Input() foodItems = [];
   @Input() connectionEstablished = false;
 
-  @Output() foodSaved = new EventEmitter();
+  @Output() foodSaved = new EventEmitter<Partial<FoodItem>>();
   @Output() foodDeleted = new EventEmitter<FoodItem>();
 
   form = this.formbuilder.group({
-    id: null,
+    id: 0,
     itemName: ['', Validators.required],
   });
 

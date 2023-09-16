@@ -11,8 +11,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 export class CpuComponent implements OnChanges {
   @Input() cpuValue: number;
 
-  view: any[] = [400, 400];
-  data;
+  view: number[] = [400, 400];
+  data: { name: string; value: number }[] = [];
 
   colorScheme = {
     domain: ['#5AA454'],
