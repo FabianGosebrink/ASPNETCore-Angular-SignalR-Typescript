@@ -5,9 +5,9 @@
   </a>
 </p>
 
-> With this project we are running an Angular project which is getting updated by an ASP.NET Core backend with SignalR. It receives data ove ra REST interface and gets datapushed with SignalR. Enjoy!
+With this project we are running an Angular project which is getting updated by an ASP.NET Core backend with SignalR. It receives data over a REST interface and gets datapushed with SignalR. Enjoy!
 
-![signalr](.github/screen.gif 'signalr')
+![signalr](.github/screen.gif "signalr")
 
 ## Install
 
@@ -30,7 +30,7 @@ in the `\frontend\angularsignalrclient` folder.
 To run the backend make sure you have installed the [dotnet cli](https://dotnet.microsoft.com/) and run
 
 ```bash
-dotnet watch run
+dotnet run
 ```
 
 in the `backend\ASPNETCore` folder.
