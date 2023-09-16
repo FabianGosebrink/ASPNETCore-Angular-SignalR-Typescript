@@ -1,0 +1,17 @@
+<h2>CPU Value</h2>
+
+<div class="container-center">
+  <ngx-charts-gauge
+    [view]="[400, 400]"
+    [results]="data"
+    [min]="0"
+    [max]="100"
+    [angleSpan]="240"
+    [startAngle]="-120"
+    [units]="'percent'"
+    [bigSegments]="10"
+    [smallSegments]="5"
+  >
+  </ngx-charts-gauge>
+
+</div>
