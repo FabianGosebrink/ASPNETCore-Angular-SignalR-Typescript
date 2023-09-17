@@ -15,7 +15,7 @@ export class FoodComponent {
   @Input() foodItems = [];
   @Input() connectionEstablished = false;
 
-  @Output() foodSaved = new EventEmitter<Partial<FoodItem>>();
+  @Output() foodSaved = new EventEmitter<FoodItem>();
   @Output() foodDeleted = new EventEmitter<FoodItem>();
 
   form = this.formbuilder.group({
@@ -24,7 +24,7 @@ export class FoodComponent {
   });
 
   saveFood() {
-    this.foodSaved.emit(this.form.value);
+    this.foodSaved.emit(this.form.value as FoodItem);
     this.form.reset();
   }
 
